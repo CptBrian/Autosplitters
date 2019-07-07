@@ -38,13 +38,11 @@ state("BloodstainedRotN-Win64-Shipping", "Steam1.03")
 }
 
 startup {
-	//settings.CurrentDefaultParent = "Load Remover";
 	settings.Add("Pause during general loading", true);
 	settings.Add("Pause during Save File loading", true);
 	settings.Add("Pause while Saving", true);
 	settings.Add("Pause while game is inactive", false);
 	settings.Add("Pause during Bloodstained logo screen", false); //Not yet implemented
-	//settings.CurrentDefaultParent = "Autosplitter";
 	settings.Add("Split upon any boss death", false); //Not yet implemented
 }
 
