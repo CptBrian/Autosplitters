@@ -1,1 +1,1 @@
-Stop asking me to create a fucking README.
+GitHub, STOP asking me to create a README.
