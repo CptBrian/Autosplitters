@@ -4,8 +4,8 @@ Load Remover v1.0 by CptBrian (PC only)
 Autosplitting not yet implemented(WIP)
 This ASL is compatible with RotN versions 1.03(Steam), 1.05(GOG), Oldest GOG(FitGirl)
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
-[LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter
-[LiveSplit] Layout Settings: Scriptable AutoSplitter -> Browse for this .asl file
+[LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
+[LiveSplit] Layout Settings: Scriptable AutoSplitter -> Browse for this .asl file (^^^)
 [LiveSplit] Remember to save your Layout/Splits!
 */
 
