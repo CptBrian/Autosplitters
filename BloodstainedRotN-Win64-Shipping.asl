@@ -1,7 +1,7 @@
 /*
 Bloodstained: Ritual of the Night
-Load Remover v1.1 by CptBrian (PC only)
-Autosplitting not yet implemented(WIP)
+Load Remover v1.2 by CptBrian (PC only)
+Autosplitter v0.0 - Not yet implemented(WIP)
 This ASL is compatible with RotN versions 1.03(Steam), 1.05(GOG), Oldest GOG(FitGirl)
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
@@ -14,6 +14,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOGOldest")
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x848; //offsets: +1000 hex from Steam1.03
 	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x858;
 	uint Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x140, 0x30;
+	uint GameInactive : "BloodstainedRotN-Win64-Shipping.exe", 0x06DA1F90, 0x268, 0x28, 0x28, 0x68;
 	//The following are not currently in use, but are potentially useful:
 	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x208;
 }
@@ -22,6 +23,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG1.05")
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x848; //offsets: -27970 hex from Steam1.03
 	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x858;
 	uint Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x140, 0x30;
+	uint GameInactive : "BloodstainedRotN-Win64-Shipping.exe", 0x06D79620, 0x268, 0x28, 0x28, 0x68;
 	//The following are not currently in use, but are potentially useful:
 	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x208;
 }
@@ -30,8 +32,20 @@ state("BloodstainedRotN-Win64-Shipping", "Steam1.03")
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x848;
 	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x858;
 	uint Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x140, 0x30;
+	uint GameInactive : "BloodstainedRotN-Win64-Shipping.exe", 0x06DA0F90, 0x268, 0x28, 0x28, 0x68;
 	//The following are not currently in use, but are potentially useful:
 	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x208;
+}
+
+startup {
+	settings.CurrentDefaultParent = "Load Remover";
+	settings.Add("Pause during general loading", true);
+	settings.Add("Pause during Save File loading", true);
+	settings.Add("Pause while Saving", true);
+	settings.Add("Pause while game is inactive", false);
+	settings.Add("Pause during Bloodstained logo screen(soon)", false); //Not yet implemented
+	settings.CurrentDefaultParent = "Autosplitter";
+	settings.Add("Split upon any boss death(soon)", false); //Not yet implemented
 }
 
 init
@@ -66,6 +80,18 @@ init
  
 isLoading
 {
-	return current.Loading == 1 || current.Loading == 2 || current.LoadingFile == 1 || current.LoadingFile == 2 || current.Saving == 1 || current.Saving == 2;
+	//Original: return current.Loading >= 1 && current.Loading <= 3 && current.GameInactive == 0 || current.LoadingFile == 1 || current.LoadingFile == 2 || current.Saving == 1 || current.Saving == 2;
 	//These flags just count up/down by 1, which is why the Loading flag(and potentially others) can very rarely go up to 2 during odd stacked triggers, but they always end up at 0.
+	if (settings["Pause during general loading"]) {
+		return current.Loading >= 1 && current.Loading <= 3;
+	}
+	if (settings["Pause during Save File loading"]) {
+		return current.LoadingFile == 1 || current.LoadingFile == 2;
+	}
+	if (settings["Pause while Saving"]) {
+		return current.Saving == 1 || current.Saving == 2;
+	}
+	if (settings["Pause while game is inactive"]) {
+		return current.GameInactive == 1;
+	}
 }
