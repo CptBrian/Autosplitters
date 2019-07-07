@@ -1,6 +1,6 @@
 /*
 Bloodstained: Ritual of the Night
-Load Remover v1.2 by CptBrian (PC only)
+Load Remover v1.3 by CptBrian (PC only)
 Autosplitter v0.0 - Not yet implemented(WIP)
 This ASL is compatible with RotN versions 1.03(Steam), 1.05(GOG), Oldest GOG(FitGirl)
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
@@ -9,7 +9,7 @@ This ASL is compatible with RotN versions 1.03(Steam), 1.05(GOG), Oldest GOG(Fit
 [LiveSplit] Remember to save your Layout/Splits!
 */
 
-state("BloodstainedRotN-Win64-Shipping", "GOGOldest")
+state("BloodstainedRotN-Win64-Shipping", "GOG Oldest")
 {
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x848; //offsets: +1000 hex from Steam1.03
 	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x858;
@@ -18,7 +18,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOGOldest")
 	//The following are not currently in use, but are potentially useful:
 	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x208;
 }
-state("BloodstainedRotN-Win64-Shipping", "GOG1.05")
+state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
 {
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x848; //offsets: -27970 hex from Steam1.03
 	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x858;
@@ -27,7 +27,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG1.05")
 	//The following are not currently in use, but are potentially useful:
 	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x208;
 }
-state("BloodstainedRotN-Win64-Shipping", "Steam1.03")
+state("BloodstainedRotN-Win64-Shipping", "Steam 1.03")
 {
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x848;
 	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x858;
@@ -42,8 +42,8 @@ startup {
 	settings.Add("Pause during Save File loading", true);
 	settings.Add("Pause while Saving", true);
 	settings.Add("Pause while game is inactive", false);
-	settings.Add("Pause during Bloodstained logo screen", false); //Not yet implemented
-	settings.Add("Split upon any boss death", false); //Not yet implemented
+	settings.Add("Pause during Bloodstained logo screen(soon)", false); //Not yet implemented
+	settings.Add("Split upon any boss death(soon?)", false); //Not yet implemented
 }
 
 init
@@ -63,13 +63,13 @@ init
 	print("MD5Hash: " + MD5Hash.ToString()); //Lets DebugView show me the MD5Hash of the game executable, which is actually useful.
 	
 	if(MD5Hash == "EC7E5B6FD907C3BC7BA3B5257F30B32E"){
-		version = "Steam1.03";
+		version = "Steam 1.03";
 	}
 	else if(MD5Hash == "E9C3AB688872DE80DBA91934AED9EC7F"){
-		version = "GOGOldest";
+		version = "GOG Oldest";
 	}
 	else if(MD5Hash == "0B9685B2C8056D9E841C254AAB94212E"){
-		version = "GOG1.05";
+		version = "GOG 1.05";
 	}
 	else{
 		version = "Steam1.03";
