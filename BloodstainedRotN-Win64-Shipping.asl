@@ -6,7 +6,7 @@ This ASL is compatible with RotN versions 1.03(Steam), 1.05(GOG), Oldest GOG(Fit
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter
 [LiveSplit] Layout Settings: Scriptable AutoSplitter -> Browse for this .asl file
-[LiveSplit] Temember to save your Layout/Splits!
+[LiveSplit] Remember to save your Layout/Splits!
 */
 
 state("BloodstainedRotN-Win64-Shipping", "GOGOldest")
