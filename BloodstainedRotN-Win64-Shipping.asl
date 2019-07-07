@@ -38,14 +38,14 @@ state("BloodstainedRotN-Win64-Shipping", "Steam1.03")
 }
 
 startup {
-	settings.CurrentDefaultParent = "Load Remover";
+	//settings.CurrentDefaultParent = "Load Remover";
 	settings.Add("Pause during general loading", true);
 	settings.Add("Pause during Save File loading", true);
 	settings.Add("Pause while Saving", true);
 	settings.Add("Pause while game is inactive", false);
-	settings.Add("Pause during Bloodstained logo screen(soon)", false); //Not yet implemented
-	settings.CurrentDefaultParent = "Autosplitter";
-	settings.Add("Split upon any boss death(soon)", false); //Not yet implemented
+	settings.Add("Pause during Bloodstained logo screen", false); //Not yet implemented
+	//settings.CurrentDefaultParent = "Autosplitter";
+	settings.Add("Split upon any boss death", false); //Not yet implemented
 }
 
 init
@@ -82,16 +82,16 @@ isLoading
 {
 	//Original: return current.Loading >= 1 && current.Loading <= 3 && current.GameInactive == 0 || current.LoadingFile == 1 || current.LoadingFile == 2 || current.Saving == 1 || current.Saving == 2;
 	//These flags just count up/down by 1, which is why the Loading flag(and potentially others) can very rarely go up to 2 during odd stacked triggers, but they always end up at 0.
-	if (settings["Pause during general loading"]) {
+	if (settings["Pause during general loading"]){
 		return current.Loading >= 1 && current.Loading <= 3;
 	}
-	if (settings["Pause during Save File loading"]) {
+	if (settings["Pause during Save File loading"]){
 		return current.LoadingFile == 1 || current.LoadingFile == 2;
 	}
-	if (settings["Pause while Saving"]) {
+	if (settings["Pause while Saving"]){
 		return current.Saving == 1 || current.Saving == 2;
 	}
-	if (settings["Pause while game is inactive"]) {
+	if (settings["Pause while game is inactive"]){
 		return current.GameInactive == 1;
 	}
 }
