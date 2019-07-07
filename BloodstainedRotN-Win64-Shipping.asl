@@ -66,5 +66,5 @@ init
  
 isLoading
 {
-	return current.Loading == 1 || current.Loading == 2 || current.LoadingFile == 1 || current.Saving == 1;
+	return current.Loading == 1 || current.Loading == 2 || current.LoadingFile == 1 || current.LoadingFile == 2 || current.Saving == 1 || current.Saving == 2;
 }
