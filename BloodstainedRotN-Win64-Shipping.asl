@@ -67,4 +67,5 @@ init
 isLoading
 {
 	return current.Loading == 1 || current.Loading == 2 || current.LoadingFile == 1 || current.LoadingFile == 2 || current.Saving == 1 || current.Saving == 2;
+	//These flags count up and down by 1, which is why the general Loading flag(and potentially others) can very rarely go up to 2, thankfully they always end up at 0.
 }
