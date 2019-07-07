@@ -72,7 +72,7 @@ init
 		version = "GOG 1.05";
 	}
 	else{
-		version = "Steam 1.03";
+		version = "Steam 1.03"; //Whatever most common version is
 	}
 }
  
