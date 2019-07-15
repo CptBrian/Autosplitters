@@ -1,8 +1,8 @@
 /*
 Bloodstained: Ritual of the Night
-Load Remover v1.3 by CptBrian (PC only)
+Load Remover v1.4 by CptBrian (PC only)
 Autosplitter v0.0 - Not yet implemented(WIP)
-This ASL is compatible with RotN versions 1.03(Steam), 1.05(GOG), Oldest GOG(FitGirl)
+This ASL is compatible with RotN versions 1.03(Steam), 1.05(GOG), Oldest GOG(FitGirl RePack)
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
 [LiveSplit] Layout Settings: Scriptable AutoSplitter -> Browse for this .asl file (^^^)
@@ -15,6 +15,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG Oldest")
 	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x858;
 	uint Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x140, 0x30;
 	uint GameInactive : "BloodstainedRotN-Win64-Shipping.exe", 0x06DA1F90, 0x268, 0x28, 0x28, 0x68;
+	uint PressAnyKey : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x830;
 	//The following are not currently in use, but are potentially useful:
 	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x208;
 }
@@ -24,6 +25,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
 	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x858;
 	uint Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x140, 0x30;
 	uint GameInactive : "BloodstainedRotN-Win64-Shipping.exe", 0x06D79620, 0x268, 0x28, 0x28, 0x68;
+	uint PressAnyKey : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x830;
 	//The following are not currently in use, but are potentially useful:
 	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x208;
 }
@@ -33,6 +35,7 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.03")
 	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x858;
 	uint Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x140, 0x30;
 	uint GameInactive : "BloodstainedRotN-Win64-Shipping.exe", 0x06DA0F90, 0x268, 0x28, 0x28, 0x68;
+	uint PressAnyKey : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x830;
 	//The following are not currently in use, but are potentially useful:
 	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x208;
 }
@@ -41,6 +44,7 @@ startup {
 	settings.Add("Pause during general loading", true);
 	settings.Add("Pause during Save File loading", true);
 	settings.Add("Pause while Saving", true);
+	settings.Add("Pause on Press Any Key events (indecisive ban)", false);
 	settings.Add("Pause while game is inactive (banned in runs)", false);
 	settings.Add("Pause during Bloodstained logo screen(unavailable)", false); //Not yet implemented
 	settings.Add("Split on any boss death(unavailable)", false); //Not yet implemented
@@ -87,6 +91,9 @@ isLoading
 		return true;
 	}
 	else if (settings["Pause while Saving"] && (current.Saving == 1 || current.Saving == 2)){
+		return true;
+	}
+	else if (settings["Pause on Press Any Key events (indecisive ban)"] && current.PressAnyKey == 1){
 		return true;
 	}
 	else if (settings["Pause while game is inactive (banned in runs)"] && current.GameInactive == 1){
