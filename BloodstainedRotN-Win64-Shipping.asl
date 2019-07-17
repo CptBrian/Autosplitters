@@ -1,7 +1,7 @@
 /*
 Bloodstained: Ritual of the Night
 Load Remover v1.4 by CptBrian (PC only)
-Autosplitter v0.0 - Not yet implemented(WIP)
+Autosplitter v0.1 - Not yet implemented(WIP)
 This ASL is compatible with RotN versions 1.03(Steam), 1.05(GOG), Oldest GOG(FitGirl RePack)
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
@@ -16,8 +16,13 @@ state("BloodstainedRotN-Win64-Shipping", "GOG Oldest")
 	uint Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x140, 0x30;
 	uint GameInactive : "BloodstainedRotN-Win64-Shipping.exe", 0x06DA1F90, 0x268, 0x28, 0x28, 0x68;
 	uint PressAnyKey : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x830;
-	//The following are not currently in use, but are potentially useful:
 	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x208;
+	uint CurrentRoom : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x2F688, 0x188;
+	uint PreviousRoom : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x2F688, 0x180;
+	byte Difficulty : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x26C;
+	byte GameMode : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x26D;
+	byte Character : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x26E;
+	float IGT : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x268;
 }
 state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
 {
@@ -26,8 +31,13 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
 	uint Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x140, 0x30;
 	uint GameInactive : "BloodstainedRotN-Win64-Shipping.exe", 0x06D79620, 0x268, 0x28, 0x28, 0x68;
 	uint PressAnyKey : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x830;
-	//The following are not currently in use, but are potentially useful:
 	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x208;
+	uint CurrentRoom : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2F688, 0x188;
+	uint PreviousRoom : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2F688, 0x180;
+	byte Difficulty : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x26C;
+	byte GameMode : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x26D;
+	byte Character : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x26E;
+	float IGT : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x268;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.03")
 {
@@ -36,8 +46,13 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.03")
 	uint Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x140, 0x30;
 	uint GameInactive : "BloodstainedRotN-Win64-Shipping.exe", 0x06DA0F90, 0x268, 0x28, 0x28, 0x68;
 	uint PressAnyKey : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x830;
-	//The following are not currently in use, but are potentially useful:
 	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x208;
+	uint CurrentRoom : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2F688, 0x188;
+	uint PreviousRoom : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2F688, 0x180;
+	byte Difficulty : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x26C;
+	byte GameMode : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x26D;
+	byte Character : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x26E;
+	float IGT : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x268;
 }
 
 startup {
