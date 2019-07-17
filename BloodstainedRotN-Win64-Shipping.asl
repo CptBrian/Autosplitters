@@ -23,7 +23,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG Oldest")
 	byte GameMode : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x26D;
 	byte Character : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x26E;
 	float IGT : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x268;
-	uint ClearCount : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x264;
+	uint NGPlusCount : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x264;
 	uint GameClear : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x258;
 }
 state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
@@ -40,7 +40,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
 	byte GameMode : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x26D;
 	byte Character : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x26E;
 	float IGT : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x268;
-	uint ClearCount : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x264;
+	uint NGPlusCount : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x264;
 	uint GameClear : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x258;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.03")
@@ -57,7 +57,7 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.03")
 	byte GameMode : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x26D;
 	byte Character : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x26E;
 	float IGT : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x268;
-	uint ClearCount : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x264;
+	uint NGPlusCount : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x264;
 	uint GameClear : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x258;
 }
 
