@@ -1,7 +1,7 @@
 /*
 Bloodstained: Ritual of the Night
 Load Remover v1.4 by CptBrian (PC only)
-Autosplitter v0.1 - Not yet implemented(WIP)
+Autosplitter v0.2 - Not yet implemented(WIP)
 This ASL is compatible with RotN versions 1.03(Steam), 1.05(GOG), Oldest GOG(FitGirl RePack)
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
@@ -23,6 +23,8 @@ state("BloodstainedRotN-Win64-Shipping", "GOG Oldest")
 	byte GameMode : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x26D;
 	byte Character : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x26E;
 	float IGT : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x268;
+	uint ClearCount : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x264;
+	uint GameClear : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x258;
 }
 state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
 {
@@ -38,6 +40,8 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
 	byte GameMode : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x26D;
 	byte Character : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x26E;
 	float IGT : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x268;
+	uint ClearCount : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x264;
+	uint GameClear : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x258;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.03")
 {
@@ -53,6 +57,8 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.03")
 	byte GameMode : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x26D;
 	byte Character : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x26E;
 	float IGT : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x268;
+	uint ClearCount : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x264;
+	uint GameClear : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x258;
 }
 
 startup {
