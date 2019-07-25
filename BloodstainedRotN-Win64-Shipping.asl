@@ -65,9 +65,9 @@ startup {
 	settings.Add("Pause during general loading", true);
 	settings.Add("Pause during Save File loading", true);
 	settings.Add("Pause while Saving", true);
-	settings.Add("Pause on Press Any Key events (indecisive ban)", false);
-	settings.Add("Pause while game is inactive (banned in runs)", false);
 	settings.Add("Pause during Bloodstained logo screen(unavailable)", false); //Not yet implemented
+	settings.Add("Pause on Press-Any-Key events (BANNED in runs)", false);
+	settings.Add("Pause while game is inactive (BANNED in runs)", false);
 	settings.Add("Split on any boss death(unavailable)", false); //Not yet implemented
 }
 
@@ -114,10 +114,10 @@ isLoading
 	else if (settings["Pause while Saving"] && (current.Saving == 1 || current.Saving == 2)){
 		return true;
 	}
-	else if (settings["Pause on Press Any Key events (indecisive ban)"] && current.PressAnyKey == 1){
+	else if (settings["Pause on Press-Any-Key events (BANNED in runs)"] && current.PressAnyKey == 1){
 		return true;
 	}
-	else if (settings["Pause while game is inactive (banned in runs)"] && current.GameInactive == 1){
+	else if (settings["Pause while game is inactive (BANNED in runs)"] && current.GameInactive == 1){
 		return true;
 	}
 	else{
