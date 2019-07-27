@@ -49,7 +49,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
 	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0xE8;
 	uint DialogueShop : "BloodstainedRotN-Win64-Shipping.exe", 0x06E75CD0, 0x8D8, 0x8, 0x80, 0x4E8;
 	uint IntroEvents : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2E0;
-	uint CircleLogoScreen : "BloodstainedRotN-Win64-Shipping.exe", 0x0‭6D8A888, 0x4B8, 0x288, 0x204;
+	uint CircleLogoScreen : "BloodstainedRotN-Win64-Shipping.exe", 0x06D8A888, 0x4B8, 0x288, 0x204;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.03")
 {
