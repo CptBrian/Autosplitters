@@ -82,7 +82,7 @@ startup {
 	settings.Add("Pause while game is inactive (BANNED in runs)", false);
 	//settings.Add("Automatically Start Splits(all modes supported)", true);
 	settings.Add("Automatically End splits on final hit(unavailable)", false);
-	settings.Add("Split on any boss death(unavailable)", false); //Not yet implemented
+	settings.Add("Split on any boss death(unavailable)", false);
 }
 
 init
@@ -125,10 +125,10 @@ isLoading
 	else if (settings["Pause during Save File Loading"] && (current.LoadingFile == 1 || current.FileCreateLoad == 1)){
 		return true;
 	}
-	else if (settings["Pause while Saving"] && (current.Saving == 1)){
+	else if (settings["Pause while Saving"] && current.Saving == 1){
 		return true;
 	}
-	else if (settings["Pause during RotN Circle Logo screen"] && (current.CircleLogoScreen == 0)){
+	else if (settings["Pause during RotN Circle Logo screen"] && current.CircleLogoScreen == 0){
 		return true;
 	}
 	else if (settings["Pause on Press-Any-Key events (BANNED in runs)"] && current.PressAnyKey == 1){
