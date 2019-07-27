@@ -27,6 +27,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG Oldest")
 	uint GameClear : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x258;
 	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0xE8;
 	uint DialogueShop : "BloodstainedRotN-Win64-Shipping.exe", 0x06E9E640, 0x8D8, 0x8, 0x80, 0x4E8;
+	uint IntroEvents : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x2E0;
 }
 state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
 {
@@ -46,6 +47,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
 	uint GameClear : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x258;
 	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0xE8;
 	uint DialogueShop : "BloodstainedRotN-Win64-Shipping.exe", 0x06E75CD0, 0x8D8, 0x8, 0x80, 0x4E8;
+	uint IntroEvents : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2E0;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.03")
 {
@@ -65,6 +67,7 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.03")
 	uint GameClear : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x258;
 	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0xE8;
 	uint DialogueShop : "BloodstainedRotN-Win64-Shipping.exe", 0x06E9D640, 0x8D8, 0x8, 0x80, 0x4E8;
+	uint IntroEvents : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2E0;
 }
 
 startup {
@@ -143,8 +146,8 @@ start
 
 reset
 {
-	return (timer.CurrentPhase == TimerPhase.Running && current.GameMode == 6 && current.Room == 708 && current.PressAnyKey == 1 && current.IGT == 0 && current.Character == 0)
-	|| (timer.CurrentPhase == TimerPhase.Running && current.GameMode == 1 && current.Room == 708 && current.IGT < 2 && current.Cutscene == 1 && current.Character == 0)
+	return (timer.CurrentPhase == TimerPhase.Running && current.GameMode == 6 && current.Room == 708 && current.DialogueShop == 1 && current.IGT == 0 && current.Character == 0)
+	|| (timer.CurrentPhase == TimerPhase.Running && current.GameMode == 1 && current.Room == 708 && current.DialogueShop == 1 && current.IntroEvents == 0 && current.Character == 0)
 	|| (timer.CurrentPhase == TimerPhase.Running && old.GameMode == 2 && current.GameMode == 0)
 	;
 }
