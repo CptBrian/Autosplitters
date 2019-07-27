@@ -77,7 +77,7 @@ startup {
 	settings.Add("Pause during general gameplay loading", true);
 	settings.Add("Pause during Save File Loading", true);
 	settings.Add("Pause while Saving", true);
-	settings.Add("Pause during RotN Circle Logo screen", true); //Not yet implemented
+	settings.Add("Pause during RotN Circle Logo screen", true);
 	settings.Add("Pause on Press-Any-Key events (BANNED in runs)", false);
 	settings.Add("Pause while game is inactive (BANNED in runs)", false);
 	//settings.Add("Automatically Start Splits(all modes supported)", true);
