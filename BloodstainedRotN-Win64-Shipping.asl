@@ -81,7 +81,7 @@ startup {
 	settings.Add("Pause on Press-Any-Key events (BANNED in runs)", false);
 	settings.Add("Pause while game is inactive (BANNED in runs)", false);
 	//settings.Add("Automatically Start Splits(all modes supported)", true);
-	settings.Add("Automatically End splits on final hit(unavailable)", false);
+	settings.Add("End splits on final hit(unavailable)", false);
 	settings.Add("Split on any boss death(unavailable)", false);
 }
 
