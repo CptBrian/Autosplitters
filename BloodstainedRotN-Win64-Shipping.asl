@@ -144,7 +144,7 @@ start
 reset
 {
 	return (timer.CurrentPhase == TimerPhase.Running && current.GameMode == 6 && current.Room == 708 && current.PressAnyKey == 1 && current.IGT == 0 && current.Character == 0)
-	|| (timer.CurrentPhase == TimerPhase.Running && current.GameMode == 1 && current.Room == 708 && current.IGT == 0 && current.Cutscene == 1 && current.Character == 0)
+	|| (timer.CurrentPhase == TimerPhase.Running && current.GameMode == 1 && current.Room == 708 && current.IGT < 1 && current.Cutscene == 1 && current.Character == 0)
 	|| (timer.CurrentPhase == TimerPhase.Running && old.GameMode == 2 && current.GameMode == 0)
 	;
 }
