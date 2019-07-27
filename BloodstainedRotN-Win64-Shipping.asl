@@ -70,7 +70,7 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.03")
 	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0xE8;
 	uint DialogueShop : "BloodstainedRotN-Win64-Shipping.exe", 0x06E9D640, 0x8D8, 0x8, 0x80, 0x4E8;
 	uint IntroEvents : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2E0;
-	uint CircleLogoScreen : "BloodstainedRotN-Win64-Shipping.exe", 0x06DB21F8, 0x4B8, 0x288, 0x204; //don't break
+	uint CircleLogoScreen : "BloodstainedRotN-Win64-Shipping.exe", 0x06DB21F8, 0x4B8, 0x288, 0x204;
 }
 
 startup {
