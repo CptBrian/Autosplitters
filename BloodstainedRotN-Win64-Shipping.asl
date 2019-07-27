@@ -49,7 +49,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
 	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0xE8;
 	uint DialogueShop : "BloodstainedRotN-Win64-Shipping.exe", 0x06E75CD0, 0x8D8, 0x8, 0x80, 0x4E8;
 	uint IntroEvents : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2E0;
-	uint CircleLogoScreen : "BloodstainedRotN-Win64-Shipping.exe", 0x0‭6D8A888‬, 0x4B8, 0x288, 0x204;
+	uint CircleLogoScreen : "BloodstainedRotN-Win64-Shipping.exe", 0x0‭6D8A888, 0x4B8, 0x288, 0x204;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.03")
 {
@@ -77,7 +77,7 @@ startup {
 	settings.Add("Pause during general gameplay loading", true);
 	settings.Add("Pause during Save File Loading", true);
 	settings.Add("Pause while Saving", true);
-	//settings.Add("Pause during RotN Circle Logo screen", true);
+	settings.Add("Pause during RotN Circle Logo screen", true);
 	settings.Add("Pause on Press-Any-Key events (BANNED in runs)", false);
 	settings.Add("Pause while game is inactive (BANNED in runs)", false);
 	//settings.Add("Automatically Start Splits(all modes supported)", true);
@@ -128,9 +128,9 @@ isLoading
 	else if (settings["Pause while Saving"] && current.Saving == 1){
 		return true;
 	}
-	//else if (settings["Pause during RotN Circle Logo screen"] && current.CircleLogoScreen == 0){
-	//	return true;
-	//}
+	else if (settings["Pause during RotN Circle Logo screen"] && current.CircleLogoScreen == 0){
+		return true;
+	}
 	else if (settings["Pause on Press-Any-Key events (BANNED in runs)"] && current.PressAnyKey == 1){
 		return true;
 	}
