@@ -1,7 +1,7 @@
 /*
 Bloodstained: Ritual of the Night
 Load Remover v1.5 by CptBrian (PC only)
-Autosplitter v0.3 - Not yet implemented(WIP)
+Autosplitter v0.4 - Not yet implemented(WIP)
 This ASL is compatible with RotN versions 1.03(Steam), 1.05(GOG), Oldest GOG(FitGirl RePack)
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
@@ -138,5 +138,13 @@ start
 	return (current.GameMode == 6 && current.Room == 708 && old.PressAnyKey == 1 && current.PressAnyKey == 0 && old.IGT == 0 && current.Character == 0)
 	|| (current.GameMode == 1 && current.Room == 708 && old.DialogueShop == 1 && current.DialogueShop == 0 && current.Character == 0)
 	|| (current.GameMode == 2 && current.Room >= 184259 && current.Room <= 184260 && old.FileCreateLoad == 1 && current.FileCreateLoad == 0 && current.Character == 0)
+	;
+}
+
+reset
+{
+	return (timer.CurrentPhase == TimerPhase.Running && current.GameMode == 6 && current.Room == 708 && current.PressAnyKey == 1 && current.IGT == 0 && current.Character == 0)
+	|| (timer.CurrentPhase == TimerPhase.Running && current.GameMode == 1 && current.Room == 708 && current.IGT == 0 && current.Cutscene == 1 && current.Character == 0)
+	|| (timer.CurrentPhase == TimerPhase.Running && old.GameMode == 2 && current.GameMode == 0)
 	;
 }
