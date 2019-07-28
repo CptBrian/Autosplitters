@@ -29,6 +29,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG Oldest")
 	uint DialogueShop : "BloodstainedRotN-Win64-Shipping.exe", 0x06E9E640, 0x8D8, 0x8, 0x80, 0x4E8;
 	uint IntroEvents : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x2E0;
 	uint CircleLogoScreen : "BloodstainedRotN-Win64-Shipping.exe", 0x06DB31F8, 0x4B8, 0x288, 0x204;
+	uint ControllerDC : "BloodstainedRotN-Win64-Shipping.exe", 0x06DA7488, 0x10, 0x88, 0x168, 0x490, 0x0, 0x8, 0x30;
 }
 state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
 {
@@ -50,6 +51,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
 	uint DialogueShop : "BloodstainedRotN-Win64-Shipping.exe", 0x06E75CD0, 0x8D8, 0x8, 0x80, 0x4E8;
 	uint IntroEvents : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2E0;
 	uint CircleLogoScreen : "BloodstainedRotN-Win64-Shipping.exe", 0x06D8A888, 0x4B8, 0x288, 0x204;
+	uint ControllerDC : "BloodstainedRotN-Win64-Shipping.exe", 0x06D7EB18, 0x10, 0x88, 0x168, 0x490, 0x0, 0x8, 0x30;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.03")
 {
@@ -71,18 +73,18 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.03")
 	uint DialogueShop : "BloodstainedRotN-Win64-Shipping.exe", 0x06E9D640, 0x8D8, 0x8, 0x80, 0x4E8;
 	uint IntroEvents : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2E0;
 	uint CircleLogoScreen : "BloodstainedRotN-Win64-Shipping.exe", 0x06DB21F8, 0x4B8, 0x288, 0x204;
+	uint ControllerDC : "BloodstainedRotN-Win64-Shipping.exe", 0x06DA6488, 0x10, 0x88, 0x168, 0x490, 0x0, 0x8, 0x30;
 }
 
 startup {
 	settings.Add("Pause during general gameplay loading", true);
 	settings.Add("Pause during Save File Loading", true);
 	settings.Add("Pause while Saving", true);
-	settings.Add("Pause during RotN Circle Logo screen", true);
-	settings.Add("Pause on Press-Any-Key events (BANNED in runs)", false);
-	settings.Add("Pause while game is inactive (BANNED in runs)", false);
-	//settings.Add("Automatically Start Splits(all modes supported)", true);
-	settings.Add("End splits on final hit(unavailable)", false);
-	settings.Add("Split on any boss death(unavailable)", false);
+	settings.Add("Pause during RotN Circle Logo screen(not working for some?)", true);
+	//settings.Add("Pause on Press-Any-Key events (BANNED in runs)", false);
+	//settings.Add("Pause while game is inactive (BANNED in runs)", false);
+	//settings.Add("End splits on final hit(unavailable)", false);
+	//settings.Add("Split on any boss death(unavailable)", false);
 }
 
 init
@@ -119,7 +121,7 @@ isLoading
 {
 	//Original: return current.Loading >= 1 && current.Loading <= 3 && current.GameInactive == 0 || current.LoadingFile == 1 || current.LoadingFile == 2 || current.Saving == 1 || current.Saving == 2;
 	//These flags just count up/down by 1, which is why the Loading flag(and potentially others) can very rarely go up to 2 during odd stacked triggers, but they always end up at 0.
-	if (settings["Pause during general gameplay loading"] && (current.Loading >= 1 && current.Loading <= 3 && current.GameInactive == 0)){
+	if (settings["Pause during general gameplay loading"] && (current.Loading >= 1 && current.Loading <= 3 && current.GameInactive == 0 && current.ControllerDC == 0)){
 		return true;
 	}
 	else if (settings["Pause during Save File Loading"] && (current.LoadingFile == 1 || current.FileCreateLoad == 1)){
@@ -128,7 +130,7 @@ isLoading
 	else if (settings["Pause while Saving"] && current.Saving == 1){
 		return true;
 	}
-	else if (settings["Pause during RotN Circle Logo screen"] && current.CircleLogoScreen == 0){
+	else if (settings["Pause during RotN Circle Logo screen(not working for some?)"] && current.CircleLogoScreen == 0){
 		return true;
 	}
 	else if (settings["Pause on Press-Any-Key events (BANNED in runs)"] && current.PressAnyKey == 1){
