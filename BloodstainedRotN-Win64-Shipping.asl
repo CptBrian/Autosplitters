@@ -8,7 +8,7 @@ This ASL is compatible with RotN versions 1.03(Steam), 1.05(GOG), Oldest GOG(Fit
 [LiveSplit] Layout Settings: Scriptable AutoSplitter -> Browse for this .asl file (^^^)
 [LiveSplit] Remember to save your Layout/Splits!
 */
-
+/* what a waste of time
 state("BloodstainedRotN-Win64-Shipping", "GOG Oldest")
 {
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x848; //offsets: +1000 hex from Steam1.03
@@ -159,3 +159,4 @@ reset
 	|| (timer.CurrentPhase == TimerPhase.Running && old.GameMode == 2 && current.GameMode == 0)
 	;
 }
+*/
