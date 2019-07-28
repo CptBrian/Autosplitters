@@ -8,7 +8,13 @@ This ASL is compatible with RotN versions 1.03(Steam), 1.05(GOG), Oldest GOG(Fit
 [LiveSplit] Layout Settings: Scriptable AutoSplitter -> Browse for this .asl file (^^^)
 [LiveSplit] Remember to save your Layout/Splits!
 */
-/* what a waste of time
+/* Waste of time
+- I have a better saving address that handles all saving instances well, but can't get a pointer for it, so I can't add it.
+- CircleLogoScreen only works for me evidently, and there's no better address for it.
+- Probably needs a new loading flag that handles all loading instances, but it apparently doesn't exist.
+- I've spent more time on this shit than playing the game(80+h) and all I've got is dead ends, repeatedly crashing or freezing game mid-searches, stupid-huge CE searches, bullshit flags the game bends the rules for, no time to play this or anything else, no testers. Never got confirmation that any of the GOG offsets worked, very indecisive community, more research/routing than playing the game. It's not worth it, it's so dull and frustrating, and there's nothing to gain from it.
+- Can't be used in current state, can't be used anytime soon, no point using it later, because then people would have to retime old runs and manually remove load times, which nobody wants to do or should do, or retime runs where the load remover fucked up.
+
 state("BloodstainedRotN-Win64-Shipping", "GOG Oldest")
 {
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x848; //offsets: +1000 hex from Steam1.03
