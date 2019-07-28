@@ -80,7 +80,7 @@ startup {
 	settings.Add("Pause during general gameplay loading", true);
 	settings.Add("Pause during Save File Loading", true);
 	settings.Add("Pause while Saving", true);
-	settings.Add("Pause during RotN Circle Logo screen(not working for some?)", true);
+	settings.Add("Pause during RotN Circle Logo screen(Not working for others)", false);
 	//settings.Add("Pause on Press-Any-Key events (BANNED in runs)", false);
 	//settings.Add("Pause while game is inactive (BANNED in runs)", false);
 	//settings.Add("End splits on final hit(unavailable)", false);
@@ -130,7 +130,7 @@ isLoading
 	else if (settings["Pause while Saving"] && current.Saving == 1){
 		return true;
 	}
-	else if (settings["Pause during RotN Circle Logo screen(not working for some?)"] && current.CircleLogoScreen == 0){
+	else if (settings["Pause during RotN Circle Logo screen(Not working for others)"] && current.CircleLogoScreen == 0){
 		return true;
 	}
 	else if (settings["Pause on Press-Any-Key events (BANNED in runs)"] && current.PressAnyKey == 1){
