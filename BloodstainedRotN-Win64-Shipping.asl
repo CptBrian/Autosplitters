@@ -8,7 +8,7 @@ This ASL is compatible with RotN versions 1.03(Steam), 1.05(GOG), Oldest GOG(Fit
 [LiveSplit] Layout Settings: Scriptable AutoSplitter -> Browse for this .asl file (^^^)
 [LiveSplit] Remember to save your Layout/Splits!
 */
-/* Waste of time...
+/* Waste of time/effort...
 - I have a better saving address that handles all saving instances very well, but can't get a pointer for it, so I can't add it. CE can't find the paths.
 - CircleLogoScreen only works for me evidently, and there's no alternative addresses for it, it might work with AOB, which is not pretty.
 - Probably needs a new loading flag that handles all loading instances, but it apparently doesn't exist.
