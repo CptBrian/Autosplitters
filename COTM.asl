@@ -7,7 +7,7 @@
 //[LiveSplit] OK -> Now make sure to right-click your splits -> Compare Against -> Game Time ... & remember to save your Layout/Splits!
 //Required to have 8 Splits (one for each stage)
 //You should be able to split manually if you really want to, it shouldn't double-split the same split as it reads split number, stage, etc..
-
+/*Waste of time
 state("COTM", "1.1.2")
 {
 	uint ILframes : "COTM.exe", 0x00483660, 0x18;
@@ -126,3 +126,4 @@ split
 	}
 	return false;
 }
+*/
