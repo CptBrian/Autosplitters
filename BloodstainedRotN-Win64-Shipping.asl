@@ -1,2 +1,2 @@
-Pushing multiple updates soon, probably after new patch. Lots of changes WIP.
+Pushing multiple updates soon, lots of changes WIP, but not pushing updates until ALL versions are reliably functional.
 https://www.speedrun.com/bsrotn/thread/jcq1j
