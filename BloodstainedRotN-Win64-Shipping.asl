@@ -1,15 +1,15 @@
 /*
 Bloodstained: Ritual of the Night - ASL primarily by CptBrian with help from: DarkTechnomancer & hitachihex
-Load Remover v1.9 (PC only)
+Load Remover v2.0 (PC only)
 Autosplitter v0.5 - Not yet implemented(WIP when this goes live)
-This ASL is compatible with RotN versions: Steam 1.02,3,4, GOG 1.03,4,5,6, & Cracked Steam 1.02
+This ASL is compatible with RotN versions: Steam 1.02,3,4, GOG 1.03,4,5,9, & Cracked Steam 1.02
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
 [LiveSplit] Layout Settings: Scriptable AutoSplitter -> Browse for this .asl file (^^^)
 [LiveSplit] Remember to save your Layout/Splits!
 */
 
-state("BloodstainedRotN-Win64-Shipping", "UNDETECTED - Contact us!") //Copy of addresses from whatever the most common version is
+state("BloodstainedRotN-Win64-Shipping", "UNDETECTED - Contact us!") //Copy of addresses from whatever the most common version is(Steam 1.04)
 {
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x848;
 	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x858;
@@ -41,7 +41,7 @@ state("BloodstainedRotN-Win64-Shipping", "UNDETECTED - Contact us!") //Copy of a
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.02 Cracked")
 {
-	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x848; //uworld ptr is +1000 hex from Steam1.03
+	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x848; //uworld ptr is +1000 hex from official Steam 1.02/1.03
 	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x858;
 	byte Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x140, 0xF0, 0x285;
 	uint PauseMenu : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x820;
@@ -71,7 +71,7 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.02 Cracked")
 }
 state("BloodstainedRotN-Win64-Shipping", "GOG 1.04") //Exactly the same as GOG 1.03
 {
-	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x848; //uworld ptr is -309F0 hex from Steam1.03
+	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x848;
 	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x858;
 	byte Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x140, 0xF0, 0x285;
 	uint PauseMenu : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x820;
@@ -101,7 +101,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.04") //Exactly the same as GOG 1
 }
 state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
 {
-	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x848; //uworld ptr is -27970 hex from Steam1.03
+	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x848;
 	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x858;
 	byte Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x140, 0xF0, 0x285;
 	uint PauseMenu : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x820;
@@ -159,7 +159,7 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.03") //Exactly the same as Ste
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2F818, 0x0, 0x928, 0x24C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2F818, 0x0, 0x928, 0x238;
 }
-state("BloodstainedRotN-Win64-Shipping", "Steam 1.04") //uworld ptr is +18510 hex from Steam1.03
+state("BloodstainedRotN-Win64-Shipping", "Steam 1.04")
 {
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x848;
 	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x858;
@@ -189,9 +189,35 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.04") //uworld ptr is +18510 he
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x2F818, 0x0, 0x928, 0x24C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x2F818, 0x0, 0x928, 0x238;
 }
-state("BloodstainedRotN-Win64-Shipping", "GOG 1.06") //uworld ptr is +??? hex from Steam1.03
+state("BloodstainedRotN-Win64-Shipping", "GOG 1.09")
 {
-
+	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x848;
+	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x858;
+	byte Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x140, 0xF0, 0x285;
+	uint PauseMenu : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x820;
+	uint PressAnyKey : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x830;
+	uint ShardGet : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x84C;
+	uint NewAreaBanner : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x85C;
+	uint UpgradeGet : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x868;
+	uint Gold : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x254;
+	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x208;
+	uint RoomData : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2f688;
+	uint Room : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F688, 0x188;
+	uint PreviousRoom : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F688, 0x180;
+	byte Difficulty : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x26C;
+	byte GameMode : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x26D;
+	byte Character : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x26E;
+	float IGT : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x268;
+	uint NGPlusCount : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x264;
+	uint GameClear : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x258;
+	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0xE8;
+	uint DialogueShop : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F760, 0x510;
+	uint IntroEvents : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2E0;
+	byte IntroChest : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2E68D;
+	byte RDLoading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F688, 0x1B4;
+	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F818, 0x0, 0x928, 0x244;
+	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F818, 0x0, 0x928, 0x24C;
+	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F818, 0x0, 0x928, 0x238;
 }
 
 startup
@@ -237,6 +263,9 @@ init
 	}
 	else if(MD5Hash == "A8A64C6A4C0682F7C486C29EBB56F77E"){
 		version = "Steam 1.04";
+	}
+	else if(MD5Hash == "B057A5C2CF9EDA9156767EC687F03B57"){
+		version = "GOG 1.09";
 	}
 	else{
 		version = "UNDETECTED - Contact us!";
