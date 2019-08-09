@@ -1,7 +1,6 @@
 /*
 Bloodstained: Ritual of the Night - ASL primarily by CptBrian with help from: DarkTechnomancer & hitachihex
-Load Remover v2.0 (PC only)
-Autosplitter v0.5 - Not yet implemented(WIP when this goes live)
+ASL Version 2.1 (PC Only)
 This ASL is compatible with RotN versions: Steam 1.02,3,4, GOG 1.03,4,5,9, & Cracked Steam 1.02
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
@@ -228,13 +227,26 @@ startup
 	settings.Add("Pause while Saving", true);
 	settings.Add("Pause during RotN Circle Logo screen", true); //New implementation from DarkTechnomancer
 	settings.Add("Pause on Press-Any-Key events (BANNED in runs)", false);
-	settings.Add("End splits on final hit(unavailable)", false);
-	settings.Add("Split on any boss death(unavailable)", false);
+	settings.Add("Basic data logging(if there's issues) .log in LS dir.", false);
+	
+	vars.logFilePath = Directory.GetCurrentDirectory() + "\\RotN-Autosplitter.log"; //same folder as LiveSplit.exe
+	vars.log = (Action<string>)((string logLine) => {
+		string time = System.DateTime.Now.ToString("dd/MM/yy hh:mm:ss:fff");
+		System.IO.File.AppendAllText(vars.logFilePath, time + ": " + logLine + "\r\n");
+	});
+	try{
+		vars.log("ASL file loaded(Version 2.1)");
+	}
+	catch (System.IO.FileNotFoundException e){
+		System.IO.File.Create(vars.logFilePath);
+		vars.log("Autosplitter loaded, log file created");
+	}
 }
 
 init
 {
 	var LogoIgnoreFlag = false;
+	var Logging = false;
 	
 	print("ModuleMemorySize: " + modules.First().ModuleMemorySize.ToString()); //Lets DebugView show me the ModuleMemorySize of the game executable
 	
@@ -251,53 +263,104 @@ init
 	
 	if(MD5Hash == "EC7E5B6FD907C3BC7BA3B5257F30B32E"){
 		version = "Steam 1.03";
+		vars.log("Detected game version: " + version + " - MD5Hash: " + MD5Hash);
 	}
 	else if(MD5Hash == "E9C3AB688872DE80DBA91934AED9EC7F"){
 		version = "Steam 1.02 Cracked";
+		vars.log("Detected game version: " + version + " - MD5Hash: " + MD5Hash);
 	}
 	else if(MD5Hash == "0B9685B2C8056D9E841C254AAB94212E"){
 		version = "GOG 1.05";
+		vars.log("Detected game version: " + version + " - MD5Hash: " + MD5Hash);
 	}
 	else if(MD5Hash == "F4500E29DB5AE2964D2009CE766D7603"){
 		version = "GOG 1.04";
+		vars.log("Detected game version: " + version + " - MD5Hash: " + MD5Hash);
 	}
 	else if(MD5Hash == "A8A64C6A4C0682F7C486C29EBB56F77E"){
 		version = "Steam 1.04";
+		vars.log("Detected game version: " + version + " - MD5Hash: " + MD5Hash);
 	}
 	else if(MD5Hash == "B057A5C2CF9EDA9156767EC687F03B57"){
 		version = "GOG 1.09";
+		vars.log("Detected game version: " + version + " - MD5Hash: " + MD5Hash);
 	}
 	else{
 		version = "UNDETECTED - Contact us!";
+		vars.log("UNDETECTED GAME VERSION - MD5Hash: " + MD5Hash);
 	}
 }
 
 update
 {
-	if (old.GameMode == 0 && current.GameMode != 0){
+	if(old.GameMode == 0 && current.GameMode != 0){
 		vars.LogoIgnoreFlag = true;
 	}
-	else if (current.RoomData != 0){
+	else if(current.RoomData != 0){
 		vars.LogoIgnoreFlag = false;
+	}
+	
+	if(settings["Basic data logging(if there's issues) .log in LS dir."]){
+		vars.Logging = true;
+	}
+	else if(!settings["Basic data logging(if there's issues) .log in LS dir."]){
+		vars.Logging = false;
+	}
+	
+	if(vars.Logging){
+		if(old.FileCreateLoad == 1 && current.FileCreateLoad == 0){
+			vars.log("File loaded. Some values: Loading=" + current.Loading + ", LoadingFile=" + current.LoadingFile + ", Saving=" + current.Saving + ", PauseMenu=" + current.PauseMenu + ", PressAnyKey=" + current.PressAnyKey + ", Gold=" + current.Gold + ", Cutscene=" + current.Cutscene + ", RoomData=" + current.RoomData + ", Room=" + current.Room + ", PreviousRoom=" + current.PreviousRoom + ", Difficulty=" + current.Difficulty + ", GameMode=" + current.GameMode + ", Character=" + current.Character + ", IGT=" + current.IGT + ", NGPlusCount=" + current.NGPlusCount + ", GameClear=" + current.GameClear + ", DialogueShop=" + current.DialogueShop + ", IntroEvents=" + current.IntroEvents + ", IntroChest=" + current.IntroChest + ", RDLoading=" + current.RDLoading + ", PlayerX=" + current.PlayerX + ", PlayerY=" + current.PlayerY + ", PlayerRotation=" + current.PlayerRotation);
+			vars.log("Reminder: Invalid addresses also return a value of 0");
+		}
+		else if(old.DialogueShop == 0 && current.DialogueShop == 1){
+			vars.log("Dialogue opened");
+		}
+		else if(old.DialogueShop == 1 && current.DialogueShop == 2){
+			vars.log("Shop opened");
+		}
+		else if(old.Cutscene == 0 && current.Cutscene == 1){
+			vars.log("Cutscene started");
+		}
+		else if(old.Saving == 0 && current.Saving == 1){
+			vars.log("Saving game");
+		}
+		else if(old.RDLoading == 1 && current.RDLoading == 0){
+			vars.log("General Loading");
+		}
+		else if(old.PressAnyKey == 1 && current.PressAnyKey == 0){
+			vars.log("Progressed a 'Press Any Key' state");
+		}
+		else if(old.Room != 708 && current.Room == 708){
+			vars.log("Entered starting room");
+		}
+		else if(old.Room != 0 && current.Room == 0){
+			vars.log("RoomData wiped");
+		}
+		else if(old.Room == 0 && current.Room != 0){
+			vars.log("RoomData generated");
+		}
+		else if(old.IntroChest == 0 && current.IntroChest == 1){
+			vars.log("IntroChest was opened");
+		}
 	}
 }
  
 isLoading
 {
 	//Some flags just count up/down by 1, which is why the (old)Loading flag(and potentially others) can very rarely go up to 2 during odd stacked triggers, but they'll return to 0.
-	if (settings["Pause during general gameplay loading"] && current.RDLoading == 0 && current.RoomData != 0){
+	if(settings["Pause during general gameplay loading"] && current.RDLoading == 0 && current.RoomData != 0){
 		return true;
 	}
-	else if (settings["Pause during Save File Loading"] && (current.LoadingFile == 1 || current.FileCreateLoad == 1)){
+	else if(settings["Pause during Save File Loading"] && (current.LoadingFile == 1 || current.FileCreateLoad == 1)){
 		return true;
 	}
-	else if (settings["Pause while Saving"] && current.Saving == 1){
+	else if(settings["Pause while Saving"] && current.Saving == 1){
 		return true;
 	}
-	else if (settings["Pause during RotN Circle Logo screen"] && current.RoomData == 0 && current.GameMode != 0 && !vars.LogoIgnoreFlag){
+	else if(settings["Pause during RotN Circle Logo screen"] && current.RoomData == 0 && current.GameMode != 0 && !vars.LogoIgnoreFlag){
 		return true;
 	}
-	else if (settings["Pause on Press-Any-Key events (BANNED in runs)"] && current.PressAnyKey == 1){
+	else if(settings["Pause on Press-Any-Key events (BANNED in runs)"] && current.PressAnyKey == 1){
 		return true;
 	}
 	else{
@@ -307,22 +370,54 @@ isLoading
 
 start
 {
-	return (current.GameMode == 6 && current.Room == 708 && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 0 && current.IntroEvents == 128 && current.IntroChest == 0)
-	|| (current.GameMode == 1 && current.Room == 708 && old.DialogueShop == 1 && current.DialogueShop == 0 && current.Character == 0 && current.IntroEvents == 128 && current.IntroChest == 0)
-	|| (current.GameMode == 2 && current.RoomData != 0 && old.FileCreateLoad == 1 && current.FileCreateLoad == 0 && current.Character == 0)
-	;
+	if(current.GameMode == 6 && current.Room == 708 && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 0 && current.IntroEvents == 128 && current.IntroChest == 0){
+		if(vars.Logging){
+			vars.log("Splits started for SpeedRun mode");
+		}
+		return true;
+	}
+	else if(current.GameMode == 1 && current.Room == 708 && old.DialogueShop == 1 && current.DialogueShop == 0 && current.Character == 0 && current.IntroEvents == 128 && current.IntroChest == 0){
+		if(vars.Logging){
+			vars.log("Splits started for standard mode");
+		}
+		return true;
+	}
+	else if(current.GameMode == 2 && current.RoomData != 0 && old.FileCreateLoad == 1 && current.FileCreateLoad == 0 && current.Character == 0){
+		if(vars.Logging){
+			vars.log("Splits started for Boss Rush");
+		}
+		return true;
+	}
+	else{
+		return false;
+	}
 }
 
 reset
 {
-	return (timer.CurrentPhase == TimerPhase.Running && (current.GameMode == 6 || current.GameMode == 1) && current.Room == 708 && current.DialogueShop == 1 && current.IntroEvents == 0 && current.Character == 0)
-	|| (timer.CurrentPhase == TimerPhase.Running && current.GameMode == 2 && old.RoomData == 0 && current.RoomData != 0 && current.FileCreateLoad == 1 && current.Character == 0)
-	;
+	if(timer.CurrentPhase == TimerPhase.Running && (current.GameMode == 6 || current.GameMode == 1) && current.Room == 708 && current.DialogueShop == 1 && current.IntroEvents == 0 && current.Character == 0){
+		if(vars.Logging){
+			vars.log("Splits reset for standard or SpeedRun mode");
+		}
+		return true;
+	}
+	else if(timer.CurrentPhase == TimerPhase.Running && current.GameMode == 2 && old.RoomData == 0 && current.RoomData != 0 && current.FileCreateLoad == 1 && current.Character == 0){
+		if(vars.Logging){
+			vars.log("Splits reset for Boss Rush");
+		}
+		return true;
+	}
+	else{
+		return false;
+	}
 }
 
 /*split
 {
 	if(){
+		if(vars.Logging){
+			vars.log("Auto-split for doing the thing...");
+		}
 		return true;
 	}
 	return false;
