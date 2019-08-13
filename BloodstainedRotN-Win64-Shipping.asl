@@ -228,7 +228,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.09")
 
 startup
 {
-	settings.Add("Autosplitter unavailable. Top priority after this goes live.", false);
+	settings.Add("Click 'Website' button for more info!", false);
 	settings.Add("Pause during general gameplay loading", true);
 	settings.Add("Pause during Save File Loading", true);
 	settings.Add("Pause while Saving", true);
