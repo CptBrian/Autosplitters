@@ -423,7 +423,7 @@ split
 {
 	if(current.BossDoors > old.BossDoors && (current.GameMode == 1 || current.GameMode == 6) && current.RoomData != 0 && current.RDLoading == 1 && current.PressAnyKey == 0){
 		if(vars.Logging){
-			vars.log("Auto-split for killing a boss");
+			vars.log("Auto-split for killing a boss - Value: " + current.BossDoors);
 		}
 		return true;
 	}
