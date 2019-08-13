@@ -1,6 +1,6 @@
 /*
 Bloodstained: Ritual of the Night - ASL primarily by CptBrian with help from: DarkTechnomancer & hitachihex
-ASL Version 2.1 (PC Only)
+ASL Version 2.2 (PC Only)
 This ASL is compatible with RotN versions: Steam 1.02,3,4, GOG 1.03,4,5,9, & Cracked Steam 1.02
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
@@ -37,6 +37,7 @@ state("BloodstainedRotN-Win64-Shipping", "UNDETECTED - Contact us!") //Copy of a
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x2F818, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x2F818, 0x0, 0x928, 0x24C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x2F818, 0x0, 0x928, 0x238;
+	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x728;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.02 Cracked")
 {
@@ -67,6 +68,7 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.02 Cracked")
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x2F818, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x2F818, 0x0, 0x928, 0x24C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x2F818, 0x0, 0x928, 0x238;
+	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x728;
 }
 state("BloodstainedRotN-Win64-Shipping", "GOG 1.04") //Exactly the same as GOG 1.03
 {
@@ -97,6 +99,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.04") //Exactly the same as GOG 1
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x2F818, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x2F818, 0x0, 0x928, 0x24C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x2F818, 0x0, 0x928, 0x238;
+	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x728;
 }
 state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
 {
@@ -127,6 +130,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.05")
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2F818, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2F818, 0x0, 0x928, 0x24C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2F818, 0x0, 0x928, 0x238;
+	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x728;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.03") //Exactly the same as Steam 1.02(official/uncracked)
 {
@@ -157,6 +161,7 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.03") //Exactly the same as Ste
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2F818, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2F818, 0x0, 0x928, 0x24C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2F818, 0x0, 0x928, 0x238;
+	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x728;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.04")
 {
@@ -187,6 +192,7 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.04")
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x2F818, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x2F818, 0x0, 0x928, 0x24C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x2F818, 0x0, 0x928, 0x238;
+	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x728;
 }
 state("BloodstainedRotN-Win64-Shipping", "GOG 1.09")
 {
@@ -217,6 +223,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.09")
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F818, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F818, 0x0, 0x928, 0x24C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F818, 0x0, 0x928, 0x238;
+	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x728;
 }
 
 startup
@@ -235,7 +242,7 @@ startup
 		System.IO.File.AppendAllText(vars.logFilePath, time + ": " + logLine + "\r\n");
 	});
 	try{
-		vars.log("ASL file loaded(Version 2.1)");
+		vars.log("ASL file loaded(Version 2.2)");
 	}
 	catch (System.IO.FileNotFoundException e){
 		System.IO.File.Create(vars.logFilePath);
@@ -412,15 +419,15 @@ reset
 	}
 }
 
-/*split
+split
 {
-	if(){
+	if(current.BossDoors > old.BossDoors && (current.GameMode == 1 || current.GameMode == 6) && current.RoomData != 0 && current.RDLoading == 1 && current.PressAnyKey == 0){
 		if(vars.Logging){
-			vars.log("Auto-split for doing the thing...");
+			vars.log("Auto-split for killing a boss");
 		}
 		return true;
 	}
 	else{
 		return false;
 	}
-}*/
+}
