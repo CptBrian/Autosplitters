@@ -1,6 +1,6 @@
 /*
 Bloodstained: Ritual of the Night - ASL primarily by CptBrian with help from: DarkTechnomancer & hitachihex
-ASL Version 2.2 (PC Only)
+ASL Version 2.3 (PC Only)
 This ASL is compatible with RotN versions: Steam 1.02,3,4, GOG 1.03,4,5,9, & Cracked Steam 1.02
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
@@ -242,7 +242,7 @@ startup
 		System.IO.File.AppendAllText(vars.logFilePath, time + ": " + logLine + "\r\n");
 	});
 	try{
-		vars.log("ASL file loaded(Version 2.2)");
+		vars.log("ASL file loaded(Version 2.3)");
 	}
 	catch (System.IO.FileNotFoundException e){
 		System.IO.File.Create(vars.logFilePath);
@@ -421,7 +421,7 @@ reset
 
 split
 {
-	if(current.BossDoors > old.BossDoors && (current.GameMode == 1 || current.GameMode == 6) && current.RoomData != 0 && current.RDLoading == 1 && current.PressAnyKey == 0){
+	if(current.BossDoors > old.BossDoors && (current.GameMode == 1 || current.GameMode == 6) && current.RoomData != 0 && current.FileCreateLoad == 0 && current.LoadingFile == 0 && current.PressAnyKey == 0){
 		if(vars.Logging){
 			vars.log("Auto-split for killing a boss - Value: " + current.BossDoors);
 		}
