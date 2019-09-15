@@ -57,6 +57,12 @@ state("COTM", "1.1.0")
 	byte Pause : "COTM.exe", 0x004835CC, 0x8, 0x6C, 0x20, 0x38;
 }
 
+startup
+{
+	settings.Add("ASL Version 2.0 - September 15, 2019", false);
+	settings.Add("Click 'Website' button for more info!", false);
+}
+
 init
 {
 	print("ModuleMemorySize: " + modules.First().ModuleMemorySize.ToString());
