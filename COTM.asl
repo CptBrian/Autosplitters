@@ -1,4 +1,4 @@
-//Bloodstained: Curse of the Moon autosplitter by CptBrian -- ASL version 2.0 (September 15, 2019)
+//Bloodstained: Curse of the Moon autosplitter by CptBrian
 //This ASL is compatible with COTM versions 1.1.2 and 1.1.0(Unleashed crack)
 // [LiveSplit] Run as administrator, or else this can't read COTM's memory. This can be done by default through Properties -> Compatibility.
 // [LiveSplit] Ignore the following 2 steps if you're using LiveSplit's integrated Activate button to use this ASL.
