@@ -228,6 +228,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.09")
 
 startup
 {
+	settings.Add("ASL Version 2.3 - September 15, 2019", false);
 	settings.Add("Click the 'Website' button for more info!", false);
 	settings.Add("Pause during general gameplay loading", true);
 	settings.Add("Pause during Save File Loading", true);
