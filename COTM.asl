@@ -25,6 +25,7 @@ state("COTM", "1.1.2")
 	byte AlfredHP : "COTM.exe", 0x00483660, 0x8, 0x17;
 	byte GebelHP : "COTM.exe", 0x00483660, 0x8, 0x1A;
 	uint FinalBossHP : "COTM.exe", 0x00483660, 0xFC, 0x0, 0x8, 0x3DC;
+	uint NMZangAnim : "COTM.exe", 0x00483660, 0xFC, 0x0, 0x8, 0x4FC;
 	ushort CharAnim : "COTM.exe", 0x0048365C, 0x4, 0x70, 0x20, 0x20, 0x88, 0x20, 0x140, 0x0, 0x19A;
 	ushort Allies : "COTM.exe", 0x00483660, 0x8, 0x2C;
 	byte BRProgress : "COTM.exe", 0x00483660, 0xF0;
@@ -50,6 +51,7 @@ state("COTM", "1.1.0")
 	byte AlfredHP : "COTM.exe", 0x004835D0, 0x8, 0x17;
 	byte GebelHP : "COTM.exe", 0x004835D0, 0x8, 0x1A;
 	uint FinalBossHP : "COTM.exe", 0x004835D0, 0xFC, 0x0, 0x8, 0x3DC;
+	uint NMZangAnim : "COTM.exe", 0x004835D0, 0xFC, 0x0, 0x8, 0x4FC;
 	ushort CharAnim : "COTM.exe", 0x004835CC, 0x4, 0x70, 0x20, 0x20, 0x88, 0x20, 0x140, 0x0, 0x19A;
 	ushort Allies : "COTM.exe", 0x004835D0, 0x8, 0x2C;
 	byte BRProgress : "COTM.exe", 0x004835D0, 0xF0;
@@ -59,7 +61,7 @@ state("COTM", "1.1.0")
 
 startup
 {
-	settings.Add("ASL Version 2.0 - September 15, 2019", false);
+	settings.Add("ASL Version 2.1 - September 15, 2019", false);
 	settings.Add("Click the 'Website' button for more info!", false);
 }
 
@@ -142,7 +144,7 @@ split
 	if(current.Stage == 8 && timer.CurrentSplitIndex == 7 && current.CameraX == 8600 && current.CameraY > 2200 && current.Allies < 64 && current.FinalBossHP == 0 && current.CharAnim == 169){
 		return true;
 	}
-	if(current.Stage == 9 && timer.CurrentSplitIndex == 7 && current.CameraX == 4600 && current.CameraY == 840 && current.FinalBossHP == 0 && current.Pause == 0 && old.PlayerControl == 0 && current.PlayerControl == 1){
+	if(current.Stage == 9 && timer.CurrentSplitIndex == 7 && current.CameraX == 4600 && current.CameraY == 840 && current.FinalBossHP == 0 && current.Pause == 0 && old.PlayerControl == 0 && current.PlayerControl == 1 && current.NMZangAnim == 58){
 		return true;
 	}
 	if(timer.CurrentSplitIndex == 0 && current.Stage > 0 && current.Stage < 11 && old.BRProgress == 1 && current.BRProgress == 2){
