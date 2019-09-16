@@ -1,10 +1,12 @@
-//Bloodstained: Curse of the Moon autosplitter by CptBrian
-//This ASL is compatible with COTM versions 1.1.2 and 1.1.0(Unleashed crack)
-// [LiveSplit] Run as administrator, or else this can't read COTM's memory. This can be done by default through Properties -> Compatibility.
-// [LiveSplit] Ignore the following 2 steps if you're using LiveSplit's integrated Activate button to use this ASL.
-// [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter
-// [LiveSplit] Layout Settings: Scriptable AutoSplitter -> Browse for this .asl file
-//Required to have 8 Splits (one for each stage)
+/*
+Bloodstained: Curse of the Moon autosplitter by CptBrian
+This ASL is compatible with COTM versions 1.1.2 and 1.1.0(Unleashed crack)
+  [LiveSplit] Run as administrator, or else this can't read COTM's memory. This can be done by default through Properties -> Compatibility.
+  [LiveSplit] Ignore the following 2 steps if you're using LiveSplit's integrated Activate button to use this ASL.
+  [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter
+  [LiveSplit] Layout Settings: Scriptable AutoSplitter -> Browse for this .asl file
+Required to have 8 Splits (one for each stage)
+*/
 
 state("COTM", "1.1.2")
 {
