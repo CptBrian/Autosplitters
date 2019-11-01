@@ -63,7 +63,7 @@ state("COTM", "1.1.0")
 
 startup
 {
-	settings.Add("ASL Version 2.1 - September 15, 2019", false);
+	settings.Add("ASL Version 2.2 - November 1, 2019", false);
 	settings.Add("Click the 'Website' button for more info!", false);
 }
 
