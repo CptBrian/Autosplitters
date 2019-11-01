@@ -63,7 +63,7 @@ state("COTM", "1.1.0")
 
 startup
 {
-	settings.Add("ASL Version 2.2 - November 1, 2019", false);
+	settings.Add("ASL Version 2.3 - November 1, 2019", false);
 	settings.Add("Click the 'Website' button for more info!", false);
 }
 
@@ -96,14 +96,14 @@ init
 
 start
 {
-	return (current.IGTframes == 0 && old.PlayerControl == 1 && current.PlayerControl == 0 && current.Stage == 1 && current.CameraX == 600 && current.PlayerX == 496)
+	return (current.IGTframes == 0 && old.PlayerControl == 1 && current.PlayerControl == 0 && current.Stage == 1 && current.CameraX == 600 && current.PlayerX < 600)
 	|| (current.Stage == 10 && current.BossRushProgress == 1 && old.ILframes == 0 && current.ILframes > 0 && current.ZangetsuHP != 0 && current.MiriamHP != 0 && current.AlfredHP != 0 && current.GebelHP != 0)
 	;
 }
 
 reset
 {
-	if(timer.CurrentPhase == TimerPhase.Running && current.Stage == 1 && current.IGTframes == 0 && current.PlayerControl == 1 && current.CameraX == 600 && current.PlayerX == 496){
+	if(timer.CurrentPhase == TimerPhase.Running && current.Stage == 1 && current.IGTframes == 0 && current.PlayerControl == 1 && current.CameraX == 600 && current.PlayerX < 600){
 		return true;
 	}
 	else if(timer.CurrentPhase == TimerPhase.Running && current.Stage == 10 && current.BossRushProgress == 1 && current.ILframes == 0 && current.ZangetsuHP != 0 && current.MiriamHP != 0 && current.AlfredHP != 0 && current.GebelHP != 0 && current.PlayerX == 440){
