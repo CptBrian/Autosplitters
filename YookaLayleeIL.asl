@@ -4,47 +4,50 @@
 */
 state("YLILWin64", "Unknown Version"){     //Defaults to Steam V2 values
 	byte isLoading : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x98;
+	byte isInteractable : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x9A;
 	byte restartTrigger : "UnityPlayer.dll", 0x014498E0, 0x2C8, 0x118, 0x60;
 	byte beeBreak : "mono.dll", 0x002675E0, 0x40, 0xE30, 0x90;
-	byte altPlayerControl : "UnityPlayer.dll", 0x0147A240, 0x4E8, 0x378, 0x40, 0x220, 0x50, 0xC8;
+	byte playerControl : "UnityPlayer.dll", 0x013B4AE0, 0x0, 0x198, 0xA68, 0x200, 0x10, 0x388, 0x28, 0xA6;
 }
 state("YLILWin64", "Steam V1"){
 	byte isLoading : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x98;
+	byte isInteractable : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x9A;
 	byte restartTrigger : "mono.dll", 0x00264A68, 0x50, 0xF40, 0xB0, 0x5C0;
 	byte beeBreak : "mono.dll", 0x002675E0, 0x40, 0xE30, 0x90;
-	byte altPlayerControl : "UnityPlayer.dll", 0x014A4550, 0x3C0, 0x2B8, 0x10, 0x3A8, 0x2F0, 0x10, 0xC8;
+	byte playerControl : "UnityPlayer.dll", 0x014A4550, 0x3C0, 0x2B8, 0x10, 0x3A8, 0x2F0, 0x10, 0xC8;
 }
 state("YLILWin64", "Steam V2"){
 	byte isLoading : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x98;
+	byte isInteractable : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x9A;
 	byte restartTrigger : "UnityPlayer.dll", 0x014498E0, 0x2C8, 0x118, 0x60;
 	byte beeBreak : "mono.dll", 0x002675E0, 0x40, 0xE30, 0x90;
-	byte altPlayerControl : "UnityPlayer.dll", 0x0147A240, 0x4E8, 0x378, 0x40, 0x220, 0x50, 0xC8;
+	byte playerControl : "UnityPlayer.dll", 0x013B4AE0, 0x0, 0x198, 0xA68, 0x200, 0x10, 0x388, 0x28, 0xA6;
 }
 state("YLILWin64", "EGS V1"){
 	byte isLoading : "UnityPlayer.dll", 0x0144DBD8, 0x8, 0x330, 0x398, 0x21;
+	byte isInteractable : "UnityPlayer.dll", 0x0144DBD8, 0x8, 0x330, 0x398, 0x23;
 	byte restartTrigger : "UnityPlayer.dll", 0x0144DBD8, 0x8, 0x258, 0x80, 0x60;
 	byte beeBreak : "UnityPlayer.dll", 0x0144DBD8, 0x8, 0x2D8, 0x80, 0x0, 0x278, 0x68, 0x30;
-	byte altPlayerControl : "UnityPlayer.dll", 0x014A4550, 0x450, 0xB90, 0x3A8, 0xE8, 0x90, 0x330, 0xC8;
+	byte playerControl : "UnityPlayer.dll", 0x014A4550, 0x450, 0xB90, 0x3A8, 0xE8, 0x90, 0x330, 0xC8;
 }
 state("YLILWin64", "Demo V1"){
 	byte isLoading : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x98;
-	byte restartTrigger : "UnityPlayer.dll", 0x0146D540, 0x398, 0x78, 0x28, 0x60;
+	byte isInteractable : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x9A;
+	byte restartTrigger : "UnityPlayer.dll", 0x01449870, 0x5D8, 0x430, 0x11E8, 0x60;
 	byte beeBreak : "mono.dll", 0x002675E0, 0x40, 0xE30, 0x90;
-	byte altPlayerControl : "UnityPlayer.dll", 0x013B4AE0, 0x0, 0xE0, 0xB28, 0x2D0, 0x98, 0x98, 0x5A8, 0xC8;
+	byte playerControl : "UnityPlayer.dll", 0x014A4550, 0x458, 0x740, 0x878, 0x930, 0x7D0, 0x610, 0xC8;
 }
 
 startup{
+	vars.ILRunsMode = "IL Mode: Reset, Start, and Splitting at end of level";
 	vars.Logging = "Debug Logging (Log files help solve auto-splitting issues)";
-	vars.SplitOnBeeBreak = "Split on freeing the bee at the end of a chapter (For IL runs only. Other actions in the game will also trigger this.)";
-	vars.ILRunsMode = "Reset and start the timer upon restarting a level (For IL runs only. Other actions in the game will also trigger this.)";
-	vars.ILRunsModeNewTiming = "Use new timing for IL runs. (Start on player control instead of restart)";
-	vars.TestRestartTimeDif = "Test timing differences from restart level to player control. (Works for OW warps too, except IL)";
+	vars.TestDelaysRestart = "Test delay times: Transitions to Player Control. (Restarts & OW warps)";
+	vars.TestDelaysBeeBreakToLoad = "Test delay times: IL Bee Break to Loading";
 	
-	settings.Add(vars.Logging, false);
-	settings.Add(vars.SplitOnBeeBreak, false);
 	settings.Add(vars.ILRunsMode, false);
-	settings.Add(vars.ILRunsModeNewTiming, false);
-	settings.Add(vars.TestRestartTimeDif, false);
+	settings.Add(vars.Logging, false);
+	settings.Add(vars.TestDelaysRestart, false);
+	settings.Add(vars.TestDelaysBeeBreakToLoad, false);
 }
 
 init{
@@ -77,8 +80,7 @@ init{
 		version = "Unknown Version";
 	}
 	
-    vars.loading = false;				//Current status of loading or not loading
-	
+	//Logging variables
 	vars.logFileName = "YLIL.log";
 	vars.maxFileSize = 4000000;
 	vars.timerSecondOLD = -1;
@@ -119,58 +121,70 @@ init{
 		if(vars.timerMinute != vars.timerMinuteOLD){
 			vars.timerMinuteOLD = vars.timerMinute;
 			
-			vars.Log("TimeOfDay: " + DateTime.Now.ToString() + "\n" +
+			vars.Log("\n" + "TimeOfDay: " + DateTime.Now.ToString() + "\n" +
 			"Version: " + version.ToString() + "\n" +
-			"MD5Hash: " + vars.MD5Hash.ToString() + "\n");
+			"MD5Hash: " + vars.MD5Hash.ToString() + "\n" +
+			"ILRunsMode:" + settings[vars.ILRunsMode].ToString() + "\n" +
+			"TestDelaysRestart:" + settings[vars.TestDelaysRestart].ToString() + "\n");
 		}
-		
+	
 		vars.timerSecond = timer.CurrentTime.RealTime.Value.Seconds;
 	
 		if(vars.timerSecond != vars.timerSecondOLD){
 			vars.timerSecondOLD = vars.timerSecond;
 			
-			vars.Log("RealTime: "+timer.CurrentTime.RealTime.Value.ToString(@"hh\:mm\:ss") + "\n" +
-			"GameTime: "+timer.CurrentTime.GameTime.Value.ToString(@"hh\:mm\:ss") + "\n" +
-			"current.isLoading: " + current.isLoading.ToString() + "\n" +
-			"loading: " + vars.loading + "\n");
+			vars.Log("RealTime: " + timer.CurrentTime.RealTime.Value.ToString(@"hh\:mm\:ss") + "\n" +
+			"GameTime: " + timer.CurrentTime.GameTime.Value.ToString(@"hh\:mm\:ss") + "\n" +
+			"isLoading: " + current.isLoading + "\n" +
+			"isInteractable: " + current.isInteractable + "\n" +
+			"restartTrigger: " + current.restartTrigger + "\n" +
+			"beeBreak: " + current.beeBreak + "\n" +
+			"playerControl: " + current.playerControl + "\n");
 		}
 	});
 }
 
 start{
-	// "loading" should have a value of ### as soon as you play file, then have a value of ### as it loads
-	if(current.restartTrigger == 0 && settings[vars.ILRunsMode] && !settings[vars.ILRunsModeNewTiming]
-		|| current.restartTrigger == 0 && settings[vars.ILRunsMode] && settings[vars.ILRunsModeNewTiming] && settings[vars.TestRestartTimeDif]){
-		return true;						        //start the timer
+	if(current.restartTrigger == 1 && current.playerControl == 1 && old.playerControl == 0 && timer.CurrentPhase != TimerPhase.Running && settings[vars.ILRunsMode] && !settings[vars.TestDelaysRestart] && !settings[vars.TestDelaysBeeBreakToLoad]){
+		vars.Log("-Starting-\n");
+		return true;						        //Start timer for normal ILs
 	}
-	else if(current.restartTrigger == 1 && current.altPlayerControl == 0 && old.altPlayerControl == 1 && timer.CurrentPhase != TimerPhase.Running && settings[vars.ILRunsMode] && settings[vars.ILRunsModeNewTiming] && !settings[vars.TestRestartTimeDif]){
-		return true;						        //start the timer
+	else if(current.restartTrigger == 0 && timer.CurrentPhase != TimerPhase.Running && settings[vars.TestDelaysRestart] && !settings[vars.TestDelaysBeeBreakToLoad]){
+		vars.Log("-Starting-\n");
+		return true;						        //Start the timer with old timing to test transition delay times
+	}
+	else if(current.beeBreak == 1 && old.beeBreak == 2 && timer.CurrentPhase != TimerPhase.Running && settings[vars.TestDelaysBeeBreakToLoad] && !settings[vars.TestDelaysRestart]){
+		vars.Log("-Starting-\n");
+		return true;						        //Start the timer on bee break to test how long it takes to hit the load
 	}
 }
 
 reset{
-	if(current.restartTrigger == 0 && old.restartTrigger == 1 && settings[vars.ILRunsMode]){
-		return true;						        //reset the timer
-	}
-	else if(current.isLoading == 1 && settings[vars.ILRunsModeNewTiming] && timer.CurrentPhase == TimerPhase.Running){
-		return true;
+	if(current.restartTrigger == 0 && old.restartTrigger == 1 && settings[vars.ILRunsMode]
+	|| current.restartTrigger == 0 && old.restartTrigger == 1 && settings[vars.TestDelaysRestart]
+	|| current.isLoading == 1 && timer.CurrentPhase == TimerPhase.Running && settings[vars.ILRunsMode] && !settings[vars.TestDelaysBeeBreakToLoad]
+	|| current.beeBreak == 2 && timer.CurrentPhase == TimerPhase.Running && settings[vars.TestDelaysBeeBreakToLoad]){
+		vars.Log("-Resetting-\n");
+		return true;						        //Resets the timer
 	}
 }
 
 isLoading{
-	if(settings[vars.TestRestartTimeDif] && current.restartTrigger == 1 && current.altPlayerControl == 0 && old.altPlayerControl == 0
-		|| settings[vars.TestRestartTimeDif] && current.restartTrigger == 1 && current.altPlayerControl == 0 && old.altPlayerControl == 1){
-		return true;
+	if(current.isLoading == 1 && current.isInteractable == 0 && !settings[vars.TestDelaysRestart] && !settings[vars.TestDelaysBeeBreakToLoad]
+	|| settings[vars.TestDelaysRestart] && current.restartTrigger == 1 && current.playerControl == 1
+	|| settings[vars.TestDelaysBeeBreakToLoad] && current.beeBreak == 1 && current.isLoading == 1){
+		return true;						        //1st line is the standard timer pause when loading
 	}
 	else{
-		return current.isLoading == 1;                  //stops timer when loading is true
+		return false;
 	}
 }
 
 split{
 	vars.PeriodicLogging();
 	
-	if(current.beeBreak == 1 && old.beeBreak == 2 && settings[vars.SplitOnBeeBreak]){
+	if(current.beeBreak == 1 && old.beeBreak == 2 && settings[vars.ILRunsMode]){
+		vars.Log("-Splitting-\n");
 		return true;
 	}
 }
