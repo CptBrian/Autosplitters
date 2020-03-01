@@ -17,6 +17,7 @@ state("YLILWin64", "Unknown Version"){     //Defaults to Steam 1.03 values
 	int beeTotal : "mono.dll", 0x002675E0, 0x88, 0x10, 0x1F0, 0x40, 0x8, 0x30, 0x30, 0x20, 0x40, 0x8, 0x30, 0x2C;
 	int Level : "mono.dll", 0x002675E0, 0xA0, 0x3A8, 0x18, 0xC8;
 	byte LevelLoad : "mono.dll", 0x002675E0, 0xA0, 0x3A8, 0x18, 0xD0;
+	int Health : "mono.dll", 0x002675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38;
 }
 state("YLILWin64", "Steam 1.01"){
 	float XPos : "UnityPlayer.dll", 0x0144DD68, 0x128, 0x18, 0x10, 0xA0;
@@ -33,6 +34,7 @@ state("YLILWin64", "Steam 1.01"){
 	int beeTotal : "mono.dll", 0x002675E0, 0x88, 0x10, 0x1F0, 0x40, 0x8, 0x30, 0x30, 0x20, 0x40, 0x8, 0x30, 0x2C; //Unconfirmed
 	int Level : "mono.dll", 0x002675E0, 0xA0, 0x3A8, 0x18, 0xC8; //Unconfirmed
 	byte LevelLoad : "mono.dll", 0x002675E0, 0xA0, 0x3A8, 0x18, 0xD0; //Unconfirmed
+	int Health : "mono.dll", 0x002675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38; //Unconfirmed
 }
 state("YLILWin64", "EGS 1.02"){
 	float XPos : "UnityPlayer.dll", 0x0144DD68, 0x128, 0x18, 0x10, 0xA0;
@@ -49,6 +51,7 @@ state("YLILWin64", "EGS 1.02"){
 	int beeTotal : "mono-2.0-bdwgc.dll", 0x0043ECC0, 0x98, 0x10, 0x728, 0x10, 0x30, 0x0, 0x18, 0x8, 0x70, 0x0, 0x2C;
 	int Level : "mono.dll", 0x002675E0, 0xA0, 0x3A8, 0x18, 0xC8; //Unconfirmed
 	byte LevelLoad : "mono.dll", 0x002675E0, 0xA0, 0x3A8, 0x18, 0xD0; //Unconfirmed
+	int Health : "mono.dll", 0x002675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38; //Unconfirmed
 }
 state("YLILWin64", "Steam 1.03"){
 	float XPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x10;
@@ -65,6 +68,7 @@ state("YLILWin64", "Steam 1.03"){
 	int beeTotal : "mono.dll", 0x002675E0, 0x88, 0x10, 0x1F0, 0x40, 0x8, 0x30, 0x30, 0x20, 0x40, 0x8, 0x30, 0x2C;
 	int Level : "mono.dll", 0x002675E0, 0xA0, 0x3A8, 0x18, 0xC8;
 	byte LevelLoad : "mono.dll", 0x002675E0, 0xA0, 0x3A8, 0x18, 0xD0;
+	int Health : "mono.dll", 0x002675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38;
 }
 state("YLILWin64", "Demo 1.03"){
 	float XPos : "UnityPlayer.dll", 0x0144DD68, 0x128, 0x18, 0x10, 0xA0;
@@ -81,6 +85,7 @@ state("YLILWin64", "Demo 1.03"){
 	int beeTotal : "mono.dll", 0x002675E0, 0x88, 0x10, 0x1F0, 0x40, 0x8, 0x30, 0x30, 0x20, 0x40, 0x8, 0x30, 0x2C; //Unconfirmed
 	int Level : "mono.dll", 0x002675E0, 0xA0, 0x3A8, 0x18, 0xC8; //Unconfirmed
 	byte LevelLoad : "mono.dll", 0x002675E0, 0xA0, 0x3A8, 0x18, 0xD0; //Unconfirmed
+	int Health : "mono.dll", 0x002675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38; //Unconfirmed
 }
 
 startup{
@@ -215,7 +220,8 @@ init{
 			"owTonics: " + current.owTonics + "\n" +
 			"beeTotal: " + current.beeTotal + "\n" +
 			"Level: " + current.Level + "\n" +
-			"LevelLoad: " + current.LevelLoad + "\n");
+			"LevelLoad: " + current.LevelLoad + "\n" +
+			"Health: " + current.Health + "\n");
 		}
 	});
 }
@@ -317,6 +323,10 @@ split{
 		vars.Log("-Splitting-\n");
 		return true;						        //Split on Lair entry from Tutorial
 	}
+	else if(current.Level == 10 && old.Level == 5 && current.restartTrigger == 1 && settings[vars.LairSplits]){
+		vars.Log("-Splitting-\n");
+		return true;						        //Split on Lair section 1 death
+	}
 	else if(current.Level == 5 && current.XPos == -133 && old.XPos == -226 && settings[vars.LairSplits]){
 		vars.Log("-Splitting-\n");
 		return true;						        //Split after Lair fight 1
@@ -333,7 +343,7 @@ split{
 		vars.Log("-Splitting-\n");
 		return true;						        //Split after Lair fight 4
 	}
-	else if(current.Level == 10 && old.Level == 8 && settings[vars.LairSplits]){
+	else if(current.Level == 10 && old.Level == 8 &&current.restartTrigger == 1 && current.Health > 0 && settings[vars.LairSplits]){
 		vars.Log("-Splitting-\n");
 		return true;						        //Final endgame split
 	}
