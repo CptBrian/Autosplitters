@@ -343,9 +343,9 @@ split{
 		vars.Log("-Splitting-\n");
 		return true;						        //Split after Lair fight 4
 	}
-	else if(current.Level == 10 && old.Level == 8 &&current.restartTrigger == 1 && current.Health > 0 && settings[vars.LairSplits]){
+	else if(current.Level == 10 && old.Level == 8 && current.restartTrigger == 1 && current.Health > 0 && settings[vars.LairSplits]){
 		vars.Log("-Splitting-\n");
-		return true;						        //Final endgame split
+		return true;						        //Final endgame split, prevents splitting from manually exiting and dying
 	}
 	else if((current.beeTotal - old.beeTotal) == 1 && settings[vars.BeeSplits]){
 		vars.Log("-Splitting-\n");
