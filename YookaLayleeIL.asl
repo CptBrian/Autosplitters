@@ -102,6 +102,7 @@ startup{
 	settings.Add(vars.TutStart, false);
 	settings.Add(vars.LairSplits, false);
 	settings.Add("LairSplitFromTut", false, "Split when entering from Tutorial", vars.LairSplits);
+	settings.Add("LairDeathSplit", true, "Section 1 Death split", vars.LairSplits);
 	settings.Add(vars.EntrySplits, false);
 	settings.Add(vars.BeeSplits, false);
 	settings.Add(vars.TonicSplits, false);
@@ -191,6 +192,7 @@ init{
 			"TutStart:" + settings[vars.TutStart].ToString() + "\n" +
 			"LairSplits:" + settings[vars.LairSplits].ToString() + "\n" +
 			"LairSplitFromTut:" + settings["LairSplitFromTut"].ToString() + "\n" +
+			"LairDeathSplit:" + settings["LairDeathSplit"].ToString() + "\n" +
 			"EntrySplits:" + settings[vars.EntrySplits].ToString() + "\n" +
 			"BeeSplits:" + settings[vars.BeeSplits].ToString() + "\n" +
 			"TonicSplits:" + settings[vars.TonicSplits].ToString() + "\n" +
@@ -323,7 +325,7 @@ split{
 		vars.Log("-Splitting-\n");
 		return true;						        //Split on Lair entry from Tutorial
 	}
-	else if(current.Level == 10 && old.Level == 5 && current.restartTrigger == 1 && settings[vars.LairSplits]){
+	else if(current.Level == 10 && old.Level == 5 && current.restartTrigger == 1 && settings[vars.LairSplits] && settings["LairDeathSplit"]){
 		vars.Log("-Splitting-\n");
 		return true;						        //Split on Lair section 1 death
 	}
