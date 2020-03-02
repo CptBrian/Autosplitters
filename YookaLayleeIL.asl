@@ -273,8 +273,11 @@ isLoading{
 	else if(current.isLoading == 1 && current.isInteractable == 0 && current.Level != 4 && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"] && !settings[vars.OWCat] && settings[vars.TutStart]){
 		return true;						        //Standard load removal used with Tutorial auto-start
 	}
-	else if(current.isRunningTasks == 1 && version == "EGS V1" && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"] && !settings[vars.OWCat]){
-		return true;						        //Loading fix to bring EGS load removal in line with SteamV2, excluded in OWT, but addressed below
+	else if(current.isRunningTasks == 1 && version == "EGS V1" && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"] && !settings[vars.OWCat] && !settings[vars.TutStart]){
+		return true;						        //Loading fix to bring EGS load removal in line with Steam1.03, excluded in OWT, but addressed below
+	}
+	else if(current.isRunningTasks == 1 && version == "EGS V1" && current.Level != 4 && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"] && !settings[vars.OWCat] && settings[vars.TutStart]){
+		return true;						        //Tut Start Loading fix to bring EGS load removal in line with Steam1.03, excluded in OWT, but addressed below
 	}
 	//May need these EGS fixes for Steam V1 as well.
 	else if(settings[vars.OWCat] && current.isLoading == 1 && current.isInteractable == 0 && current.playerControl == 0 && current.Level != 4){
