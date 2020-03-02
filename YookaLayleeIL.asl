@@ -273,17 +273,17 @@ isLoading{
 	else if(current.isLoading == 1 && current.isInteractable == 0 && current.Level != 4 && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"] && !settings[vars.OWCat] && settings[vars.TutStart]){
 		return true;						        //Standard load removal used with Tutorial auto-start
 	}
-	else if(current.isRunningTasks == 1 && version == "EGS V1" && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"] && !settings[vars.OWCat] && !settings[vars.TutStart]){
+	else if(current.isRunningTasks == 1 && version == "EGS 1.02" && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"] && !settings[vars.OWCat] && !settings[vars.TutStart]){
 		return true;						        //Loading fix to bring EGS load removal in line with Steam1.03, excluded in OWT, but addressed below
 	}
-	else if(current.isRunningTasks == 1 && version == "EGS V1" && current.Level != 4 && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"] && !settings[vars.OWCat] && settings[vars.TutStart]){
+	else if(current.isRunningTasks == 1 && version == "EGS 1.02" && current.Level != 4 && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"] && !settings[vars.OWCat] && settings[vars.TutStart]){
 		return true;						        //Tut Start Loading fix to bring EGS load removal in line with Steam1.03, excluded in OWT, but addressed below
 	}
-	//May need these EGS fixes for Steam V1 as well.
+	//May need these EGS fixes for Steam 1.01 as well.
 	else if(settings[vars.OWCat] && current.isLoading == 1 && current.isInteractable == 0 && current.playerControl == 0 && current.Level != 4){
 		return true;						        //OW Categories adjusted load removal
 	}
-	else if(settings[vars.OWCat] && current.isRunningTasks == 1 && current.isInteractable == 0 && current.playerControl == 0 && current.Level != 4 && version == "EGS V1"){
+	else if(settings[vars.OWCat] && current.isRunningTasks == 1 && current.isInteractable == 0 && current.playerControl == 0 && current.Level != 4 && version == "EGS 1.02"){
 		return true;						        //Fix for the start of EGS OWT pausing a few seconds, which will still happen if Control pointer fails
 	}
 	else if(settings["TestDelaysRestart"] && current.restartTrigger == 1 && current.playerControl == 1){
