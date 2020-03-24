@@ -28,6 +28,7 @@ state("YookaLaylee64", "OLD"){
 startup{
 	vars.LoggingSettingName = "Debug Logging (Log files help solve auto-splitting issues)";
 	vars.LagRemoval = "Remove Lag Times from switching Display Quality (in-game)";
+	vars.LagTimer = "Test how long Lags take. Manual reset for now.";
 	vars.SecondPhaseSplitSettingName = "Split at start of 2nd phase of CapB fight";
 	vars.ThirdPhaseSplitSettingName = "Split at start of 3rd phase of CapB fight";
 	vars.MissilesSplitSettingName = "Split at start of Missiles of CapB fight";
@@ -36,6 +37,7 @@ startup{
 	
 	settings.Add(vars.LoggingSettingName, false);
 	settings.Add(vars.LagRemoval, true);
+	settings.Add(vars.LagTimer, false);
 	settings.Add(vars.SecondPhaseSplitSettingName, false);
 	settings.Add(vars.ThirdPhaseSplitSettingName, false);
 	settings.Add(vars.MissilesSplitSettingName, false);
@@ -157,6 +159,9 @@ start{
 		
 		return true;						//start the timer
 	}
+	else if(settings[vars.LagTimer] && current.Lag == 1){
+		return true;
+	}
 }
 
 shutdown{
@@ -164,8 +169,11 @@ shutdown{
 }
 
 isLoading{
-	if(settings[vars.LagRemoval]){
+	if(settings[vars.LagRemoval] && !settings[vars.LagTimer]){
 		return current.Loading == 1 && current.LoadingBase == 1 || current.Lag == 1;		//stops timer when loading is true or when game is lagging
+	}
+	else if(settings[vars.LagTimer]){
+		return current.Lag == 0;
 	}
 	else{
 		return current.Loading == 1 && current.LoadingBase == 1;							//stops timer when loading is true
