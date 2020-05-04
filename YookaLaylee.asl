@@ -3,18 +3,47 @@
 	ASL originally by DerKO & 0Seren with some revamps by CptBrian ♥
 */
 
-state("YookaLaylee64", "NEW"){
+state("YookaLaylee64", "Unknown - Using Latest"){
 	byte Loading : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x66;
 	byte LoadingFade : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x65; //Not sure what this byte really is, not consistent for fades.
 	byte LoadingBase : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x64;
 	float CameraX: "AkSoundEngine.dll", 0x198778; //X coord of the camera
-	float CameraY: "AkSoundEngine.dll", 0x19877C; //Height of the camera - Note: AkSoundEngine.dll isn't very reliable and these can fail.
+	float CameraY: "AkSoundEngine.dll", 0x19877C; //Height of the camera - Note: AkSoundEngine.dll isn't very reliable and these have failed in the past.
+	float CameraZ: "AkSoundEngine.dll", 0x198780; //Z coord of the camera
+	int spendablePagies: "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x20, 0x10, 0x2C; //Number of spendable pagies - NEEDS UPDATE
+	byte Lag : "mono.dll", 0x00265180, 0x50, 0x228, 0x30, 0x30, 0x30, 0x18, 0x20, 0x18, 0x80, 0x70, 0x78, 0x69;
+}
+state("YookaLaylee64", "Steam 1.2.0 (2020)"){
+	byte Loading : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x66;
+	byte LoadingFade : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x65; //Not sure what this byte really is, not consistent for fades.
+	byte LoadingBase : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x64;
+	float CameraX: "AkSoundEngine.dll", 0x198778; //X coord of the camera
+	float CameraY: "AkSoundEngine.dll", 0x19877C; //Height of the camera - Note: AkSoundEngine.dll isn't very reliable and these have failed in the past.
+	float CameraZ: "AkSoundEngine.dll", 0x198780; //Z coord of the camera
+	int spendablePagies: "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x20, 0x10, 0x2C; //Number of spendable pagies - NEEDS UPDATE
+	byte Lag : "mono.dll", 0x00265180, 0x50, 0x228, 0x30, 0x30, 0x30, 0x18, 0x20, 0x18, 0x80, 0x70, 0x78, 0x69;
+}
+state("YookaLaylee64", "Steam 1.1.0 (2019)"){
+	byte Loading : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x66;
+	byte LoadingFade : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x65; //Not sure what this byte really is, not consistent for fades.
+	byte LoadingBase : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x64;
+	float CameraX: "AkSoundEngine.dll", 0x198778; //X coord of the camera
+	float CameraY: "AkSoundEngine.dll", 0x19877C; //Height of the camera - Note: AkSoundEngine.dll isn't very reliable and these have failed in the past.
 	float CameraZ: "AkSoundEngine.dll", 0x198780; //Z coord of the camera
 	int spendablePagies: "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x20, 0x10, 0x2C; //Number of spendable pagies
 	byte Lag : "mono.dll", 0x002645E0, 0x40, 0x1018, 0x0, 0x18, 0x40, 0x18, 0x78, 0x68, 0x70, 0x69;
 }
-
-state("YookaLaylee64", "OLD"){
+state("YookaLaylee64", "Non-Steam 1.1.0 (2019)"){
+	byte Loading : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x66;
+	byte LoadingFade : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x65; //Not sure what this byte really is, not consistent for fades.
+	byte LoadingBase : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x64;
+	float CameraX: "AkSoundEngine.dll", 0x198778; //X coord of the camera
+	float CameraY: "AkSoundEngine.dll", 0x19877C; //Height of the camera - Note: AkSoundEngine.dll isn't very reliable and these have failed in the past.
+	float CameraZ: "AkSoundEngine.dll", 0x198780; //Z coord of the camera
+	int spendablePagies: "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x20, 0x10, 0x2C; //Number of spendable pagies
+	byte Lag : "mono.dll", 0x002645E0, 0x40, 0x1018, 0x0, 0x18, 0x40, 0x18, 0x78, 0x68, 0x70, 0x69;
+}
+state("YookaLaylee64", "Steam 1.0.X (2018)"){
 	byte Loading : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x66;
 	byte LoadingFade : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x65; //Not sure what this byte really is, not consistent for fades.
 	byte LoadingBase : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x64;
@@ -32,7 +61,7 @@ startup{
 	vars.SecondPhaseSplitSettingName = "Split at start of 2nd phase of CapB fight";
 	vars.ThirdPhaseSplitSettingName = "Split at start of 3rd phase of CapB fight";
 	vars.MissilesSplitSettingName = "Split at start of Missiles of CapB fight";
-	vars.PagiesSplitSettingName = "Split on X amount of total Pagies (Possibly Broken)";
+	vars.PagiesSplitSettingName = "Split on X amount of total Pagies (Broken on 1.2.0)";
 	vars.LoadsSplitSettingName = "Split on X amount of total Loads (Starting File Load excluded)";
 	
 	settings.Add(vars.LoggingSettingName, false);
@@ -54,7 +83,7 @@ startup{
 		settings.Add(i.ToString() + " loads", false, i.ToString() + " loads", vars.LoadsSplitSettingName);
 	}
 
-}
+} 
 
 init{
 	//This code identifies different YookaLaylee versions with MD5 checksum on the Assembly-CSharp.dll. Copied and pasted from Zment's Defy Gravity asl script. Theres probably a simpler way but its already made so meh.
@@ -67,16 +96,22 @@ init{
 		} 
 	}
 	vars.MD5Hash = exeMD5HashBytes.Select(x => x.ToString("X2")).Aggregate((a, b) => a + b);
-	//print(MD5Hash.ToString()); //DEBUG
+	print("MD5Hash: " + vars.MD5Hash.ToString()); //Prints detected MD5 once to see from DebugView, so I don't need to enable logging to get the MD5.
 	
 	if(vars.MD5Hash == "CB12AA291173D934E2462D6C4537DF6C"){
-		version = "OLD";
+		version = "Steam 1.0.X (2018)";
 	}
 	else if(vars.MD5Hash == "DCAC57D031A6D5C98DD9CA1ECDF84B41"){
-		version = "NEW";
+		version = "Non-Steam 1.1.0 (2019)";
+	}
+	else if(vars.MD5Hash == "4267C4F4953247C49F55E20BCCC365FB"){
+		version = "Steam 1.1.0 (2019)";
+	}
+	else if(vars.MD5Hash == "F9D4D27AFB8F529E3DE0E56C7E7DFE79"){
+		version = "Steam 1.2.0 (2020)";
 	}
 	else{
-		version = "NEW";
+		version = "Unknown - Using Latest";
 	}
 	
 	vars.accumulativeLoads = 0;		//Total number of loads in the run so far
