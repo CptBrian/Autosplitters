@@ -298,7 +298,10 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.10"){
 }
 
 startup{
-	settings.Add("Click 'Website' button for more info!", false);
+	vars.ASLVersion = "ASL Version 2.4 - May 8, 2020";
+
+	settings.Add(vars.ASLVersion, false);
+	settings.Add("WebsiteTip", false, "Click 'Website' button for more info!", vars.ASLVersion);
 	settings.Add("Pause during general gameplay loading - Default: ON", true);
 	settings.Add("Pause during Save File Loading - Default: ON", true);
 	settings.Add("Pause while Saving - Default: ON", true);
