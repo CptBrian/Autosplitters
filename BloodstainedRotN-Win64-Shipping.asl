@@ -1,14 +1,14 @@
 /*
 Bloodstained: Ritual of the Night - ASL primarily by CptBrian with help from: DarkTechnomancer & hitachihex
-ASL Version 2.4 (PC Only)
+ASL Version 2.5 (PC Only)
 This ASL is compatible with RotN versions: Steam 1.02,3,4,10 GOG 1.03,4,5,9,10 & Cracked Steam 1.02
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
 [LiveSplit] Layout Settings: Scriptable AutoSplitter -> Browse for this .asl file (^^^)
-[LiveSplit] Remember to save your Layout/Splits!
+[LiveSplit] Remember to save your Layout/Splits and compare against Game Time!
 */
 
-state("BloodstainedRotN-Win64-Shipping", "Unknown - Contact us!"){ //Copy of addresses from whatever the most common version is(Steam 1.10)
+state("BloodstainedRotN-Win64-Shipping", "Unknown-Using Latest"){ //Copy of addresses from whatever the most common version is
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x878;
 	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x888;
 	byte Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x140, 0xF0, 0x285;
@@ -232,39 +232,39 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.09"){
 	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x728;
 	byte GalleonBannerSeen : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x738;
 }
-state("BloodstainedRotN-Win64-Shipping", "Steam 1.10"){
-	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x878; //+30 hex vs prev ver
-	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x888; //+30 hex vs prev ver
+state("BloodstainedRotN-Win64-Shipping", "Steam 1.10"){ //Pointers match GOG 1.10
+	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x878;
+	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x888;
 	byte Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x140, 0xF0, 0x285;
-	uint PauseMenu : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x850; //+30 hex vs prev ver
+	uint PauseMenu : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x850;
 	uint PressAnyKey : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x860;
 	uint ShardGet : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x87C;
 	uint NewAreaBanner : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x88C;
 	uint LevelUp : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x894;
 	uint UpgradeGet : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x898;
-	uint Gold : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x278; //+24 hex vs prev ver
-	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x218; //+10 hex vs prev ver
-	uint RoomData : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F6B8; //+30 hex vs prev ver
+	uint Gold : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x278; //+24 hex prev
+	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x218; //+10 hex prev
+	uint RoomData : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F6B8; //+30 hex prev
 	uint Room : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F6B8, 0x188;
 	uint PreviousRoom : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F6B8, 0x180;
 	byte Difficulty : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x290;
 	byte GameMode : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x291;
 	byte Character : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x292;
-	float IGT : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x28C; //+24 hex vs prev ver
+	float IGT : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x28C; //+24 hex prev
 	uint NGPlusCount : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x288;
 	uint GameClear : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x27C;
-	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0xE8; //+0 hex vs prev ver
+	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0xE8; //+0 hex prev
 	uint DialogueShop : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F790, 0x510;
-	uint IntroEvents : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x310; //+30 hex vs prev ver
-	byte IntroChest : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2E6BD; //+30 hex vs prev ver
+	uint IntroEvents : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x310; //+30 hex prev
+	byte IntroChest : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2E6BD;
 	byte RDLoading : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F6B8, 0x1B4;
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0x928, 0x24C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0x928, 0x238;
-	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x758; //+30 hex vs prev ver
+	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x758;
 	byte GalleonBannerSeen : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x768;
 }
-state("BloodstainedRotN-Win64-Shipping", "GOG 1.10"){
+state("BloodstainedRotN-Win64-Shipping", "GOG 1.10"){ //Pointers match Steam 1.10
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x878;
 	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x888;
 	byte Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x140, 0xF0, 0x285;
@@ -298,7 +298,7 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.10"){
 }
 
 startup{
-	vars.ASLVersion = "ASL Version 2.4 - May 8, 2020";
+	vars.ASLVersion = "ASL Version 2.5 - May 9, 2020";
 
 	settings.Add(vars.ASLVersion, false);
 	settings.Add("WebsiteTip", false, "Click 'Website' button for more info!", vars.ASLVersion);
@@ -315,7 +315,7 @@ startup{
 		System.IO.File.AppendAllText(vars.logFilePath, time + ": " + logLine + "\r\n");
 	});
 	try{
-		vars.log("ASL file loaded(Version 2.4)");
+		vars.log("ASL file loaded(" + vars.ASLVersion + ")");
 	}
 	catch (System.IO.FileNotFoundException e){
 		System.IO.File.Create(vars.logFilePath);
@@ -368,12 +368,12 @@ init{
 		version = "Steam 1.10";
 		vars.log("Detected game version: " + version + " - MD5Hash: " + MD5Hash);
 	}
-	else if(MD5Hash == "IDONOTOWNTHISSHIT"){
+	else if(MD5Hash == "446C47126FF4A483E547064E2A06337E"){
 		version = "GOG 1.10";
 		vars.log("Detected game version: " + version + " - MD5Hash: " + MD5Hash);
 	}
 	else{
-		version = "Unknown - Contact us!";
+		version = "Unknown-Using Latest";
 		vars.log("UNDETECTED GAME VERSION - MD5Hash: " + MD5Hash);
 	}
 }
