@@ -1,6 +1,6 @@
 /*
 Bloodstained: Ritual of the Night - ASL primarily by CptBrian with help from: DarkTechnomancer & hitachihex
-ASL Version 2.5 (PC Only)
+ASL Version 2.6 (PC Only)
 This ASL is compatible with RotN versions: Steam 1.02,3,4,10 GOG 1.03,4,5,9,10 & Cracked Steam 1.02
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
@@ -36,9 +36,14 @@ state("BloodstainedRotN-Win64-Shipping", "Unknown-Using Latest"){ //Copy of addr
 	byte RDLoading : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F6B8, 0x1B4;
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0x928, 0x24C;
+	float PlayerZ : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0x928, 0x25C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0x928, 0x238;
 	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x758;
 	byte GalleonBannerSeen : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x768;
+	uint BossHP : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x250, 0xD30, 0x38;
+	uint PlayerHP : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0xD30, 0x38;
+	uint PlayerMP : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0xD30, 0x3C;
+	uint PlayerEXP : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0xD30, 0x40;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.02 Cracked"){
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x848; //uworld ptr is +1000 hex from official Steam 1.02/1.03
@@ -68,9 +73,14 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.02 Cracked"){
 	byte RDLoading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x2F688, 0x1B4;
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x2F818, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x2F818, 0x0, 0x928, 0x24C;
+	float PlayerZ : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x2F818, 0x0, 0x928, 0x25C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x2F818, 0x0, 0x928, 0x238;
 	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x728;
 	byte GalleonBannerSeen : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x738;
+	uint BossHP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x240, 0xD30, 0x38;
+	uint PlayerHP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x2F818, 0x0, 0xD30, 0x38;
+	uint PlayerMP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x2F818, 0x0, 0xD30, 0x3C;
+	uint PlayerEXP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C31250, 0x2F818, 0x0, 0xD30, 0x40;
 }
 state("BloodstainedRotN-Win64-Shipping", "GOG 1.04"){ //Exactly the same as GOG 1.03
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x848;
@@ -100,9 +110,14 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.04"){ //Exactly the same as GOG 
 	byte RDLoading : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x2F688, 0x1B4;
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x2F818, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x2F818, 0x0, 0x928, 0x24C;
+	float PlayerZ : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x2F818, 0x0, 0x928, 0x25C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x2F818, 0x0, 0x928, 0x238;
 	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x728;
 	byte GalleonBannerSeen : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x738;
+	uint BossHP : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x240, 0xD30, 0x38;
+	uint PlayerHP : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x2F818, 0x0, 0xD30, 0x38;
+	uint PlayerMP : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x2F818, 0x0, 0xD30, 0x3C;
+	uint PlayerEXP : "BloodstainedRotN-Win64-Shipping.exe", 0x06BFF860, 0x2F818, 0x0, 0xD30, 0x40;
 }
 state("BloodstainedRotN-Win64-Shipping", "GOG 1.05"){
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x848;
@@ -132,9 +147,14 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.05"){
 	byte RDLoading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2F688, 0x1B4;
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2F818, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2F818, 0x0, 0x928, 0x24C;
+	float PlayerZ : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2F818, 0x0, 0x928, 0x25C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2F818, 0x0, 0x928, 0x238;
 	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x728;
 	byte GalleonBannerSeen : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x738;
+	uint BossHP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x240, 0xD30, 0x38;
+	uint PlayerHP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2F818, 0x0, 0xD30, 0x38;
+	uint PlayerMP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2F818, 0x0, 0xD30, 0x3C;
+	uint PlayerEXP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C088E0, 0x2F818, 0x0, 0xD30, 0x40;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.03"){ //Exactly the same as Steam 1.02(official/uncracked)
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x848;
@@ -164,9 +184,14 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.03"){ //Exactly the same as St
 	byte RDLoading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2F688, 0x1B4;
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2F818, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2F818, 0x0, 0x928, 0x24C;
+	float PlayerZ : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2F818, 0x0, 0x928, 0x25C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2F818, 0x0, 0x928, 0x238;
 	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x728;
 	byte GalleonBannerSeen : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x738;
+	uint BossHP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x240, 0xD30, 0x38;
+	uint PlayerHP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2F818, 0x0, 0xD30, 0x38;
+	uint PlayerMP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2F818, 0x0, 0xD30, 0x3C;
+	uint PlayerEXP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C30250, 0x2F818, 0x0, 0xD30, 0x40;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.04"){
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x848;
@@ -196,9 +221,14 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.04"){
 	byte RDLoading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x2F688, 0x1B4;
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x2F818, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x2F818, 0x0, 0x928, 0x24C;
+	float PlayerZ : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x2F818, 0x0, 0x928, 0x25C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x2F818, 0x0, 0x928, 0x238;
 	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x728;
 	byte GalleonBannerSeen : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x738;
+	uint BossHP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x240, 0xD30, 0x38;
+	uint PlayerHP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x2F818, 0x0, 0xD30, 0x38;
+	uint PlayerMP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x2F818, 0x0, 0xD30, 0x3C;
+	uint PlayerEXP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C48760, 0x2F818, 0x0, 0xD30, 0x40;
 }
 state("BloodstainedRotN-Win64-Shipping", "GOG 1.09"){
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x848;
@@ -228,9 +258,14 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.09"){
 	byte RDLoading : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F688, 0x1B4;
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F818, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F818, 0x0, 0x928, 0x24C;
+	float PlayerZ : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F818, 0x0, 0x928, 0x25C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F818, 0x0, 0x928, 0x238;
 	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x728;
 	byte GalleonBannerSeen : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x738;
+	uint BossHP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x240, 0xD30, 0x38;
+	uint PlayerHP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F818, 0x0, 0xD30, 0x38;
+	uint PlayerMP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F818, 0x0, 0xD30, 0x3C;
+	uint PlayerEXP : "BloodstainedRotN-Win64-Shipping.exe", 0x06C15D60, 0x2F818, 0x0, 0xD30, 0x40;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.10"){ //Pointers match GOG 1.10
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x878;
@@ -260,9 +295,14 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.10"){ //Pointers match GOG 1.1
 	byte RDLoading : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F6B8, 0x1B4;
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0x928, 0x24C;
+	float PlayerZ : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0x928, 0x25C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0x928, 0x238;
 	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x758;
 	byte GalleonBannerSeen : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x768;
+	uint BossHP : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x250, 0xD30, 0x38;
+	uint PlayerHP : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0xD30, 0x38;
+	uint PlayerMP : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0xD30, 0x3C;
+	uint PlayerEXP : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0xD30, 0x40;
 }
 state("BloodstainedRotN-Win64-Shipping", "GOG 1.10"){ //Pointers match Steam 1.10
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x878;
@@ -292,13 +332,18 @@ state("BloodstainedRotN-Win64-Shipping", "GOG 1.10"){ //Pointers match Steam 1.1
 	byte RDLoading : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F6B8, 0x1B4;
 	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0x928, 0x244;
 	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0x928, 0x24C;
+	float PlayerZ : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0x928, 0x25C;
 	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0x928, 0x238;
 	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x758;
 	byte GalleonBannerSeen : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x768;
+	uint BossHP : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x250, 0xD30, 0x38;
+	uint PlayerHP : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0xD30, 0x38;
+	uint PlayerMP : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0xD30, 0x3C;
+	uint PlayerEXP : "BloodstainedRotN-Win64-Shipping.exe", 0x072B3060, 0x2F848, 0x0, 0xD30, 0x40;
 }
 
 startup{
-	vars.ASLVersion = "ASL Version 2.5 - May 9, 2020";
+	vars.ASLVersion = "ASL Version 2.6 - May 18, 2020";
 
 	settings.Add(vars.ASLVersion, false);
 	settings.Add("WebsiteTip", false, "Click 'Website' button for more info!", vars.ASLVersion);
@@ -395,7 +440,7 @@ update{
 	
 	if(vars.Logging){
 		if(old.FileCreateLoad == 1 && current.FileCreateLoad == 0){
-			vars.log("File loaded. Some values: Loading=" + current.Loading + ", LoadingFile=" + current.LoadingFile + ", Saving=" + current.Saving + ", PauseMenu=" + current.PauseMenu + ", PressAnyKey=" + current.PressAnyKey + ", Gold=" + current.Gold + ", Cutscene=" + current.Cutscene + ", RoomData=" + current.RoomData + ", Room=" + current.Room + ", PreviousRoom=" + current.PreviousRoom + ", Difficulty=" + current.Difficulty + ", GameMode=" + current.GameMode + ", Character=" + current.Character + ", IGT=" + current.IGT + ", NGPlusCount=" + current.NGPlusCount + ", GameClear=" + current.GameClear + ", DialogueShop=" + current.DialogueShop + ", IntroEvents=" + current.IntroEvents + ", IntroChest=" + current.IntroChest + ", RDLoading=" + current.RDLoading + ", PlayerX=" + current.PlayerX + ", PlayerY=" + current.PlayerY + ", PlayerRotation=" + current.PlayerRotation);
+			vars.log("File loaded. Some values: Loading=" + current.Loading + ", LoadingFile=" + current.LoadingFile + ", Saving=" + current.Saving + ", PauseMenu=" + current.PauseMenu + ", PressAnyKey=" + current.PressAnyKey + ", Gold=" + current.Gold + ", Cutscene=" + current.Cutscene + ", RoomData=" + current.RoomData + ", Room=" + current.Room + ", PreviousRoom=" + current.PreviousRoom + ", Difficulty=" + current.Difficulty + ", GameMode=" + current.GameMode + ", Character=" + current.Character + ", IGT=" + current.IGT + ", NGPlusCount=" + current.NGPlusCount + ", GameClear=" + current.GameClear + ", DialogueShop=" + current.DialogueShop + ", IntroEvents=" + current.IntroEvents + ", IntroChest=" + current.IntroChest + ", RDLoading=" + current.RDLoading + ", PlayerX=" + current.PlayerX + ", PlayerY=" + current.PlayerY + ", PlayerZ=" + current.PlayerZ + ", PlayerRotation=" + current.PlayerRotation);
 			vars.log("Reminder: Invalid addresses also return a value of 0");
 		}
 		else if(old.DialogueShop == 0 && current.DialogueShop == 1){
@@ -532,13 +577,33 @@ reset{
 }
 
 split{
-	if(current.BossDoors > old.BossDoors && (current.GameMode == 1 || current.GameMode == 6 || current.GameMode == 9) && current.RoomData != 0 && current.FileCreateLoad == 0 && current.LoadingFile == 0 && current.PressAnyKey == 0){
+	if(current.BossDoors > old.BossDoors && (current.GameMode == 1 || current.GameMode == 6 || current.GameMode == 9) && current.RoomData != 0 && current.FileCreateLoad == 0 && current.LoadingFile == 0 && current.PressAnyKey == 0
+	   && !(current.PlayerX > 79350 && current.PlayerX < 80650 && current.PlayerY > 19400 && current.PlayerY < 20150 && current.PlayerZ == 0)){
 		if(vars.Logging){
 			vars.log("Auto-split for killing a boss - Value: " + current.BossDoors);
 		}
 		return true;
 	}
+	else if((current.PlayerX > 79350 && current.PlayerX < 80650 && current.PlayerY > 19400 && current.PlayerY < 20150 && current.PlayerZ == 0) && (current.GameMode == 1 || current.GameMode == 6 || current.GameMode == 9) && current.RoomData != 0 && current.FileCreateLoad == 0 && current.LoadingFile == 0 && current.PressAnyKey == 0 && current.PlayerHP > 0 && current.BossHP == 0 && old.BossHP > 0){
+		return true; // Gebel Fight and Miriam Fight final hit splits
+	}
 	else{
 		return false;
 	}
 }
+
+/*
+Zangetsu Mode Miriam Fight(Gebel's Arena):
+X: 79350 - 80650
+Y: 19400 - 20150
+Z: 0 - 0
+12000 HP on all difficulties. Final offset=38
+Room ID(1.10): 191973
+------------------------------------- Boss HP Pointer appears to work for pretty much all(?) bosses.
+Gebel Fight(same arena as above):
+X: 79350 - 80650
+Y: 19400 - 20150
+Z: 0 - 0
+2800 HP on Normal. Final offset=38
+Room ID(1.10): 191973
+*/
