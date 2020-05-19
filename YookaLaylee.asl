@@ -13,6 +13,16 @@ state("YookaLaylee64", "Unknown - Using Latest"){
 	int spendablePagies: "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x20, 0x10, 0x2C; //Number of spendable pagies - NEEDS UPDATE
 	byte Lag : "mono.dll", 0x00265180, 0x50, 0x228, 0x30, 0x30, 0x30, 0x18, 0x20, 0x18, 0x80, 0x70, 0x78, 0x69;
 }
+state("YookaLaylee64", "Steam 1.2.1 (2020)"){
+	byte Loading : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x66;
+	byte LoadingFade : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x65; //Not sure what this byte really is, not consistent for fades.
+	byte LoadingBase : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x64;
+	float CameraX: "AkSoundEngine.dll", 0x198778; //X coord of the camera
+	float CameraY: "AkSoundEngine.dll", 0x19877C; //Height of the camera - Note: AkSoundEngine.dll isn't very reliable and these have failed in the past.
+	float CameraZ: "AkSoundEngine.dll", 0x198780; //Z coord of the camera
+	int spendablePagies: "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x20, 0x10, 0x2C; //Number of spendable pagies - NEEDS UPDATE
+	byte Lag : "mono.dll", 0x00265180, 0x50, 0x228, 0x30, 0x30, 0x30, 0x18, 0x20, 0x18, 0x80, 0x70, 0x78, 0x69;
+}
 state("YookaLaylee64", "Steam 1.2.0 (2020)"){
 	byte Loading : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x66;
 	byte LoadingFade : "YookaLaylee64.exe", 0x012C5790, 0x8, 0x10, 0x28, 0x18, 0x20, 0x65; //Not sure what this byte really is, not consistent for fades.
@@ -99,7 +109,7 @@ init{
 	print("MD5Hash: " + vars.MD5Hash.ToString()); //Prints detected MD5 once to see from DebugView, so I don't need to enable logging to get the MD5.
 	
 	if(vars.MD5Hash == "CB12AA291173D934E2462D6C4537DF6C"){
-		version = "Steam 1.0.X (2018)";
+		version = "Steam 1.0.4 (2018)";
 	}
 	else if(vars.MD5Hash == "DCAC57D031A6D5C98DD9CA1ECDF84B41"){
 		version = "Non-Steam 1.1.0 (2019)";
@@ -109,6 +119,9 @@ init{
 	}
 	else if(vars.MD5Hash == "F9D4D27AFB8F529E3DE0E56C7E7DFE79"){
 		version = "Steam 1.2.0 (2020)";
+	}
+	else if(vars.MD5Hash == "C583CF83D069FE813D5E377328C39D28"){ 
+		version = "Steam 1.2.1 (2020)";
 	}
 	else{
 		version = "Unknown - Using Latest";
