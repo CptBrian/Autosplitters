@@ -79,12 +79,14 @@ start{
 }
 
 reset{
+	/*
 	if((current.Music==1 || current.Music==32) && current.PlayerControl==3 && current.CameraX==2808 && current.CameraY==3240){
-		return true; //Reset at the start of Stage 1 before you gain control
+		return true; //Reset at the start of Stage 1 before you gain control - Disabled this because it will conflict with any run that comes back to Stage 1 after run has started.
 	}
 	else{
 		return false;
 	}
+	*/
 }
 
 split{
