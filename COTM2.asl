@@ -5,7 +5,6 @@ This ASL is compatible with COTM2 versions 1.2.2, ?.?.?
   [LiveSplit] Ignore the following 2 steps if you're using LiveSplit's integrated Activate button to use this ASL.
   [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter
   [LiveSplit] Layout Settings: Scriptable AutoSplitter -> Browse for this .asl file
-Required to have 8 Splits (one for each stage) <---- May not require specific split counts, implement settings.
 */
 
 state("game", "1.2.2"){
