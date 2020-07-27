@@ -44,22 +44,22 @@ startup{
 init{
 	print("ModuleMemorySize: " + modules.First().ModuleMemorySize.ToString());
 	//Lets DebugView show me the ModuleMemorySize of the game executable, which is useless because they're the same between versions.
-	
+
 	byte[] exeMD5HashBytes = new byte[0];
 	using (var md5 = System.Security.Cryptography.MD5.Create())
 	{
 		using (var s = File.Open(modules.First().FileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
 		{
-			exeMD5HashBytes = md5.ComputeHash(s); 
-		} 
+			exeMD5HashBytes = md5.ComputeHash(s);
+		}
 	}
 	var MD5Hash = exeMD5HashBytes.Select(x => x.ToString("X2")).Aggregate((a, b) => a + b);
 	print("MD5Hash: " + MD5Hash.ToString()); //Lets DebugView show me the MD5Hash of the game executable, which is actually useful.
-	
+
 	if(MD5Hash == "23BFAFE274C9518FB8AF5D8B40DD50E7"){
 		version = "1.2.2";
 	}
-	else if(MD5Hash == "E1E439BD3FE89DE97BE08B15505837E2"){		
+	else if(MD5Hash == "E1E439BD3FE89DE97BE08B15505837E2"){
 		version = "1.3.1";
 	}
 	else{
@@ -123,25 +123,25 @@ split{
 		return true; //Split on final input for Episode 2 ending(both) while still alive, not paused, no music and hasn't changed, lost control, room respawn state changed, haven't moved
 	}
 	
-	if(settings[vars.MusicStageSplits] && old.Music == 255 && current.Music == 27 && timer.CurrentSplitIndex == 0){
+	if(settings[vars.MusicStageSplits] && old.Music==255 && current.Music==27 && timer.CurrentSplitIndex==0){
 		return true; //Split when you're on the 1st split and Stage 2 music starts
 	}
-	if(settings[vars.MusicStageSplits] && old.Music == 255 && current.Music == 26 && timer.CurrentSplitIndex == 1){
+	if(settings[vars.MusicStageSplits] && old.Music==255 && current.Music==26 && timer.CurrentSplitIndex==1){
 		return true; //Split when you're on the 2nd split and Stage 3 music starts
 	}
-	if(settings[vars.MusicStageSplits] && old.Music == 255 && current.Music == 25 && timer.CurrentSplitIndex == 2){
+	if(settings[vars.MusicStageSplits] && old.Music==255 && current.Music==25 && timer.CurrentSplitIndex==2){
 		return true; //Split when you're on the 3rd split and Stage 4 music starts
 	}
-	if(settings[vars.MusicStageSplits] && old.Music == 255 && current.Music == 24 && timer.CurrentSplitIndex == 3){
+	if(settings[vars.MusicStageSplits] && old.Music==255 && current.Music==24 && timer.CurrentSplitIndex==3){
 		return true; //Split when you're on the 4th split and Stage 5 music starts
 	}
-	if(settings[vars.MusicStageSplits] && old.Music == 255 && current.Music == 23 && timer.CurrentSplitIndex == 4){
+	if(settings[vars.MusicStageSplits] && old.Music==255 && current.Music==23 && timer.CurrentSplitIndex==4){
 		return true; //Split when you're on the 5th split and Stage 6 music starts
 	}
-	if(settings[vars.MusicStageSplits] && old.Music == 255 && current.Music == 22 && timer.CurrentSplitIndex == 5){
+	if(settings[vars.MusicStageSplits] && old.Music==255 && current.Music==22 && timer.CurrentSplitIndex==5){
 		return true; //Split when you're on the 6th split and Stage 7 music starts
 	}
-	if(settings[vars.MusicStageSplits] && old.Music == 255 && current.Music == 21 && timer.CurrentSplitIndex == 6){
+	if(settings[vars.MusicStageSplits] && old.Music==255 && current.Music==21 && timer.CurrentSplitIndex==6){
 		return true; //Split when you're on the 7th split and Stage 8 music starts
 	}
 	return false;
