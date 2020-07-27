@@ -144,29 +144,6 @@ split{
 	if(settings[vars.MusicStageSplits] && old.Music == 255 && current.Music == 21 && timer.CurrentSplitIndex == 6){
 		return true; //Split when you're on the 7th split and Stage 8 music starts
 	}
-	/*
-	if(timer.CurrentSplitIndex == 0 && current.Stage > 0 && current.Stage < 11 && old.BRProgress == 1 && current.BRProgress == 2){
-		return true;
-	}
-	if(timer.CurrentSplitIndex == 1 && current.Stage > 0 && current.Stage < 11 && old.BRProgress == 2 && current.BRProgress == 3){
-		return true;
-	}
-	if(timer.CurrentSplitIndex == 2 && current.Stage > 0 && current.Stage < 11 && old.BRProgress == 3 && current.BRProgress == 4){
-		return true;
-	}
-	if(timer.CurrentSplitIndex == 3 && current.Stage > 0 && current.Stage < 11 && old.BRProgress == 4 && current.BRProgress == 5){
-		return true;
-	}
-	if(timer.CurrentSplitIndex == 4 && current.Stage > 0 && current.Stage < 11 && old.BRProgress == 5 && current.BRProgress == 6){
-		return true;
-	}
-	if(timer.CurrentSplitIndex == 5 && current.Stage > 0 && current.Stage < 11 && old.BRProgress == 6 && current.BRProgress == 7){
-		return true;
-	}
-	if(timer.CurrentSplitIndex == 6 && current.Stage > 0 && current.Stage < 11 && old.BRProgress == 7 && current.BRProgress == 8){
-		return true;
-	} Might just use boss final hit splits for Boss Rush idk
-	*/
 	return false;
 }
 
