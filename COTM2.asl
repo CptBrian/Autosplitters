@@ -28,8 +28,9 @@ state("game", "1.3.1"){ //Not released yet
 
 startup{
 	vars.ASLVersion = "ASL Version 1.0 - July 26, 2020";
-	vars.BossKillSplits = "Split on final hit for bosses 1-7 (Ep1+2)";
-	vars.MusicStageSplits = "Split when music starts for the next stage (Ep1+2, need 8 splits)";
+	vars.BossKillSplits = "Split on Final Hit for Bosses 1-7 (Ep1+2)";
+	vars.MusicStageSplits = "Split when Music starts for the next stage (Ep1+2, need 8 splits)";
+	vars.TitleScreenReset = "Reset on Title Screen (only mid-run)";
 	
 	settings.Add(vars.ASLVersion, false);
 	settings.Add("WebsiteInfo", false, "Click the 'Website' button for more info!", vars.ASLVersion);
@@ -37,6 +38,7 @@ startup{
 	settings.Add("ScriptInfo2", false, "THIS WILL PROBABLY BREAK ON JULY 30TH'S UPDATE", vars.ASLVersion);
 	settings.Add(vars.BossKillSplits, true);
 	settings.Add(vars.MusicStageSplits, false);
+	settings.Add(vars.TitleScreenReset, false);
 }
 
 init{
@@ -75,18 +77,20 @@ start{
 	else{
 		return false;
 	}
-	//|| (current.Stage == 10 && current.BRProgress == 1 && old.ILframes == 0 && current.ILframes > 0 && current.ZangetsuHP != 0 && current.MiriamHP != 0 && current.AlfredHP != 0 && current.GebelHP != 0)
 }
 
 reset{
+	if(settings[vars.TitleScreenReset] && current.Music==20){
+		return true; //Reset when Title Screen music plays (Always starts before you can mash through it)
+	}
 	/*
-	if((current.Music==1 || current.Music==32) && current.PlayerControl==3 && current.CameraX==2808 && current.CameraY==3240){
+	else if((current.Music==1 || current.Music==32) && current.PlayerControl==3 && current.CameraX==2808 && current.CameraY==3240){
 		return true; //Reset at the start of Stage 1 before you gain control - Disabled this because it will conflict with any run that comes back to Stage 1 after run has started.
 	}
+	*/
 	else{
 		return false;
 	}
-	*/
 }
 
 split{
