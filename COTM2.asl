@@ -1,6 +1,6 @@
 /*
 Bloodstained: Curse of the Moon 2 autosplitter by CptBrian
-This ASL is compatible with COTM2 versions 1.2.2, ?.?.?
+This ASL is compatible with COTM2 versions 1.2.2, 1.3.1
   [LiveSplit] Run as administrator, or else this can't read COTM2's memory. This can be done by default through Properties -> Compatibility.
   [LiveSplit] Ignore the following 2 steps if you're using LiveSplit's integrated Activate button to use this ASL.
   [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter
@@ -17,25 +17,37 @@ state("game", "1.2.2"){
 	byte Health : "game.exe", 0x702960, 0x58, 0x50, 0x510;
 	float BossHP : "game.exe", 0x702960, 0x20, 0x78, 0x224, 0x2A0, 0x70; //All except 8e1p1, very stable
 	ushort CharAnim : "game.exe", 0x9F62BC, 0x8, 0x20, 0x0, 0x104, 0x144, 0x0, 0x1BE;
-	byte BRProgress : "game.exe", 0x483660, 0xF0; //Placeholder
 	byte PlayerControl : "game.exe", 0x765108;
 	byte Pause : "game.exe", 0x702960, 0x14, 0x1C, 0x20, 0x3C;
 	byte RoomRespawnState : "game.exe", 0x9F62BC, 0x510;
+	byte SaveSlot : "game.exe", 0x702F8C, 0x8;
 }
-state("game", "1.3.1"){ //Not released yet
-	//Big ol' dicks
+state("game", "1.3.1"){
+	byte Music : "game.exe", 0x00764E40, 0x8, 0x270;
+	byte Character : "game.exe", 0x9F6344, 0x1A0;
+	float PlayerX : "game.exe", 0x9F6344, 0x1B4;
+	float PlayerY : "game.exe", 0x9F6344, 0x1B8;
+	float CameraX : "game.exe", 0x702D98, 0x24, 0x1A8, 0x104, 0x28;
+	float CameraY : "game.exe", 0x702D98, 0x24, 0x1A8, 0x104, 0x2C;
+	byte Health : "game.exe", 0x702948, 0x58, 0x50, 0x510;
+	float BossHP : "game.exe", 0x702948, 0x20, 0x78, 0x224, 0x2A0, 0x70;
+	ushort CharAnim : "game.exe", 0x9F6344, 0x8, 0x20, 0x0, 0x104, 0x144, 0x0, 0x1BE;
+	byte BRProgress : "game.exe", 0x483660, 0xF0; //Placeholder
+	byte PlayerControl : "game.exe", 0x765190;
+	byte Pause : "game.exe", 0x702948, 0x14, 0x1C, 0x20, 0x3C;
+	byte RoomRespawnState : "game.exe", 0x9F6344, 0x510;
+	byte SaveSlot : "game.exe", 0x702F74, 0x8;
 }
 
 startup{
-	vars.ASLVersion = "ASL Version 1.0 - July 26, 2020";
+	vars.ASLVersion = "ASL Version 1.1 - July 30, 2020";
 	vars.BossKillSplits = "Split on Final Hit for Bosses 1-7 (Ep1+2)";
 	vars.MusicStageSplits = "Split when Music starts for the next stage (Ep1+2, need 8 splits)";
 	vars.TitleScreenReset = "Reset on Title Screen (only mid-run)";
 	
 	settings.Add(vars.ASLVersion, false);
 	settings.Add("WebsiteInfo", false, "Click the 'Website' button for more info!", vars.ASLVersion);
-	settings.Add("ScriptInfo", false, "Ep1+2 READY! Ep3+4 start BUT DON'T SPLIT! No BR yet.", vars.ASLVersion);
-	settings.Add("ScriptInfo2", false, "THIS WILL PROBABLY BREAK ON JULY 30TH'S UPDATE", vars.ASLVersion);
+	settings.Add("ScriptInfo", false, "Ep1+2 READY! Ep3+4+BR start BUT SPLITS INCOMPLETE!", vars.ASLVersion);
 	settings.Add(vars.BossKillSplits, true);
 	settings.Add(vars.MusicStageSplits, false);
 	settings.Add(vars.TitleScreenReset, false);
@@ -59,11 +71,11 @@ init{
 	if(MD5Hash == "23BFAFE274C9518FB8AF5D8B40DD50E7"){
 		version = "1.2.2";
 	}
-	else if(MD5Hash == "E1E439BD3FE89DE97BE08B15505837E2"){
+	else if(MD5Hash == "C7AF661B70D8ED38DBB236CE51CE4150"){
 		version = "1.3.1";
 	}
 	else{
-		version = "1.2.2"; //Most common or latest version
+		version = "1.3.1"; //Most common or latest version
 	}
 }
 
@@ -73,6 +85,9 @@ start{
 	}
 	else if(current.Music==35 && old.PlayerControl==3 && current.PlayerControl<2 && current.CameraX==1944 && current.CameraY==360 && current.Pause==0){
 		return true; //Autostart for Ep4
+	}
+	else if(current.Music==35 && old.PlayerControl==3 && current.PlayerControl<2 && current.CameraX>870 && current.CameraX<890 && current.CameraY==360 && current.Pause==0 && current.SaveSlot==32){
+		return true; //Autostart for Boss Rush
 	}
 	else{
 		return false;
