@@ -41,7 +41,7 @@ state("game", "1.3.1"){
 
 startup{
 	vars.ASLVersion = "ASL Version 1.1 - July 30, 2020";
-	vars.BossKillSplits = "Split on Final Hit for Bosses 1-7 (Ep1+2)";
+	vars.BossKillSplits = "Split on Final Hit for Bosses 1-7 (Ep1+2+BR)";
 	vars.MusicStageSplits = "Split when Music starts for the next stage (Ep1+2, need 8 splits)";
 	vars.TitleScreenReset = "Reset on Title Screen (only mid-run)";
 	
