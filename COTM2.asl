@@ -46,7 +46,7 @@ state("game", "1.3.1"){
 startup{
 	vars.ASLVersion = "ASL Version 1.3 - August 8, 2020";
 	vars.BossKillSplits = "Split on Final Hit for Non-Final Bosses";
-	vars.StageIDSplits = "Split on Stage ID changes (modes considered)";
+	vars.StageIDSplits = "Split on Stage ID changes (all modes considered)";
 	vars.TitleScreenReset = "Reset on Title Screen (only mid-run)";
 	
 	settings.Add(vars.ASLVersion, false);
