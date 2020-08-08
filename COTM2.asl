@@ -43,7 +43,7 @@ state("game", "1.3.1"){
 }
 
 startup{
-	vars.ASLVersion = "ASL Version 1.3 - August 8, 2020";
+	vars.ASLVersion = "ASL Version 1.4 - August 8, 2020";
 	vars.BossKillSplits = "Split on Final Hit for Non-Final Bosses";
 	vars.StageIDSplits = "Split on Stage ID changes (all modes considered)";
 	vars.TitleScreenReset = "Reset on Title Screen (only mid-run)";
@@ -90,7 +90,7 @@ init{
 
 start{
 	if((current.Music==1 || current.Music==32) && old.PlayerControl==3 && current.PlayerControl<2 && current.CameraX==2808 && current.CameraY==3240){
-		return true; //Autostart for Ep1,2,3
+		return true; //Autostart for Ep1,2,3,Solo
 	}
 	else if(current.Music==35 && old.PlayerControl==3 && current.PlayerControl<2 && current.CameraX==1944 && current.CameraY==360 && current.Pause==0){
 		return true; //Autostart for Ep4
@@ -156,26 +156,26 @@ split{
 		return true; //Split on final input for Episode 4 ending(solo) while still alive, not paused, Sariel music hasn't changed, lost control, room respawn state changed, haven't moved
 	}
 	
-	if(settings[vars.StageIDSplits] && vars.OldStage==1 && vars.Stage==2 && vars.Episode<3){
-		return true; //Split when Stage changes from 1 to 2 in Eps 1~3
+	if(settings[vars.StageIDSplits] && vars.OldStage==1 && vars.Stage==2 && vars.Episode<5 && vars.Episode!=3){
+		return true; //Split when Stage changes from 1 to 2 in Eps 1~3+Solo(5)
 	}
-	if(settings[vars.StageIDSplits] && vars.OldStage==2 && vars.Stage==3 && vars.Episode<3){
-		return true; //Split when Stage changes from 2 to 3 in Eps 1~3
+	if(settings[vars.StageIDSplits] && vars.OldStage==2 && vars.Stage==3 && vars.Episode<5 && vars.Episode!=3){
+		return true; //Split when Stage changes from 2 to 3 in Eps 1~3+Solo(5)
 	}
-	if(settings[vars.StageIDSplits] && vars.OldStage==3 && vars.Stage==4 && vars.Episode<3){
-		return true; //Split when Stage changes from 3 to 4 in Eps 1~3
+	if(settings[vars.StageIDSplits] && vars.OldStage==3 && vars.Stage==4 && vars.Episode<5 && vars.Episode!=3){
+		return true; //Split when Stage changes from 3 to 4 in Eps 1~3+Solo(5)
 	}
-	if(settings[vars.StageIDSplits] && vars.OldStage==4 && vars.Stage==5 && vars.Episode<3){
-		return true; //Split when Stage changes from 4 to 5 in Eps 1~3
+	if(settings[vars.StageIDSplits] && vars.OldStage==4 && vars.Stage==5 && vars.Episode<5 && vars.Episode!=3){
+		return true; //Split when Stage changes from 4 to 5 in Eps 1~3+Solo(5)
 	}
-	if(settings[vars.StageIDSplits] && vars.OldStage==5 && vars.Stage==6 && vars.Episode<3){
-		return true; //Split when Stage changes from 5 to 6 in Eps 1~3
+	if(settings[vars.StageIDSplits] && vars.OldStage==5 && vars.Stage==6 && vars.Episode<5 && vars.Episode!=3){
+		return true; //Split when Stage changes from 5 to 6 in Eps 1~3+Solo(5)
 	}
-	if(settings[vars.StageIDSplits] && vars.OldStage==6 && vars.Stage==7 && vars.Episode<3){
-		return true; //Split when Stage changes from 6 to 7 in Eps 1~3
+	if(settings[vars.StageIDSplits] && vars.OldStage==6 && vars.Stage==7 && vars.Episode<5 && vars.Episode!=3){
+		return true; //Split when Stage changes from 6 to 7 in Eps 1~3+Solo(5)
 	}
-	if(settings[vars.StageIDSplits] && vars.OldStage==7 && vars.Stage==8 && vars.Episode<3){
-		return true; //Split when Stage changes from 7 to 8 in Eps 1~3
+	if(settings[vars.StageIDSplits] && vars.OldStage==7 && vars.Stage==8 && vars.Episode<5 && vars.Episode!=3){
+		return true; //Split when Stage changes from 7 to 8 in Eps 1~3+Solo(5)
 	}
 	if(settings[vars.StageIDSplits] && vars.OldStage<8 && vars.Stage==12 && vars.Episode==3){
 		return true; //Split when Stage changes from 1~7 to Ep4 Camp
