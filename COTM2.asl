@@ -8,7 +8,7 @@ This ASL is compatible with COTM2 versions 1.2.2, 1.3.1
 */
 
 state("game", "1.2.2"){
-	byte Music : "game.exe", 0x00764DB8, 0x8, 0x270;
+	byte Music : "game.exe", 0x764DB8, 0x8, 0x270;
 	byte Character : "game.exe", 0x9F62BC, 0x1A0;
 	float PlayerX : "game.exe", 0x9F62BC, 0x1B4;
 	float PlayerY : "game.exe", 0x9F62BC, 0x1B8;
@@ -21,9 +21,11 @@ state("game", "1.2.2"){
 	byte Pause : "game.exe", 0x702960, 0x14, 0x1C, 0x20, 0x3C;
 	byte RoomRespawnState : "game.exe", 0x9F62BC, 0x510;
 	byte SaveSlot : "game.exe", 0x702F8C, 0x8;
+	byte HUD : "game.exe", 0x702960, 0x58, 0x50, 0x15C;
+	byte CharRender : "game.exe", 0x9F62BC, 0x15C;
 }
 state("game", "1.3.1"){
-	byte Music : "game.exe", 0x00764E40, 0x8, 0x270;
+	byte Music : "game.exe", 0x764E40, 0x8, 0x270;
 	byte Character : "game.exe", 0x9F6344, 0x1A0;
 	float PlayerX : "game.exe", 0x9F6344, 0x1B4;
 	float PlayerY : "game.exe", 0x9F6344, 0x1B8;
@@ -37,25 +39,26 @@ state("game", "1.3.1"){
 	byte Pause : "game.exe", 0x702948, 0x14, 0x1C, 0x20, 0x3C;
 	byte RoomRespawnState : "game.exe", 0x9F6344, 0x510;
 	byte SaveSlot : "game.exe", 0x702F74, 0x8;
+	byte HUD : "game.exe", 0x702948, 0x58, 0x50, 0x15C;
+	byte CharRender : "game.exe", 0x9F6344, 0x15C;
 }
 
 startup{
-	vars.ASLVersion = "ASL Version 1.1 - July 30, 2020";
-	vars.BossKillSplits = "Split on Final Hit for Bosses 1-7 (Ep1+2+BR)";
-	vars.MusicStageSplits = "Split when Music starts for the next stage (Ep1+2, need 8 splits)";
+	vars.ASLVersion = "ASL Version 1.3 - August 8, 2020";
+	vars.BossKillSplits = "Split on Final Hit for Non-Final Bosses";
+	vars.StageIDSplits = "Split on Stage ID changes (modes considered)";
 	vars.TitleScreenReset = "Reset on Title Screen (only mid-run)";
 	
 	settings.Add(vars.ASLVersion, false);
 	settings.Add("WebsiteInfo", false, "Click the 'Website' button for more info!", vars.ASLVersion);
-	settings.Add("ScriptInfo", false, "Ep1+2 READY! Ep3+4+BR start BUT SPLITS INCOMPLETE!", vars.ASLVersion);
 	settings.Add(vars.BossKillSplits, true);
-	settings.Add(vars.MusicStageSplits, false);
+	settings.Add(vars.StageIDSplits, false);
 	settings.Add(vars.TitleScreenReset, false);
 }
 
 init{
 	print("ModuleMemorySize: " + modules.First().ModuleMemorySize.ToString());
-	//Lets DebugView show me the ModuleMemorySize of the game executable, which is useless because they're the same between versions.
+	//Lets DebugView show me the ModuleMemorySize of the game executable, which may be useless because they can be the same between versions.
 
 	byte[] exeMD5HashBytes = new byte[0];
 	using (var md5 = System.Security.Cryptography.MD5.Create())
@@ -67,6 +70,7 @@ init{
 	}
 	var MD5Hash = exeMD5HashBytes.Select(x => x.ToString("X2")).Aggregate((a, b) => a + b);
 	print("MD5Hash: " + MD5Hash.ToString()); //Lets DebugView show me the MD5Hash of the game executable, which is actually useful.
+	
 
 	if(MD5Hash == "23BFAFE274C9518FB8AF5D8B40DD50E7"){
 		version = "1.2.2";
@@ -77,6 +81,12 @@ init{
 	else{
 		version = "1.3.1"; //Most common or latest version
 	}
+	
+	//Definitions required for my DeepPointer old value storage setup
+	vars.DeepPointersReady = false;
+	vars.CharsAvailable = 0;
+	vars.Stage = 0;
+	vars.Episode = 0;
 }
 
 start{
@@ -98,11 +108,6 @@ reset{
 	if(settings[vars.TitleScreenReset] && current.Music==20){
 		return true; //Reset when Title Screen music plays (Always starts before you can mash through it)
 	}
-	/*
-	else if((current.Music==1 || current.Music==32) && current.PlayerControl==3 && current.CameraX==2808 && current.CameraY==3240){
-		return true; //Reset at the start of Stage 1 before you gain control - Disabled this because it will conflict with any run that comes back to Stage 1 after run has started.
-	}
-	*/
 	else{
 		return false;
 	}
@@ -122,43 +127,67 @@ split{
 		return true; //Split on final hit for Boss 4
 	}
 	if(settings[vars.BossKillSplits] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==9288 && current.CameraY==360){
-		return true; //Split on final hit for Boss 5 WIP
+		return true; //Split on final hit for Boss 5
 	}
 	if(settings[vars.BossKillSplits] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==8424 && current.CameraY>2270 && current.CameraY<2340){
-		return true; //Split on final hit for Boss 6 WIP
+		return true; //Split on final hit for Boss 6
 	}
 	if(settings[vars.BossKillSplits] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==5400 && current.CameraY==360){
-		return true; //Split on final hit for Boss 7 WIP
+		return true; //Split on final hit for Boss 7
+	}
+	if(settings[vars.BossKillSplits] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==22248 && current.CameraY==1320 && current.SaveSlot==32){
+		//print("Split on final hit for Boss 9 Mephisto in Boss Rush");
+		return true; //Split on final hit for Boss 9 Mephisto in Boss Rush
 	}
 	
 	if(old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==29160 && current.CameraY>800 && current.CameraY<1200 && current.Pause==0){
+		//print("Split on final hit for Episode 1 ending");
 		return true; //Split on final hit for Episode 1 ending while still alive and not paused
 	}
-	if(current.Health>0 && current.CameraX==22248 && current.CameraY==1320 && current.Pause==0 && old.PlayerX==current.PlayerX && current.Music==255 && old.Music==255 && current.PlayerControl==2 && old.PlayerControl==0 && current.RoomRespawnState==8 && old.RoomRespawnState==0){
-		return true; //Split on final input for Episode 2 ending(both) while still alive, not paused, no music and hasn't changed, lost control, room respawn state changed, haven't moved
+	if(current.Health>0 && current.CameraX==22248 && current.CameraY==1320 && current.Pause==0 && old.PlayerX==current.PlayerX && current.Music==255 && old.Music==255 && current.PlayerControl==2 && old.PlayerControl==0 && current.RoomRespawnState==8 && old.RoomRespawnState==0 && current.HUD==0 && current.CharRender==0){
+		//print("Split on final input for Episode 2 ending(both)");
+		return true; //Split on final input for Episode 2 ending(both) while still alive, not paused, no music and hasn't changed, lost control, room respawn state changed, haven't moved, no HUD, character hidden
+	}
+	if(current.Health>0 && current.CameraX==15768 && current.CameraY==1800 && current.Pause==0 && old.PlayerX==current.PlayerX && current.Music==8 && old.Music==8 && current.PlayerControl==2 && old.PlayerControl==0 && current.RoomRespawnState==8 && old.RoomRespawnState==0){
+		//print("Split on final input for Episode 4 ending(partied)");
+		return true; //Split on final input for Episode 4 ending(partied) while still alive, not paused, Sariel music hasn't changed, lost control, room respawn state changed, haven't moved
+	}
+	if(current.Health>0 && current.CameraX==18360 && current.CameraY==2280 && current.Pause==0 && old.PlayerX==current.PlayerX && current.Music==8 && old.Music==8 && current.PlayerControl==2 && old.PlayerControl==0 && current.RoomRespawnState==8 && old.RoomRespawnState==0){
+		//print("Split on final input for Episode 4 ending(solo)");
+		return true; //Split on final input for Episode 4 ending(solo) while still alive, not paused, Sariel music hasn't changed, lost control, room respawn state changed, haven't moved
 	}
 	
-	if(settings[vars.MusicStageSplits] && old.Music==255 && current.Music==27 && timer.CurrentSplitIndex==0){
-		return true; //Split when you're on the 1st split and Stage 2 music starts
+	if(settings[vars.StageIDSplits] && vars.OldStage==1 && vars.Stage==2 && vars.Episode<3){
+		return true; //Split when Stage changes from 1 to 2 in Eps 1~3
 	}
-	if(settings[vars.MusicStageSplits] && old.Music==255 && current.Music==26 && timer.CurrentSplitIndex==1){
-		return true; //Split when you're on the 2nd split and Stage 3 music starts
+	if(settings[vars.StageIDSplits] && vars.OldStage==2 && vars.Stage==3 && vars.Episode<3){
+		return true; //Split when Stage changes from 2 to 3 in Eps 1~3
 	}
-	if(settings[vars.MusicStageSplits] && old.Music==255 && current.Music==25 && timer.CurrentSplitIndex==2){
-		return true; //Split when you're on the 3rd split and Stage 4 music starts
+	if(settings[vars.StageIDSplits] && vars.OldStage==3 && vars.Stage==4 && vars.Episode<3){
+		return true; //Split when Stage changes from 3 to 4 in Eps 1~3
 	}
-	if(settings[vars.MusicStageSplits] && old.Music==255 && current.Music==24 && timer.CurrentSplitIndex==3){
-		return true; //Split when you're on the 4th split and Stage 5 music starts
+	if(settings[vars.StageIDSplits] && vars.OldStage==4 && vars.Stage==5 && vars.Episode<3){
+		return true; //Split when Stage changes from 4 to 5 in Eps 1~3
 	}
-	if(settings[vars.MusicStageSplits] && old.Music==255 && current.Music==23 && timer.CurrentSplitIndex==4){
-		return true; //Split when you're on the 5th split and Stage 6 music starts
+	if(settings[vars.StageIDSplits] && vars.OldStage==5 && vars.Stage==6 && vars.Episode<3){
+		return true; //Split when Stage changes from 5 to 6 in Eps 1~3
 	}
-	if(settings[vars.MusicStageSplits] && old.Music==255 && current.Music==22 && timer.CurrentSplitIndex==5){
-		return true; //Split when you're on the 6th split and Stage 7 music starts
+	if(settings[vars.StageIDSplits] && vars.OldStage==6 && vars.Stage==7 && vars.Episode<3){
+		return true; //Split when Stage changes from 6 to 7 in Eps 1~3
 	}
-	if(settings[vars.MusicStageSplits] && old.Music==255 && current.Music==21 && timer.CurrentSplitIndex==6){
-		return true; //Split when you're on the 7th split and Stage 8 music starts
+	if(settings[vars.StageIDSplits] && vars.OldStage==7 && vars.Stage==8 && vars.Episode<3){
+		return true; //Split when Stage changes from 7 to 8 in Eps 1~3
 	}
+	if(settings[vars.StageIDSplits] && vars.OldStage<8 && vars.Stage==12 && vars.Episode==3){
+		return true; //Split when Stage changes from 1~7 to Ep4 Camp
+	}
+	if((settings[vars.StageIDSplits] || settings[vars.BossKillSplits]) && vars.OldStage==10 && vars.Stage==11 && vars.Episode==3){
+		return true; //Split when Stage changes from Shmup to Moon in Ep4 if using either of the split settings
+	}
+	if(settings[vars.StageIDSplits] && vars.OldStage<11 && vars.Stage==13 && current.SaveSlot==32){
+		return true; //Split when Stage changes from 1~10 to Boss Rush Lobby
+	}
+
 	return false;
 }
 
@@ -169,4 +198,34 @@ update{
 	else if(current.Music!=28){
 		vars.BossPhase1Killed = false; //Resets to False when boss fight music isn't playing
 	}
+	
+	//These "Old" vars need to update BEFORE the DeepPointer updates below them so they're always one update behind. Must also define those DPs in init as a result.
+	vars.OldCharsAvailable = vars.CharsAvailable;
+	//Solo Values(decimal): Zangetsu(1), Miriam(2), Alfred(4), Gebel(8), Dominique(16), Robert(32), Hachi(64), Shadow Zangetsu(128)
+		//Simply add the values together for combinations of party members.
+	vars.OldStage = vars.Stage;
+	vars.OldEpisode = vars.Episode;
+	
+	if(version=="1.2.2" && (!vars.DeepPointersReady || old.SaveSlot!=current.SaveSlot)){
+		vars.CharsAvailablePointer = new DeepPointer("game.exe", 0x9F6004+(0x8*current.SaveSlot), 0x234); //Creates the DeepPointers only when necessary(when loading script or switching save slots)
+		vars.StagePointer = new DeepPointer("game.exe", 0x9F6004+(0x8*current.SaveSlot), 0x21C);
+		vars.EpisodePointer = new DeepPointer("game.exe", 0x9F6004+(0x8*current.SaveSlot), 0xC);
+		vars.DeepPointersReady = true;
+	}
+	if(version=="1.3.1" && (!vars.DeepPointersReady || old.SaveSlot!=current.SaveSlot)){
+		vars.CharsAvailablePointer = new DeepPointer("game.exe", 0x9F608C+(0x8*current.SaveSlot), 0x234);
+		vars.StagePointer = new DeepPointer("game.exe", 0x9F608C+(0x8*current.SaveSlot), 0x21C);
+		vars.EpisodePointer = new DeepPointer("game.exe", 0x9F608C+(0x8*current.SaveSlot), 0xC);
+		vars.DeepPointersReady = true;
+	}
+	
+	vars.CharsAvailable = vars.CharsAvailablePointer.Deref<byte>(game); //Updates the DeepPointer values
+	vars.Stage = vars.StagePointer.Deref<byte>(game);
+	vars.Episode = vars.EpisodePointer.Deref<byte>(game);
+	
+	//print("OldStage ID=="+vars.OldStage.ToString()+", Stage ID=="+vars.Stage.ToString());
+}
+
+exit{
+	vars.DeepPointersReady = false;
 }
