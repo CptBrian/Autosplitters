@@ -43,15 +43,16 @@ state("game", "1.3.1"){
 }
 
 startup{
-	vars.ASLVersion = "ASL Version 1.5 - August 9, 2020";
-	vars.BossKillSplits = "Split on Final Hit for Non-Final Bosses";
-	vars.StageIDSplits = "Split on Stage ID changes (all modes considered)";
+	vars.ASLVersion = "ASL Version 2.0 - August 10, 2020";
+	vars.MidRunSplits = "Mid-Run Splits (must check to use any)";
 	vars.TitleScreenReset = "Reset on Title Screen (only mid-run)";
-	
+
 	settings.Add(vars.ASLVersion, false);
 	settings.Add("WebsiteInfo", false, "Click the 'Website' button for more info!", vars.ASLVersion);
-	settings.Add(vars.BossKillSplits, false);
-	settings.Add(vars.StageIDSplits, true);
+	settings.Add(vars.MidRunSplits, true);
+	settings.Add("BossKillSplits", false, "Split on Final Hit for Non-Final Bosses", vars.MidRunSplits);
+	settings.Add("StageIDSplits", true, "Split on Stage ID changes (all modes considered)", vars.MidRunSplits);
+	settings.Add("BossEntrySplits", false, "Split upon Entering All Boss Rooms", vars.MidRunSplits);
 	settings.Add(vars.TitleScreenReset, false);
 }
 
@@ -69,7 +70,6 @@ init{
 	}
 	var MD5Hash = exeMD5HashBytes.Select(x => x.ToString("X2")).Aggregate((a, b) => a + b);
 	print("MD5Hash: " + MD5Hash.ToString()); //Lets DebugView show me the MD5Hash of the game executable, which is actually useful.
-	
 
 	if(MD5Hash == "23BFAFE274C9518FB8AF5D8B40DD50E7"){
 		version = "1.2.2";
@@ -80,7 +80,8 @@ init{
 	else{
 		version = "1.3.1"; //Most common or latest version
 	}
-	
+
+	vars.BossPhase1Killed = false;
 	//Definitions required for my DeepPointer old value storage setup
 	vars.DeepPointersReady = false;
 	vars.CharsAvailable = 0;
@@ -113,32 +114,32 @@ reset{
 }
 
 split{
-	if(settings[vars.BossKillSplits] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==11880 && current.CameraY==2520){
+	if(settings["BossKillSplits"] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==11880 && current.CameraY==2520){
 		return true; //Split on final hit for Boss 1
 	}
-	if(settings[vars.BossKillSplits] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==20088 && current.CameraY==600){
+	if(settings["BossKillSplits"] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==20088 && current.CameraY==600){
 		return true; //Split on final hit for Boss 2
 	}
-	if(settings[vars.BossKillSplits] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX>1470 && current.CameraX<4110 && current.CameraY==360){
+	if(settings["BossKillSplits"] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX>1470 && current.CameraX<4110 && current.CameraY==360){
 		return true; //Split on final hit for Boss 3
 	}
-	if(settings[vars.BossKillSplits] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX>9270 && current.CameraX<9300 && current.CameraY>2500 && current.CameraY<2550 && vars.BossPhase1Killed){
+	if(settings["BossKillSplits"] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX>9270 && current.CameraX<9300 && current.CameraY>2500 && current.CameraY<2550 && vars.BossPhase1Killed){
 		return true; //Split on final hit for Boss 4
 	}
-	if(settings[vars.BossKillSplits] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==9288 && current.CameraY==360){
+	if(settings["BossKillSplits"] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==9288 && current.CameraY==360){
 		return true; //Split on final hit for Boss 5
 	}
-	if(settings[vars.BossKillSplits] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==8424 && current.CameraY>2270 && current.CameraY<2340){
+	if(settings["BossKillSplits"] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==8424 && current.CameraY>2270 && current.CameraY<2340){
 		return true; //Split on final hit for Boss 6
 	}
-	if(settings[vars.BossKillSplits] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==5400 && current.CameraY==360){
+	if(settings["BossKillSplits"] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==5400 && current.CameraY==360){
 		return true; //Split on final hit for Boss 7
 	}
-	if(settings[vars.BossKillSplits] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==22248 && current.CameraY==1320 && current.SaveSlot==32){
+	if(settings["BossKillSplits"] && old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==22248 && current.CameraY==1320 && current.SaveSlot==32){
 		//print("Split on final hit for Boss 9 Mephisto in Boss Rush");
 		return true; //Split on final hit for Boss 9 Mephisto in Boss Rush
 	}
-	
+
 	if(old.BossHP>0 && current.BossHP==0 && current.Health>0 && current.CameraX==29160 && current.CameraY>800 && current.CameraY<1200 && current.Pause==0){
 		//print("Split on final hit for Episode 1 ending");
 		return true; //Split on final hit for Episode 1 ending while still alive and not paused
@@ -155,56 +156,90 @@ split{
 		//print("Split on final input for Episode 4 ending(solo)");
 		return true; //Split on final input for Episode 4 ending(solo) while still alive, not paused, Sariel music hasn't changed, lost control, room respawn state changed, haven't moved
 	}
-	
-	if(settings[vars.StageIDSplits] && vars.OldStage==1 && vars.Stage==2 && vars.Episode!=3){
+
+	if(settings["StageIDSplits"] && vars.OldStage==1 && vars.Stage==2 && vars.Episode!=3){
 		return true; //Split when Stage changes from 1 to 2 in all Eps/SM except 4
 	}
-	if(settings[vars.StageIDSplits] && vars.OldStage==2 && vars.Stage==3 && vars.Episode!=3){
+	if(settings["StageIDSplits"] && vars.OldStage==2 && vars.Stage==3 && vars.Episode!=3){
 		return true; //Split when Stage changes from 2 to 3 in all Eps/SM except 4
 	}
-	if(settings[vars.StageIDSplits] && vars.OldStage==3 && vars.Stage==4 && vars.Episode!=3){
+	if(settings["StageIDSplits"] && vars.OldStage==3 && vars.Stage==4 && vars.Episode!=3){
 		return true; //Split when Stage changes from 3 to 4 in all Eps/SM except 4
 	}
-	if(settings[vars.StageIDSplits] && vars.OldStage==4 && vars.Stage==5 && vars.Episode!=3){
+	if(settings["StageIDSplits"] && vars.OldStage==4 && vars.Stage==5 && vars.Episode!=3){
 		return true; //Split when Stage changes from 4 to 5 in all Eps/SM except 4
 	}
-	if(settings[vars.StageIDSplits] && vars.OldStage==5 && vars.Stage==6 && vars.Episode!=3){
+	if(settings["StageIDSplits"] && vars.OldStage==5 && vars.Stage==6 && vars.Episode!=3){
 		return true; //Split when Stage changes from 5 to 6 in all Eps/SM except 4
 	}
-	if(settings[vars.StageIDSplits] && vars.OldStage==6 && vars.Stage==7 && vars.Episode!=3){
+	if(settings["StageIDSplits"] && vars.OldStage==6 && vars.Stage==7 && vars.Episode!=3){
 		return true; //Split when Stage changes from 6 to 7 in all Eps/SM except 4
 	}
-	if(settings[vars.StageIDSplits] && vars.OldStage==7 && vars.Stage==8 && vars.Episode!=3){
+	if(settings["StageIDSplits"] && vars.OldStage==7 && vars.Stage==8 && vars.Episode!=3){
 		return true; //Split when Stage changes from 7 to 8 in all Eps/SM except 4
 	}
-	if(settings[vars.StageIDSplits] && vars.OldStage<8 && vars.Stage==12 && vars.Episode==3){
+	if(settings["StageIDSplits"] && vars.OldStage<8 && vars.Stage==12 && vars.Episode==3){
 		return true; //Split when Stage changes from 1~7 to Ep4 Camp
 	}
-	if((settings[vars.StageIDSplits] || settings[vars.BossKillSplits]) && vars.OldStage==10 && vars.Stage==11 && vars.Episode==3){
+	if((settings["StageIDSplits"] || settings["BossKillSplits"]) && vars.OldStage==10 && vars.Stage==11 && vars.Episode==3){
 		return true; //Split when Stage changes from Shmup to Moon in Ep4 if using either of the split settings
 	}
-	if(settings[vars.StageIDSplits] && vars.OldStage<11 && vars.Stage==13 && current.SaveSlot==32){
+	if(settings["StageIDSplits"] && vars.OldStage<11 && vars.Stage==13 && current.SaveSlot==32){
 		return true; //Split when Stage changes from 1~10 to Boss Rush Lobby
+	}
+
+	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>11447 && current.CameraX<11500 && current.CameraY==2520 && vars.Stage==1 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
+		return true; //Split upon entering Boss 1 fight room
+	}
+	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>19591 && current.CameraX<19650 && current.CameraY==2520 && vars.Stage==2 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
+		return true; //Split upon entering Boss 2 fight room
+	}
+	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>1263 && current.CameraX<1300 && current.CameraY==360 && vars.Stage==3 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
+		return true; //Split upon entering Boss 3 fight room
+	}
+	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>8855 && current.CameraX<8900 && current.CameraY==2520 && vars.Stage==4 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
+		return true; //Split upon entering Boss 4 fight room
+	}
+	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>8855 && current.CameraX<8900 && current.CameraY==360 && vars.Stage==5 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
+		return true; //Split upon entering Boss 5 fight room
+	}
+	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>7991 && current.CameraX<8050 && current.CameraY==2280 && vars.Stage==6 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
+		return true; //Split upon entering Boss 6 fight room
+	}
+	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX==1944 && current.CameraY==7320 && vars.Stage==7 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
+		return true; //Split upon entering Boss 7 fight room
+	}
+	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>25703 && current.CameraX<25750 && current.CameraY==600 && vars.Stage==8 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
+		return true; //Split upon entering Boss 8 fight room (Episode 1)
+	}
+	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>22600 && current.CameraX<22681 && current.CameraY==1320 && vars.Stage==8 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
+		return true; //Split upon entering Boss 8 fight room (Mephisto)
+	}
+	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>=13160 && current.CameraX<13200 && current.CameraY==360 && vars.Stage==11 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
+		return true; //Split upon entering Boss 10 fight room (Sariel)
+	}
+	if(settings["BossEntrySplits"] && vars.OldStage==13 && vars.Stage<12 && vars.Stage>0 && current.SaveSlot==32){
+		return true; //Split when Stage changes from Boss Rush Lobby to 1~11
 	}
 
 	return false;
 }
 
 update{
-	if(old.BossHP==0 && current.BossHP==0 && old.Music==28 && current.Music==28){
+	if(!vars.BossPhase1Killed && old.BossHP==0 && current.BossHP==0 && old.Music==28 && current.Music==28){
 		vars.BossPhase1Killed = true; //True when boss is 0 HP while boss fight music is playing. Can't update on frame it hits 0 or else it meets split condition on same frame. This works.
 	}
-	else if(current.Music!=28){
+	else if(vars.BossPhase1Killed && current.Music!=28){
 		vars.BossPhase1Killed = false; //Resets to False when boss fight music isn't playing
 	}
-	
+
 	//These "Old" vars need to update BEFORE the DeepPointer updates below them so they're always one update behind. Must also define those DPs in init as a result.
 	vars.OldCharsAvailable = vars.CharsAvailable;
 	//Solo Values(decimal): Zangetsu(1), Miriam(2), Alfred(4), Gebel(8), Dominique(16), Robert(32), Hachi(64), Shadow Zangetsu(128)
 		//Simply add the values together for combinations of party members.
 	vars.OldStage = vars.Stage;
 	vars.OldEpisode = vars.Episode;
-	
+
 	if(version=="1.2.2" && (!vars.DeepPointersReady || old.SaveSlot!=current.SaveSlot)){
 		vars.CharsAvailablePointer = new DeepPointer("game.exe", 0x9F6004+(0x8*current.SaveSlot), 0x234); //Creates the DeepPointers only when necessary(when loading script or switching save slots)
 		vars.StagePointer = new DeepPointer("game.exe", 0x9F6004+(0x8*current.SaveSlot), 0x21C);
@@ -217,11 +252,11 @@ update{
 		vars.EpisodePointer = new DeepPointer("game.exe", 0x9F608C+(0x8*current.SaveSlot), 0xC);
 		vars.DeepPointersReady = true;
 	}
-	
+
 	vars.CharsAvailable = vars.CharsAvailablePointer.Deref<byte>(game); //Updates the DeepPointer values
 	vars.Stage = vars.StagePointer.Deref<byte>(game);
 	vars.Episode = vars.EpisodePointer.Deref<byte>(game);
-	
+
 	//print("OldStage ID=="+vars.OldStage.ToString()+", Stage ID=="+vars.Stage.ToString());
 }
 
