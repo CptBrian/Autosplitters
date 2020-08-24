@@ -189,28 +189,28 @@ split{
 	}
 
 	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>11447 && current.CameraX<11500 && current.CameraY==2520 && vars.Stage==1 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
-		return true; //Split upon entering Boss 1 fight room
+		return true; //Split upon entering Boss 1 fight room (Drago-Symbiote)
 	}
 	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>19591 && current.CameraX<19650 && current.CameraY==2520 && vars.Stage==2 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
-		return true; //Split upon entering Boss 2 fight room
+		return true; //Split upon entering Boss 2 fight room (Lubius)
 	}
 	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>1263 && current.CameraX<1300 && current.CameraY==360 && vars.Stage==3 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
-		return true; //Split upon entering Boss 3 fight room
+		return true; //Split upon entering Boss 3 fight room (Gladiator Dozer)
 	}
 	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>8855 && current.CameraX<8900 && current.CameraY==2520 && vars.Stage==4 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
-		return true; //Split upon entering Boss 4 fight room
+		return true; //Split upon entering Boss 4 fight room (Vepar)
 	}
 	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>8855 && current.CameraX<8900 && current.CameraY==360 && vars.Stage==5 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
-		return true; //Split upon entering Boss 5 fight room
+		return true; //Split upon entering Boss 5 fight room (Lavamandra)
 	}
 	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>7991 && current.CameraX<8050 && current.CameraY==2280 && vars.Stage==6 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
-		return true; //Split upon entering Boss 6 fight room
+		return true; //Split upon entering Boss 6 fight room (Titankhamun)
 	}
 	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX==1944 && current.CameraY==7320 && vars.Stage==7 && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
-		return true; //Split upon entering Boss 7 fight room
+		return true; //Split upon entering Boss 7 fight room (Gremory)
 	}
 	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>25703 && current.CameraX<25750 && current.CameraY==600 && (vars.Stage==8 || vars.Stage==9) && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
-		return true; //Split upon entering Boss 8 fight room (Episode 1)
+		return true; //Split upon entering Boss 8 fight room (Beelzebub)
 	}
 	if(settings["BossEntrySplits"] && old.PlayerControl==0 && current.PlayerControl==2 && current.CameraX>22600 && current.CameraX<22681 && current.CameraY==1320 && (vars.Stage==8 || vars.Stage==9) && current.SaveSlot!=32 && current.Pause==0 && current.Health>0){
 		return true; //Split upon entering Boss 8 fight room (Mephisto)
