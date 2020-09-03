@@ -43,7 +43,7 @@ state("game", "1.3.1"){
 }
 
 startup{
-	vars.ASLVersion = "ASL Version 2.1 - August 24, 2020";
+	vars.ASLVersion = "ASL Version 2.2 - September 2, 2020";
 	vars.MidRunSplits = "Mid-Run Splits (must check to use any)";
 	vars.TitleScreenReset = "Reset on Title Screen (only mid-run)";
 
@@ -144,9 +144,9 @@ split{
 		//print("Split on final hit for Episode 1 ending");
 		return true; //Split on final hit for Episode 1 ending while still alive and not paused
 	}
-	if(current.Health>0 && current.CameraX==22248 && current.CameraY==1320 && current.Pause==0 && old.PlayerX==current.PlayerX && current.Music==255 && old.Music==255 && current.PlayerControl==2 && old.PlayerControl==0 && current.RoomRespawnState==8 && old.RoomRespawnState==0 && current.HUD==0 && current.CharRender==0){
+	if(current.Health>0 && current.CameraX==22248 && current.CameraY==1320 && current.Pause==0 && old.PlayerX==current.PlayerX && current.Music==255 && old.Music==255 && current.PlayerControl==2 && old.PlayerControl==0 && current.RoomRespawnState>7 && current.RoomRespawnState<10 && old.RoomRespawnState==0 && current.HUD==0 && current.CharRender==0){
 		//print("Split on final input for Episode 2 ending(both)");
-		return true; //Split on final input for Episode 2 ending(both) while still alive, not paused, no music and hasn't changed, lost control, room respawn state changed, haven't moved, no HUD, character hidden
+		return true; //Split on final input for Episode 2 ending(both) while still alive, not paused, no music and hasn't changed, lost control, room respawn state changed, haven't moved, no HUD, character hidden. Note: RoomRespawnState is 9 in Ep2 instead of 8
 	}
 	if(current.Health>0 && current.CameraX==15768 && current.CameraY==1800 && current.Pause==0 && old.PlayerX==current.PlayerX && current.Music==8 && old.Music==8 && current.PlayerControl==2 && old.PlayerControl==0 && current.RoomRespawnState==8 && old.RoomRespawnState==0){
 		//print("Split on final input for Episode 4 ending(partied)");
