@@ -1,181 +1,207 @@
 /*
 	Yooka-Laylee and the Impossible Lair (Released October 8, 2019)
-	ASL originally by DerKO with many revamps by CptBrian ♥
+	ASL originally by DerKO with revamps by CptBrian ♥ & tipdaddy78 (aka tipW)
 */
-state("YLILWin64", "Unknown Version"){	//Defaults to Steam 1.04
-	float XPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x10;
-	float YPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x14;
-	float ZPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x18;
-	byte isRunningTasks : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x97;
-	byte isLoading : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x98;
-	byte isInteractable : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x9A;
-	byte Restart : "UnityPlayer.dll", 0x0146ECE8, 0x128, 0x8, 0x8, 0x80, 0x60;
-	byte beeBreak : "mono.dll", 0x002675E0, 0x40, 0xE30, 0x90;
-	byte playerControl : "mono.dll", 0x002675E0, 0xA0, 0xC28, 0x8, 0x20, 0x30, 0x20, 0x18, 0x78, 0x50, 0x58, 0xA6;
-	int owTonics : "UnityPlayer.dll", 0x0144DBD8, 0x8, 0x8, 0x8, 0x2D8, 0x28, 0x18, 0x28;
-	int beeTotal : "mono.dll", 0x00268180, 0x50, 0xCE0, 0x20, 0x50, 0x30, 0x8, 0x18, 0x0, 0x2C;
-	int Level : "mono.dll", 0x002675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xC8;
-	byte LevelLoad : "mono.dll", 0x002675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xD0;
-	int Health : "mono.dll", 0x002675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38;
+state("YLILWin64", "Unknown Version") { // Defaults to Steam 1.01.
+	int owTonics        : "UnityPlayer.dll", 0x144DBD8, 0x8, 0x8, 0x8, 0x2D8, 0x28, 0x18, 0x28;
+	byte Restart        : "UnityPlayer.dll", 0x146ECE8, 0x128, 0x8, 0x8, 0x80, 0x60;
+	float XPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x10;
+	float YPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x14;
+	float ZPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x18;
+	byte beeBreak       : "mono.dll", 0x2675E0, 0x40, 0xE30, 0x90;
+	byte isRunningTasks : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x97;
+	byte isLoading      : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x98;
+	byte isInteractable : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x9A;
+	int Level           : "mono.dll", 0x2675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xC8;
+	byte LevelLoad      : "mono.dll", 0x2675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xD0;
+	byte playerControl  : "mono.dll", 0x2675E0, 0xA0, 0xC28, 0x8, 0x20, 0x30, 0x20, 0x18, 0x78, 0x50, 0x58, 0xA6;
+	int Health          : "mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38;
+	int beeTotal        : "mono.dll", 0x268180, 0x50, 0xCE0, 0x20, 0x50, 0x30, 0x8, 0x18, 0x0, 0x2C;
 }
-state("YLILWin64", "Steam 1.01"){
-	float XPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x10;
-	float YPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x14;
-	float ZPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x18;
-	byte isRunningTasks : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x97;
-	byte isLoading : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x98;
-	byte isInteractable : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x9A;
-	byte Restart : "UnityPlayer.dll", 0x0146ECE8, 0x128, 0x8, 0x8, 0x80, 0x60;
-	byte beeBreak : "mono.dll", 0x002675E0, 0x40, 0xE30, 0x90;
-	byte playerControl : "mono.dll", 0x002675E0, 0xA0, 0xC28, 0x8, 0x20, 0x30, 0x20, 0x18, 0x78, 0x50, 0x58, 0xA6;
-	int owTonics : "UnityPlayer.dll", 0x0144DBD8, 0x8, 0x8, 0x8, 0x2D8, 0x28, 0x18, 0x28;
-	int beeTotal : "mono.dll", 0x00268180, 0x50, 0xCE0, 0x20, 0x50, 0x30, 0x8, 0x18, 0x0, 0x2C;
-	int Level : "mono.dll", 0x002675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xC8;
-	byte LevelLoad : "mono.dll", 0x002675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xD0;
-	int Health : "mono.dll", 0x002675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38;
+
+state("YLILWin64", "Steam 1.01") {
+	int owTonics        : "UnityPlayer.dll", 0x144DBD8, 0x8, 0x8, 0x8, 0x2D8, 0x28, 0x18, 0x28;
+	byte Restart        : "UnityPlayer.dll", 0x146ECE8, 0x128, 0x8, 0x8, 0x80, 0x60;
+	float XPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x10;
+	float YPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x14;
+	float ZPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x18;
+	byte beeBreak       : "mono.dll", 0x2675E0, 0x40, 0xE30, 0x90;
+	byte isRunningTasks : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x97;
+	byte isLoading      : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x98;
+	byte isInteractable : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x9A;
+	int Level           : "mono.dll", 0x2675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xC8;
+	byte LevelLoad      : "mono.dll", 0x2675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xD0;
+	byte playerControl  : "mono.dll", 0x2675E0, 0xA0, 0xC28, 0x8, 0x20, 0x30, 0x20, 0x18, 0x78, 0x50, 0x58, 0xA6;
+	int Health          : "mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38;
+	int beeTotal        : "mono.dll", 0x268180, 0x50, 0xCE0, 0x20, 0x50, 0x30, 0x8, 0x18, 0x0, 0x2C;
 }
-state("YLILWin64", "EGS 1.02"){
-	float XPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x10;
-	float YPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x14;
-	float ZPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x18;
-	byte isRunningTasks : "UnityPlayer.dll", 0x0144DBD8, 0x8, 0x330, 0x398, 0x20;
-	byte isLoading : "UnityPlayer.dll", 0x0144DBD8, 0x8, 0x330, 0x398, 0x21;
-	byte isInteractable : "UnityPlayer.dll", 0x0144DBD8, 0x8, 0x330, 0x398, 0x23;
-	byte Restart : "UnityPlayer.dll", 0x0144DBD8, 0x8, 0x258, 0x80, 0x60;
-	byte beeBreak : "UnityPlayer.dll", 0x0144DBD8, 0x8, 0x2D8, 0x80, 0x0, 0x278, 0x68, 0x30;
-	byte playerControl : "mono-2.0-bdwgc.dll", 0x0043ECC0, 0xA8, 0xC78, 0x8, 0x18, 0x58, 0x20, 0x18, 0x78, 0x50, 0x58, 0xA6;
-	int owTonics : "UnityPlayer.dll", 0x0144DBD8, 0x8, 0x68, 0x28, 0x28, 0x18, 0x28;
-	int beeTotal : "mono-2.0-bdwgc.dll", 0x0043ECC0, 0x98, 0x10, 0x728, 0x10, 0x30, 0x0, 0x18, 0x8, 0x70, 0x0, 0x2C;
-	int Level : "mono-2.0-bdwgc.dll", 0x0043ECC0, 0xA8, 0x348, 0x10, 0xC8;
-	byte LevelLoad : "mono-2.0-bdwgc.dll", 0x0043ECC0, 0xA8, 0x348, 0x10, 0xD0;
-	int Health : "mono-2.0-bdwgc.dll", 0x0043ECC0, 0xA8, 0xC78, 0x8, 0x18, 0x58, 0x20, 0x18, 0x158, 0x38;
+
+state("YLILWin64", "EGS 1.02") {
+	int owTonics        : "UnityPlayer.dll", 0x144DBD8, 0x8, 0x68, 0x28, 0x28, 0x18, 0x28;
+	byte Restart        : "UnityPlayer.dll", 0x144DBD8, 0x8, 0x258, 0x80, 0x60;
+	byte beeBreak       : "UnityPlayer.dll", 0x144DBD8, 0x8, 0x2D8, 0x80, 0x0, 0x278, 0x68, 0x30;
+	byte isRunningTasks : "UnityPlayer.dll", 0x144DBD8, 0x8, 0x330, 0x398, 0x20;
+	byte isLoading      : "UnityPlayer.dll", 0x144DBD8, 0x8, 0x330, 0x398, 0x21;
+	byte isInteractable : "UnityPlayer.dll", 0x144DBD8, 0x8, 0x330, 0x398, 0x23;
+	float XPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x10;
+	float YPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x14;
+	float ZPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x18;
+	int beeTotal        : "mono-2.0-bdwgc.dll", 0x43ECC0, 0x98, 0x10, 0x728, 0x10, 0x30, 0x0, 0x18, 0x8, 0x70, 0x0, 0x2C;
+	int Level           : "mono-2.0-bdwgc.dll", 0x43ECC0, 0xA8, 0x348, 0x10, 0xC8;
+	byte LevelLoad      : "mono-2.0-bdwgc.dll", 0x43ECC0, 0xA8, 0x348, 0x10, 0xD0;
+	byte playerControl  : "mono-2.0-bdwgc.dll", 0x43ECC0, 0xA8, 0xC78, 0x8, 0x18, 0x58, 0x20, 0x18, 0x78, 0x50, 0x58, 0xA6;
+	int Health          : "mono-2.0-bdwgc.dll", 0x43ECC0, 0xA8, 0xC78, 0x8, 0x18, 0x58, 0x20, 0x18, 0x158, 0x38;
 }
-state("YLILWin64", "Steam 1.03"){
-	float XPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x10;
-	float YPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x14; //Coordinates not perfect, but decent. Needs replacement.
-	float ZPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x18;
-	byte isRunningTasks : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x97;
-	byte isLoading : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x98;
-	byte isInteractable : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x9A;
-	byte Restart : "UnityPlayer.dll", 0x0146ECE8, 0x128, 0x8, 0x8, 0x80, 0x60;
-	byte beeBreak : "mono.dll", 0x002675E0, 0x40, 0xE30, 0x90;
-	byte playerControl : "mono.dll", 0x002675E0, 0xA0, 0xC28, 0x8, 0x20, 0x30, 0x20, 0x18, 0x78, 0x50, 0x58, 0xA6;
-	int owTonics : "UnityPlayer.dll", 0x0144DBD8, 0x8, 0x8, 0x8, 0x2D8, 0x28, 0x18, 0x28;
-	int beeTotal : "mono.dll", 0x00268180, 0x50, 0xCE0, 0x20, 0x50, 0x30, 0x8, 0x18, 0x0, 0x2C;
-	int Level : "mono.dll", 0x002675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xC8;
-	byte LevelLoad : "mono.dll", 0x002675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xD0;
-	int Health : "mono.dll", 0x002675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38;
+
+state("YLILWin64", "Steam 1.03") {
+	int owTonics        : "UnityPlayer.dll", 0x144DBD8, 0x8, 0x8, 0x8, 0x2D8, 0x28, 0x18, 0x28;
+	byte Restart        : "UnityPlayer.dll", 0x146ECE8, 0x128, 0x8, 0x8, 0x80, 0x60;
+	float XPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x10;
+	float YPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x14; // Coordinates not perfect, but decent. Needs replacement.
+	float ZPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x18;
+	byte beeBreak       : "mono.dll", 0x2675E0, 0x40, 0xE30, 0x90;
+	byte isRunningTasks : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x97;
+	byte isLoading      : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x98;
+	byte isInteractable : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x9A;
+	int Level           : "mono.dll", 0x2675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xC8;
+	byte LevelLoad      : "mono.dll", 0x2675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xD0;
+	byte playerControl  : "mono.dll", 0x2675E0, 0xA0, 0xC28, 0x8, 0x20, 0x30, 0x20, 0x18, 0x78, 0x50, 0x58, 0xA6;
+	int Health          : "mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38;
+	int beeTotal        : "mono.dll", 0x268180, 0x50, 0xCE0, 0x20, 0x50, 0x30, 0x8, 0x18, 0x0, 0x2C;
 }
-state("YLILWin64", "Demo 1.03"){
-	float XPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x10;
-	float YPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x14;
-	float ZPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x18;
-	byte isRunningTasks : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x97;
-	byte isLoading : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x98;
-	byte isInteractable : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x9A;
-	byte Restart : "UnityPlayer.dll", 0x0146ECE8, 0x128, 0x8, 0x8, 0x80, 0x60;
-	byte beeBreak : "mono.dll", 0x002675E0, 0x40, 0xE30, 0x90;
-	byte playerControl : "mono.dll", 0x002675E0, 0xA0, 0xC28, 0x8, 0x20, 0x30, 0x20, 0x18, 0x78, 0x50, 0x58, 0xA6;
-	int owTonics : "UnityPlayer.dll", 0x0144DBD8, 0x8, 0x8, 0x8, 0x2D8, 0x28, 0x18, 0x28;
-	int beeTotal : "mono.dll", 0x00268180, 0x50, 0xCE0, 0x20, 0x50, 0x30, 0x8, 0x18, 0x0, 0x2C;
-	int Level : "mono.dll", 0x002675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xC8;
-	byte LevelLoad : "mono.dll", 0x002675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xD0;
-	int Health : "mono.dll", 0x002675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38;
+
+state("YLILWin64", "Demo 1.03") {
+	int owTonics        : "UnityPlayer.dll", 0x144DBD8, 0x8, 0x8, 0x8, 0x2D8, 0x28, 0x18, 0x28;
+	byte Restart        : "UnityPlayer.dll", 0x146ECE8, 0x128, 0x8, 0x8, 0x80, 0x60;
+	float XPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x10;
+	float YPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x14;
+	float ZPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x18;
+	byte beeBreak       : "mono.dll", 0x2675E0, 0x40, 0xE30, 0x90;
+	byte isRunningTasks : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x97;
+	byte isLoading      : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x98;
+	byte isInteractable : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x9A;
+	int Level           : "mono.dll", 0x2675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xC8;
+	byte LevelLoad      : "mono.dll", 0x2675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xD0;
+	byte playerControl  : "mono.dll", 0x2675E0, 0xA0, 0xC28, 0x8, 0x20, 0x30, 0x20, 0x18, 0x78, 0x50, 0x58, 0xA6;
+	int Health          : "mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38;
+	int beeTotal        : "mono.dll", 0x268180, 0x50, 0xCE0, 0x20, 0x50, 0x30, 0x8, 0x18, 0x0, 0x2C;
 }
-state("YLILWin64", "Steam 1.04"){
-	float XPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x10;
-	float YPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x14; //Coordinates not perfect, but decent. Needs replacement.
-	float ZPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x18;
-	byte isRunningTasks : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x97;
-	byte isLoading : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x98;
-	byte isInteractable : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x9A;
-	byte Restart : "UnityPlayer.dll", 0x0146ECE8, 0x128, 0x8, 0x8, 0x80, 0x60;
-	byte beeBreak : "mono.dll", 0x002675E0, 0x40, 0xE30, 0x90;
-	byte playerControl : "mono.dll", 0x002675E0, 0xA0, 0xC28, 0x8, 0x20, 0x30, 0x20, 0x18, 0x78, 0x50, 0x58, 0xA6;
-	int owTonics : "UnityPlayer.dll", 0x0144DBD8, 0x8, 0x8, 0x8, 0x2D8, 0x28, 0x18, 0x28;
-	int beeTotal : "mono.dll", 0x00268180, 0x50, 0xCE0, 0x20, 0x50, 0x30, 0x8, 0x18, 0x0, 0x2C; //Potential consistency problem in 1.04?
-	int Level : "mono.dll", 0x002675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xC8;
-	byte LevelLoad : "mono.dll", 0x002675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xD0;
-	int Health : "mono.dll", 0x002675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38;
+
+state("YLILWin64", "Steam 1.04") {
+	int owTonics        : "UnityPlayer.dll", 0x144DBD8, 0x8, 0x8, 0x8, 0x2D8, 0x28, 0x18, 0x28;
+	byte Restart        : "UnityPlayer.dll", 0x146ECE8, 0x128, 0x8, 0x8, 0x80, 0x60;
+	float XPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x10;
+	float YPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x14; // Coordinates not perfect, but decent. Needs replacement.
+	float ZPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x18;
+	byte beeBreak       : "mono.dll", 0x2675E0, 0x40, 0xE30, 0x90;
+	byte isRunningTasks : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x97;
+	byte isLoading      : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x98;
+	byte isInteractable : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x9A;
+	int Level           : "mono.dll", 0x2675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xC8;
+	byte LevelLoad      : "mono.dll", 0x2675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xD0;
+	byte playerControl  : "mono.dll", 0x2675E0, 0xA0, 0xC28, 0x8, 0x20, 0x30, 0x20, 0x18, 0x78, 0x50, 0x58, 0xA6;
+	int Health          : "mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38;
+	int beeTotal        : "mono.dll", 0x268180, 0x50, 0xCE0, 0x20, 0x50, 0x30, 0x8, 0x18, 0x0, 0x2C; // Potential consistency problem in 1.04?
+	// Hard Mode Additions:
+	int ChkMtDeaths     : "mono.dll", 0x264A28, 0x1C0, 0xE10, 0x3C8, 0x300, 0x58, 0x198, 0x18, 0x10, 0x30, 0x30, 0x68, 0x28, 0x3C; // Death Count for always-current CheckMate (to prevent warping)
+	int MaxHealth       : "mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x34; // Prevents Bell interaction when set to 1 (2=Laylee, 1=Yooka, 0=Dead)
+	long EquippedTonic1 : "mono.dll", 0x2675E0, 0x90, 0x10, 0xF88, 0x40, 0x0, 0x30, 0x8, 0x18, 0x18, 0x20, 0x20;
+	long EquippedTonic2 : "mono.dll", 0x2675E0, 0x90, 0x10, 0xF88, 0x40, 0x0, 0x30, 0x8, 0x18, 0x18, 0x20, 0x28;
+	long EquippedTonic3 : "mono.dll", 0x2675E0, 0x90, 0x10, 0xF88, 0x40, 0x0, 0x30, 0x8, 0x18, 0x18, 0x20, 0x30;
+	long EquippedTonic4 : "mono.dll", 0x2675E0, 0x90, 0x10, 0xF88, 0x40, 0x0, 0x30, 0x8, 0x18, 0x18, 0x20, 0x38;
+	long IDLessChkMts   : "mono.dll", 0x2675E0, 0x40, 0x138, 0x20, 0x20, 0x20, 0x50, 0xB8, 0x38; // Stored Tonic IDs (randomized) to equip
+	long IDRollEvFaster : "mono.dll", 0x2675E0, 0x40, 0x138, 0x20, 0x20, 0x20, 0x50, 0xB8, 0xA8;
+	long IDSpotlight    : "mono.dll", 0x2675E0, 0x40, 0x138, 0x20, 0x20, 0x20, 0x50, 0xB8, 0x180;
+	long IDGooglyEyes   : "mono.dll", 0x2675E0, 0x40, 0x138, 0x20, 0x20, 0x20, 0x50, 0xB8, 0x80;
+	long IDDerorrim     : "mono.dll", 0x2675E0, 0x40, 0x138, 0x20, 0x20, 0x20, 0x50, 0xB8, 0x130;
+	long IDChamColors   : "mono.dll", 0x2675E0, 0x40, 0x138, 0x20, 0x20, 0x20, 0x50, 0xB8, 0x1C8;
+	byte ULLessChkMts   : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x38, 0x18; // Tonic Unlock Flags (forced tonics must also be "found" to prevent a hard-lock)
+	byte ULRollEvFaster : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0xA8, 0x18;
+	byte ULSpotlight    : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x180, 0x18;
+	byte ULGooglyEyes   : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x80, 0x18;
+	byte ULDerorrim     : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x130, 0x18;
+	byte ULChamColors   : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x1C8, 0x18;
+	int DLCTonics       : "mono.dll", 0x2675E0, 0x40, 0x148, 0x18, 0x500, 0x3E8, 0x0, 0x48; // Unlocks DLC tonics when set to 1 (for current file session only)
 }
-state("YLILWin64", "EGS 1.04"){
-	float XPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x10;
-	float YPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x14; //Coordinates not perfect, but decent. Needs replacement.
-	float ZPos : "UnityPlayer.dll", 0x0147A5B0, 0x70, 0x0, 0x60, 0x70, 0x18;
-	byte isRunningTasks : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x97;
-	byte isLoading : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x98;
-	byte isInteractable : "mono.dll", 0x002675E0, 0x48, 0xE68, 0x98, 0x9A;
-	byte Restart : "UnityPlayer.dll", 0x0146ECE8, 0x128, 0x8, 0x8, 0x80, 0x60;
-	byte beeBreak : "mono.dll", 0x002675E0, 0x40, 0xE30, 0x90;
-	byte playerControl : "mono.dll", 0x002675E0, 0xA0, 0xC28, 0x8, 0x20, 0x30, 0x20, 0x18, 0x78, 0x50, 0x58, 0xA6;
-	int owTonics : "UnityPlayer.dll", 0x0144DBD8, 0x8, 0x8, 0x8, 0x2D8, 0x28, 0x18, 0x28;
-	int beeTotal : "mono.dll", 0x00268180, 0x50, 0xCE0, 0x20, 0x50, 0x30, 0x8, 0x18, 0x0, 0x2C; //Potential consistency problem in 1.04?
-	int Level : "mono.dll", 0x002675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xC8;
-	byte LevelLoad : "mono.dll", 0x002675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xD0;
-	int Health : "mono.dll", 0x002675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38;
+
+state("YLILWin64", "EGS 1.04") {
+	int owTonics        : "UnityPlayer.dll", 0x144DBD8, 0x8, 0x8, 0x8, 0x2D8, 0x28, 0x18, 0x28;
+	byte Restart        : "UnityPlayer.dll", 0x146ECE8, 0x128, 0x8, 0x8, 0x80, 0x60;
+	float XPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x10;
+	float YPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x14; // Coordinates not perfect, but decent. Needs replacement.
+	float ZPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x18;
+	byte beeBreak       : "mono.dll", 0x2675E0, 0x40, 0xE30, 0x90;
+	byte isRunningTasks : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x97;
+	byte isLoading      : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x98;
+	byte isInteractable : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x9A;
+	int Level           : "mono.dll", 0x2675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xC8;
+	byte LevelLoad      : "mono.dll", 0x2675E0, 0xA0, 0x4B8, 0x8, 0x110, 0x130, 0x60, 0xD0;
+	byte playerControl  : "mono.dll", 0x2675E0, 0xA0, 0xC28, 0x8, 0x20, 0x30, 0x20, 0x18, 0x78, 0x50, 0x58, 0xA6;
+	int Health          : "mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38;
+	int beeTotal        : "mono.dll", 0x268180, 0x50, 0xCE0, 0x20, 0x50, 0x30, 0x8, 0x18, 0x0, 0x2C; // Potential consistency problem in 1.04?
 }
 
 startup{
+	vars.HardMode = "HARD Mode game modification — All you need! (info on forums)";
 	vars.ILRunsMode = "IL Mode: Start on control, Auto-Reset, Split on hive break";
 	vars.TutStart = "TUTORIAL Entry Start";
 	vars.LairSplits = "LAIR Splits on Entry, Sections, Fights & Ending";
 	vars.EntrySplits = "CHAPTER Entry splits (use BEES for exit)";
 	vars.BeeSplits = "BEES: Split on all bees (not for IL Mode)";
+	vars.SpecificBees = "SPECIFIC BEES: Split at specific Bee Counts (not for IL Mode)";
 	vars.TonicSplits = "TONICS: Split on all grabbed OW Tonics (not Catchee)";
+	vars.SpecificTonics = "SPECIFIC TONICS: Split at a specific Tonic Count (excluding Catchee)";
 	vars.PagieSplits = "PAGIE Entry & Exit splits";
 	vars.OWCat = "OVERWORLD Entry Start & adjusted load removal while in control";
+	vars.AltLoadRemove = "Alternate Load Removal Method";
 	
+	
+	settings.Add(vars.HardMode, false, vars.HardMode);
+		settings.Add("NoSpotlight", false, "Replace Spotlight with Chameleon Colors (B swaps!)", vars.HardMode);
 	settings.Add(vars.ILRunsMode, false);
 	settings.Add(vars.TutStart, false);
 	settings.Add(vars.LairSplits, false);
-	settings.Add("LairSplitFromTut", false, "Split when entering from Tutorial", vars.LairSplits);
-	settings.Add("LairDeathSplit", true, "Section 1 Death split", vars.LairSplits);
+		settings.Add("LairSplitFromTut", false, "Split when entering from Tutorial", vars.LairSplits);
+		settings.Add("LairDeathSplit", true, "Section 1 Death split", vars.LairSplits);
 	settings.Add(vars.EntrySplits, false);
 	settings.Add(vars.BeeSplits, false);
+	settings.Add(vars.SpecificBees, false);
+	for (var i = 1; i < 49; i++) {
+		settings.Add(i + " Bees", false, i + " Bees", vars.SpecificBees);
+	}
 	settings.Add(vars.TonicSplits, false);
+	settings.Add(vars.SpecificTonics, false);
+	for (var i = 1; i < 61; i++) {
+		settings.Add(i + " Tonics", false, i + " Tonics", vars.SpecificTonics);
+	}
 	settings.Add(vars.PagieSplits, false);
 	settings.Add(vars.OWCat, false);
+	settings.Add(vars.AltLoadRemove, false);
 	settings.Add("Technical", true, "Technical");
-	settings.Add("Logging", false, "Debug Logging (Log files help solve auto-splitting issues)", "Technical");
-	settings.Add("TestDelaysRestart", false, "Test delays: Transitions to Player Control. (Restarts & OW warps)", "Technical");
-	settings.Add("TestDelaysBeeBreakToLoad", false, "Test delays: IL Bee Break to Loading", "Technical");
+		settings.Add("Logging", false, "Debug Logging (Log files help solve auto-splitting issues)", "Technical");
+		settings.Add("TestDelaysRestart", false, "Test delays: Transitions to Player Control. (Restarts & OW warps)", "Technical");
+		settings.Add("TestDelaysBeeBreakToLoad", false, "Test delays: IL Bee Break to Loading", "Technical");
 }
 
 init{
 	//This code identifies different YookaLayleeIL versions with MD5 checksum on the Assembly-CSharp.dll.
 	byte[] exeMD5HashBytes = new byte[0];
-	using (var md5 = System.Security.Cryptography.MD5.Create())
-	{
+	using (var md5 = System.Security.Cryptography.MD5.Create()) {
 		using (var s = File.Open(modules.First().FileName.Substring(0, modules.First().FileName.Length-13)
-		+ "YLILWin64_Data\\Managed\\Assembly-CSharp.dll", FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-		{
+		+ "YLILWin64_Data\\Managed\\Assembly-CSharp.dll", FileMode.Open, FileAccess.Read, FileShare.ReadWrite)) {
 			exeMD5HashBytes = md5.ComputeHash(s);
 		} 
 	}
 	vars.MD5Hash = exeMD5HashBytes.Select(x => x.ToString("X2")).Aggregate((a, b) => a + b);
 	print("MD5Hash: " + vars.MD5Hash.ToString()); //Prints detected MD5 once to see from DebugView, so I don't need to enable logging to get the MD5.
 	
-	if(vars.MD5Hash == "E53699BBB90A71D45D9531209B900AAC"){
-		version = "Steam 1.01";
-	}
-	else if(vars.MD5Hash == "D87ABA30D79B660B27A6AAB3994ACCCB"){
-		version = "Steam 1.03";
-	}
-	else if(vars.MD5Hash == "2C94F6C5E858B5D33141EF3715294B39"){
-		version = "EGS 1.02"; //EGS Version number 1.0.27910
-	}
-	else if(vars.MD5Hash == "AA8CB9D44275AF063A760480B08773AB"){
-		version = "Demo 1.03";
-	}
-	else if(vars.MD5Hash == "ECE3D69E79D60DBC87DFE356D9DB4EEC"){
-		version = "Steam 1.04";
-	}
-	else if(vars.MD5Hash == "0568E1950E39A1D3FE04106F07FE4FE4"){
-		version = "EGS 1.04"; //EGS Version number 1.0.28131 and now uses mono.dll instead of mono-2.0-bdwgc.dll from 1.02
-	}
-	else{
-		version = "Unknown Version";
-	}
+	if(vars.MD5Hash == "E53699BBB90A71D45D9531209B900AAC") version = "Steam 1.01";
+	else if(vars.MD5Hash == "D87ABA30D79B660B27A6AAB3994ACCCB") version = "Steam 1.03";
+	else if(vars.MD5Hash == "2C94F6C5E858B5D33141EF3715294B39") version = "EGS 1.02"; //EGS Version number 1.0.27910
+	else if(vars.MD5Hash == "AA8CB9D44275AF063A760480B08773AB") version = "Demo 1.03";
+	else if(vars.MD5Hash == "ECE3D69E79D60DBC87DFE356D9DB4EEC") version = "Steam 1.04";
+	else if(vars.MD5Hash == "0568E1950E39A1D3FE04106F07FE4FE4") version = "EGS 1.04"; //EGS Version number 1.0.28131 and now uses mono.dll instead of mono-2.0-bdwgc.dll from 1.02
+	else version = "Unknown Version";
 	
 	//Logging variables
 	vars.logFileName = "YLIL.log";
@@ -184,148 +210,180 @@ init{
 	vars.timerSecond = 0;
 	vars.timerMinuteOLD = -1;
 	vars.timerMinute = 0;
+	vars.hasLoggedLoad = false;
+	vars.loadingFl = 0;
 	
 	// If the logging setting is checked, this function logs game info to a log file.
 	// If the file reaches maz size, it will delete the oldest entries.
-	vars.Log = (Action<string>)( myString => {
-		
-		if(settings["Logging"]){
-			
+	vars.Log = (Action<string>)(myString => {
+		if (settings["Logging"]) {
 			vars.logwriter = File.AppendText(vars.logFileName);
-			
 			print(myString);
 			vars.logwriter.WriteLine(myString);
-			
 			vars.logwriter.Close();
-			
-			if((new FileInfo(vars.logFileName)).Length > vars.maxFileSize){
+
+			if ((new FileInfo(vars.logFileName)).Length > vars.maxFileSize) {
 				string[] lines = File.ReadAllLines(vars.logFileName);
 				File.WriteAllLines(vars.logFileName, lines.Skip(lines.Length/8).ToArray());
 			}
-		}
-		else{
-			if(File.Exists(vars.logFileName)){
+		} else
+			if (File.Exists(vars.logFileName))
 				File.Delete(vars.logFileName);
-			}
-		}
-	});
-	
-	// If a second/minute has passed, log important values
-	// Keep in mind, if a pointer returns an invalid address, LiveSplit reads the value as 0
-	vars.PeriodicLogging = (Action)( () => {
-		vars.timerMinute = timer.CurrentTime.RealTime.Value.Minutes;
-	
-		if(vars.timerMinute != vars.timerMinuteOLD){
-			vars.timerMinuteOLD = vars.timerMinute;
-			
-			vars.Log("\n" + "TimeOfDay: " + DateTime.Now.ToString() + "\n" +
-			"Version: " + version.ToString() + "\n" +
-			"MD5Hash: " + vars.MD5Hash.ToString() + "\n" +
-			"ILRunsMode:" + settings[vars.ILRunsMode].ToString() + "\n" +
-			"TutStart:" + settings[vars.TutStart].ToString() + "\n" +
-			"LairSplits:" + settings[vars.LairSplits].ToString() + "\n" +
-			"LairSplitFromTut:" + settings["LairSplitFromTut"].ToString() + "\n" +
-			"LairDeathSplit:" + settings["LairDeathSplit"].ToString() + "\n" +
-			"EntrySplits:" + settings[vars.EntrySplits].ToString() + "\n" +
-			"BeeSplits:" + settings[vars.BeeSplits].ToString() + "\n" +
-			"TonicSplits:" + settings[vars.TonicSplits].ToString() + "\n" +
-			"PagieSplits:" + settings[vars.PagieSplits].ToString() + "\n" +
-			"OWCat:" + settings[vars.OWCat].ToString() + "\n" +
-			"TestDelaysRestart:" + settings["TestDelaysRestart"].ToString() + "\n" +
-			"TestDelaysBeeBreakToLoad:" + settings["TestDelaysBeeBreakToLoad"].ToString() + "\n");
-		}
-	
-		vars.timerSecond = timer.CurrentTime.RealTime.Value.Seconds;
-	
-		if(vars.timerSecond != vars.timerSecondOLD){
-			vars.timerSecondOLD = vars.timerSecond;
-			
-			vars.Log("RealTime: " + timer.CurrentTime.RealTime.Value.ToString(@"hh\:mm\:ss") + "\n" +
-			"GameTime: " + timer.CurrentTime.GameTime.Value.ToString(@"hh\:mm\:ss") + "\n" +
-			"XPos: " + current.XPos + "\n" +
-			"YPos: " + current.YPos + "\n" +
-			"ZPos: " + current.ZPos + "\n" +
-			"isRunningTasks: " + current.isRunningTasks + "\n" +
-			"isLoading: " + current.isLoading + "\n" +
-			"isInteractable: " + current.isInteractable + "\n" +
-			"Restart: " + current.Restart + "\n" +
-			"beeBreak: " + current.beeBreak + "\n" +
-			"playerControl: " + current.playerControl + "\n" +
-			"owTonics: " + current.owTonics + "\n" +
-			"beeTotal: " + current.beeTotal + "\n" +
-			"Level: " + current.Level + "\n" +
-			"LevelLoad: " + current.LevelLoad + "\n" +
-			"Health: " + current.Health + "\n");
-		}
 	});
 }
 
 start{
-	if(settings[vars.ILRunsMode] && current.Restart == 1 && current.playerControl == 1 && old.playerControl == 0 && current.Level != 10 && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"]){
-		vars.Log("-Starting-\n");
-		return true;						        //Start timer for normal ILs
-	}
-	else if(settings["TestDelaysRestart"] && current.Restart == 0 && !settings["TestDelaysBeeBreakToLoad"]){
-		vars.Log("-Starting-\n");
-		return true;						        //Start the timer with old IL timing to test transition delay times
-	}
-	else if(settings["TestDelaysBeeBreakToLoad"] && current.beeBreak == 1 && old.beeBreak == 2 && !settings["TestDelaysRestart"]){
-		vars.Log("-Starting-\n");
-		return true;						        //Start the timer on bee break to test how long it takes to hit the load
-	}
-	else if(settings[vars.OWCat] && current.Level == 10 && current.LevelLoad == 0 && old.LevelLoad == 1){
-		vars.Log("-Starting-\n");
-		return true;						        //Start the timer upon loading into the the Overworld
-	}
-	else if(settings[vars.TutStart] && current.Level == 4 && current.LevelLoad == 0 && old.LevelLoad == 1){
-		vars.Log("-Starting-\n");
-		return true;						        //Start the timer upon loading into the Tutorial
+	if (settings[vars.ILRunsMode] && current.Restart == 1 && current.playerControl == 1 && old.playerControl == 0 && current.Level != 10 && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"]) {
+		vars.Log("– Starting timer for normal ILs! –\n");
+		return true;						        
+	} else if (settings["TestDelaysRestart"] && current.Restart == 0 && !settings["TestDelaysBeeBreakToLoad"]) {
+		vars.Log("– Starting timer with old IL timing to test transition delay times! –\n");
+		return true;						        
+	} else if (settings["TestDelaysBeeBreakToLoad"] && current.beeBreak == 1 && old.beeBreak == 2 && !settings["TestDelaysRestart"]) {
+		vars.Log("– Starting timer on bee break to test how long it takes to hit the load! –\n");
+		return true;						        
+	} else if (settings[vars.OWCat] && current.Level == 10 && current.LevelLoad == 0 && old.LevelLoad == 1) {
+		vars.Log("– Loaded into overworld. Starting timer! –\n");
+		return true;						        
+	} else if (settings[vars.TutStart] && current.Level == 4 && current.LevelLoad == 0 && old.LevelLoad == 1) {
+		vars.Log("– Loaded into tutorial. Starting timer! –\n");
+		return true;						        
 	}
 }
 
 reset{
-	if(current.Restart == 0 && old.Restart == 1 && (settings[vars.ILRunsMode] || settings["TestDelaysRestart"])){
-		vars.Log("-Resetting-\n");
-		return true;						        //Resets the timer on level restart when using IL Mode setting or testing restart delays
-	}
-	else if(current.isLoading == 1 && current.Level > 10 && settings[vars.ILRunsMode] && !settings["TestDelaysBeeBreakToLoad"]){
-		vars.Log("-Resetting-\n");
-		return true;						        //Resets the timer when loading into chapters or pagies from overworld
-	}
-	else if(current.beeBreak == 2 && settings["TestDelaysBeeBreakToLoad"]){
-		vars.Log("-Resetting-\n");
-		return true;						        //Resets the timer when hive isn't broken when using the delay test setting
+	if (current.Restart == 0 && old.Restart == 1 && (settings[vars.ILRunsMode] || settings["TestDelaysRestart"])) {
+		vars.Log("– Resetting timer on level restart! (IL mode enabled or testing restart delay). –\n");
+		return true;
+	} else if (current.isLoading == 1 && current.Level > 10 && settings[vars.ILRunsMode] && !settings["TestDelaysBeeBreakToLoad"]) {
+		vars.Log("– Loaded into chapter or pagie from overworld. Resetting timer! –\n");
+		return true;
+	} else if (current.beeBreak == 2 && settings["TestDelaysBeeBreakToLoad"]) {
+		vars.Log("– Hive wasn't broken while delay test is enabled. Resetting timer! –\n");
+		return true;
 	}
 }
 
-isLoading{
-	if(current.isLoading == 1 && current.isInteractable == 0 && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"] && !settings[vars.OWCat] && !settings[vars.TutStart]){
-		return true;						        //Standard timer pause when loading
-	}
-	else if(current.isLoading == 1 && current.isInteractable == 0 && current.Level != 4 && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"] && !settings[vars.OWCat] && settings[vars.TutStart]){
-		return true;						        //Standard load removal used with Tutorial auto-start
-	}
-	else if(current.isRunningTasks == 1 && version == "EGS 1.02" && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"] && !settings[vars.OWCat] && !settings[vars.TutStart]){
-		return true;						        //Loading fix to bring EGS load removal in line with Steam1.03, excluded in OWT, but addressed below
-	}
-	else if(current.isRunningTasks == 1 && version == "EGS 1.02" && current.Level != 4 && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"] && !settings[vars.OWCat] && settings[vars.TutStart]){
-		return true;						        //Tut Start Loading fix to bring EGS load removal in line with Steam1.03, excluded in OWT, but addressed below
-	}
-	//May need these EGS fixes for Steam 1.01 as well.
-	else if(settings[vars.OWCat] && current.isLoading == 1 && current.isInteractable == 0 && current.playerControl == 0 && current.Level != 4){
-		return true;						        //OW Categories adjusted load removal
-	}
-	else if(settings[vars.OWCat] && current.isRunningTasks == 1 && current.isInteractable == 0 && current.playerControl == 0 && current.Level != 4 && version == "EGS 1.02"){
-		return true;						        //Fix for the start of EGS OWT pausing a few seconds, which will still happen if Control pointer fails
-	}
-	else if(settings["TestDelaysRestart"] && current.Restart == 1 && current.playerControl == 1){
-		return true;						        //Pauses timer when you gain control with the restart delay test setting
-	}
-	else if(settings["TestDelaysBeeBreakToLoad"] && current.beeBreak == 1 && current.isLoading == 1){ //Pauses timer when you hit a load after the 2D beeBreak sequence with the delay test setting
-		return true;						        //Pauses the timer
-	}
-	else{
-		return false; //Required addition or the timer never un-pauses after meeting a condition above one time
+isLoading{	
+	if (settings[vars.AltLoadRemove]) {
+		if(current.Level != old.Level) {					//If The current frame level does not match the last frame level
+			vars.loadingFl = 1;
+			if (!vars.hasLoggedLoad) {
+				vars.Log("- Pausing the timer. (Level Changed) -\n");
+				vars.hasLoggedLoad = true;
+			}
+			return true;
+		} 
+		else if(vars.loadingFl == 1							//Condition to keep timer paused
+			&& current.isLoading == 1
+			&& current.isInteractable == 0) {				//If Tonic/Lair Menu displays, timer un-pauses.
+			return true;
+		} 
+		else if(vars.loadingFl == 1
+			&& current.isLoading == 0
+			&& old.isLoading == 1) {
+			vars.loadingFl = 0;
+			if (vars.hasLoggedLoad) {
+				vars.Log("- Resuming Timer (Level Loaded) -\n");
+				vars.hasLoggedLoad = false;
+			}
+			return false;
+		} else {
+			return false;
+		}
+	} else {
+		if(current.isLoading == 1  							//Game is currently loading
+			&& current.isInteractable == 0  				//Tonic Menu is currently not showing
+			&& !settings["TestDelaysRestart"] 				//Not using the setting for Testing Restart Delay
+			&& !settings["TestDelaysBeeBreakToLoad"] 		//Not using the setting for Testing Bee Break Delay
+			&& !settings[vars.OWCat] 						//Not using the Overworld Category setting
+			&& !settings[vars.TutStart]) {					//Not using the Tutorial Start Setting
+			if (!vars.hasLoggedLoad) {
+				vars.Log("- Pausing the Timer (Entered a Load - No Tut Start) -\n");
+				vars.hasLoggedLoad = true;
+			}
+			return true;						        	//Standard timer pause when loading
+		} else if(current.isLoading == 1 					//Game is currently loading
+				&& current.isInteractable == 0 				//Tonic Menu is currently not showing
+				&& current.Level != 4 						//Current level is not the tutorial
+				&& !settings["TestDelaysRestart"] 			//Not using the setting for Testing Restart Delay
+				&& !settings["TestDelaysBeeBreakToLoad"] 	//Not using the setting for Testing Bee Break Delay
+				&& !settings[vars.OWCat] 					//Not using the Overworld Category Setting
+				&& settings[vars.TutStart]) {				//Using Tutorial Start Setting
+			if (!vars.hasLoggedLoad) {
+				vars.Log("- Pausing the Timer (Entered a Load - Tut Start) -\n");
+				vars.hasLoggedLoad = true;
+			}
+			return true;						        	//Standard load removal used with Tutorial auto-start
+		} else if(current.isRunningTasks == 1 				//Variable for "isRunningTasks" is set to 1 (Guessing it's an EGS specific thing)
+				&& version == "EGS 1.02" 					//Running the EGS Version 1.02
+				&& !settings["TestDelaysRestart"] 			//Not using the setting for Testing Restart Delay
+				&& !settings["TestDelaysBeeBreakToLoad"] 	//Not using the setting for Testing Bee Break Delay
+				&& !settings[vars.OWCat] 					//Not using the overworld Category Setting
+				&& !settings[vars.TutStart]) {				//Not using the Tutorial Start Setting
+			if (!vars.hasLoggedLoad) {
+				vars.Log("- Pausing the Timer (Entered a Load - No Tut Start - EGS) -\n");
+				vars.hasLoggedLoad = true;
+			}
+			return true;						        	//Loading fix to bring EGS load removal in line with Steam1.03, excluded in OWT, but addressed below
+		} else if(current.isRunningTasks == 1 				//Variable for "isRunningTasks" is set to 1 (Guessing it's an EGS specific thing)
+				&& version == "EGS 1.02" 					//Running the EGS Version 1.02
+				&& current.Level != 4 						//Current level is not the tutorial
+				&& !settings["TestDelaysRestart"] 			//Not using the setting for Testing Restart Delay
+				&& !settings["TestDelaysBeeBreakToLoad"] 	//Not using the setting for Testing Bee Break Delay
+				&& !settings[vars.OWCat] 					//Not using the overworld Category Setting
+				&& settings[vars.TutStart]) {				//Using Tutorial Start Setting
+			if (!vars.hasLoggedLoad) {
+				vars.Log("- Pausing the Timer (Entered a Load - Tut Start - EGS) -\n");
+				vars.hasLoggedLoad = true;
+			}
+			return true;						        	//Tut Start Loading fix to bring EGS load removal in line with Steam1.03, excluded in OWT, but addressed below
+		} else if(settings[vars.OWCat] 						//Using the overworld category setting
+				&& current.isLoading == 1 					//Game is currently loading
+				&& current.isInteractable == 0 				//Tonic Menu is not currently showing
+				&& current.playerControl == 0 				//Game does not believe player has control
+				&& current.Level != 4) {					//Not currently in the tutorial.
+			if (!vars.hasLoggedLoad) {
+				vars.Log("- Pausing the Timer (Entered a Load - Overworld Cat.) -\n");
+				vars.hasLoggedLoad = true;
+			}
+			return true;						        	//OW Categories adjusted load removal
+		} else if(settings[vars.OWCat] 						//Using the overworld category setting
+				&& current.isRunningTasks == 1 				//EGS version is loading
+				&& current.isInteractable == 0 				//Tonic Menu is not currently showing
+				&& current.playerControl == 0 				//Game does not believe player has control
+				&& current.Level != 4 						//Not currently in the tutorial.
+				&& version == "EGS 1.02") {					//Running EGS Version 1.02
+			if (!vars.hasLoggedLoad) {
+				vars.Log("- Pausing the Timer (Entered a Load - Overworld Cat. - EGS) -\n");
+				vars.hasLoggedLoad = true;
+			}
+			return true;						        	//Fix for the start of EGS OWT pausing a few seconds, which will still happen if Control pointer fails
+		} else if(settings["TestDelaysRestart"] 			//Using the setting for Testing Restart Delay
+				&& current.Restart == 1 					
+				&& current.playerControl == 1) {			//Game believes player has control.
+			if (!vars.hasLoggedLoad) {
+				vars.Log("- Pausing the game condition (Testing Start Delay) -\n");
+				vars.hasLoggedLoad = true;
+			}
+			return true;						        	//Pauses timer when you gain control with the restart delay test setting
+		} else if(settings["TestDelaysBeeBreakToLoad"] 		//Using the setting for Testing Bee Break Delay
+				&& current.beeBreak == 1 
+				&& current.isLoading == 1){ 				//Game is currently loading
+			if (!vars.hasLoggedLoad) {
+				vars.Log("- Pausing the game condition (Testing Bee Break Delay) -\n");
+				vars.hasLoggedLoad = true;
+			}
+			return true;						        	//Pauses timer when you hit a load after the 2D beeBreak sequence with the delay test setting
+		} else if (current.isLoading == 0 
+				&& old.isLoading == 1) {
+			vars.Log("- Resuming Timer -\n");
+			vars.hasLoggedLoad = false;
+			return false;
+		}
+		else{
+			return false; //Required addition or the timer never un-pauses after meeting a condition above one time
+		}
 	}
 	/* alternative to stop OW Category start load removal while in control
 				if (timer.CurrentTime.RealTime < TimeSpan.FromSeconds(7) && settings[vars.OWCat])
@@ -336,72 +394,215 @@ isLoading{
 }
 
 split{
-	vars.PeriodicLogging();
-	
-	if(current.beeBreak == 1 && old.beeBreak == 2 && settings[vars.ILRunsMode]){
-		vars.Log("-Splitting-\n");
-		return true;						        //Split on beeBreak for IL Mode (setting)
-	}
-	else if(current.Level > 4 && current.Level < 31 && old.Level == 10 && current.Level != 10 && settings[vars.EntrySplits]){
-		vars.Log("-Splitting-\n");
-		return true;						        //Split on Chapter entry
-	}
-	else if(current.Level > 30 && current.Level < 47 && old.Level == 10 && settings[vars.PagieSplits]){
-		vars.Log("-Splitting-\n");
-		return true;						        //Split on Pagie entry
-	}
-	else if(old.Level > 30 && old.Level < 47 && current.Level == 10 && settings[vars.PagieSplits]){
-		vars.Log("-Splitting-\n");
-		return true;						        //Split on Pagie exit
-	}
-	else if(current.Level > 5 && current.Level < 9 && current.isLoading == 1 && old.isLoading == 0 && settings[vars.LairSplits]){
-		vars.Log("-Splitting-\n");
-		return true;						        //Split between Lair sections and from Tutorial, no endgame
-	}
-	else if(current.Level == 5 && old.Level == 10 && settings[vars.LairSplits]){
-		vars.Log("-Splitting-\n");
-		return true;						        //Split on Lair entry from Overworld
-	}
-	else if(current.Level == 5 && old.Level == 4 && settings["LairSplitFromTut"]){
-		vars.Log("-Splitting-\n");
-		return true;						        //Split on Lair entry from Tutorial
-	}
-	else if(current.Level == 10 && old.Level == 5 && current.Restart == 1 && settings[vars.LairSplits] && settings["LairDeathSplit"]){
-		vars.Log("-Splitting-\n");
-		return true;						        //Split on Lair section 1 death
-	}
-	else if(current.Level == 5 && current.XPos == -133 && old.XPos == -226 && settings[vars.LairSplits]){
-		vars.Log("-Splitting-\n");
-		return true;						        //Split after Lair fight 1
-	}
-	else if(current.Level == 6 && current.XPos == -96 && old.XPos == -226 && settings[vars.LairSplits]){
-		vars.Log("-Splitting-\n");
-		return true;						        //Split after Lair fight 2
-	}
-	else if(current.Level == 7 && current.XPos == -144 && old.XPos == -226 && settings[vars.LairSplits]){
-		vars.Log("-Splitting-\n");
-		return true;						        //Split after Lair fight 3
-	}
-	else if(current.Level == 8 && current.XPos < -3 && current.XPos > -7 && old.XPos == -226 && settings[vars.LairSplits]){
-		vars.Log("-Splitting-\n");
-		return true;						        //Split after Lair fight 4
-	}
-	else if(current.Level == 10 && old.Level == 8 && current.Restart == 1 && current.Health > 0 && settings[vars.LairSplits]){
-		vars.Log("-Splitting-\n");
-		return true;						        //Final endgame split, prevents splitting from manually exiting and dying
-	}
-	else if((current.beeTotal - old.beeTotal) == 1 && settings[vars.BeeSplits]){
-		vars.Log("-Splitting-\n");
-		return true;						        //Split when in-game beeTotal value increases by 1 (setting)
-	}
-	else if((current.owTonics - old.owTonics) == 1 && settings[vars.TonicSplits]){
-		vars.Log("-Splitting-\n");
-		return true;						        //Split on all grabbed Overworld Tonics (setting)
+	if(current.beeBreak == 1 						//Bee is collected
+		&& old.beeBreak == 2 						//Bee WAS in hive
+		&& settings[vars.ILRunsMode]) {				//Using IL Mode setting.
+		vars.Log("- Splitting for Bee Break in IL Mode -\n");
+		return true;						        
+	} else if(current.Level > 4 					//Level ID is one of the chapter levels
+			&& current.Level < 31 					//Chapters are between 5 and 30.
+			&& old.Level == 10 						//Last Frame on overworld
+			&& current.Level != 10 					//Current Frame NOT on overworld
+			&& settings[vars.EntrySplits]) {		//Using the Chapter Entry Split Setting.
+		vars.Log("- Splitting due to Chapter Entry -\n");
+		return true;						        
+	} else if(current.Level > 30 					//Level ID is one of the pagies
+			&& current.Level < 47 					//Pagie IDs are between 31 and 46
+			&& old.Level == 10 						//Last Frame on overworld
+			&& settings[vars.PagieSplits]) {		//Using the Pagie Split Setting
+		vars.Log("- Splitting due to Pagie Entry -\n");
+		return true;						        
+	} else if(old.Level > 30 						//Last Frame Level ID is one of the pagies
+			&& old.Level < 47 						//Pagie IDs are between 31 and 46
+			&& current.Level == 10 					//Current frame on Overworld.
+			&& settings[vars.PagieSplits]) {		//Using the Pagie Split Setting
+		vars.Log("- Splitting due to Pagie Exit -\n");
+		return true;						        
+	} else if(current.Level > 5 					//Current Frame level ID is between 6 and 8
+			&& current.Level < 9 					//IL Level ID's are 5, 6, 7, and 8. (Excludes Section 1)
+			&& current.isLoading == 1 				//Current Frame is Loading
+			&& old.isLoading == 0 					//Last Frame is NOT loading.
+			&& settings[vars.LairSplits]) {			//Using the Lair Split Setting
+		vars.Log("- Splitting between Lair sections or from Tutorial -\n");
+		return true;						        
+	} else if(current.Level == 5 					//Current Frame is Lair Section 1
+			&& old.Level == 10 						//Last Frame is Overworld
+			&& settings[vars.LairSplits]) {			//Using the Lair Split Setting
+		vars.Log("- Splitting due to entering lair from overworld -\n");
+		return true;						       
+	} else if(current.Level == 5 					//Current Frame is Lair Section 1
+			&& old.Level == 4 						//Last Frame is Tutorial
+			&& settings["LairSplitFromTut"]) {		//Using Lair Split on Entry from Tutorial Setting
+		vars.Log("- Splitting due to Entering Lair from Tutorial -\n");
+		return true;						        
+	} else if(current.Level == 10 					//Current Frame shows the Overworld
+			&& old.Level == 5 						//Last Frame is Lair Section 1
+			&& current.Restart == 1 				//Restart Variable is 1 (Means we died?)
+			&& settings[vars.LairSplits] 			//Using Lair Splits.
+			&& settings["LairDeathSplit"]) {		//Specifically Using Lair Section 1 Deal Split
+		vars.Log("- Splitting due to Lair Section 1 Death -\n");
+		return true;						        
+	} else if(current.Level == 5 					//Current Frame shows Lair Section 1
+			&& current.XPos == -133 				//Current Frame has an X Position of -133
+			&& old.XPos == -226 					//Last Frame has an X Position of -266
+			&& settings[vars.LairSplits]) {			//Using the Lair Splits Setting.
+		vars.Log("– Splitting after Lair fight 1! –\n");
+		return true;						        
+	} else if(current.Level == 6 					//Current Frame shows Lair Section 2
+			&& current.XPos == -96 					//Current Frame has an X Position of -96
+			&& old.XPos == -226 					//Last Frame has an X Position of -266
+			&& settings[vars.LairSplits]){			//Using the Lair Splits Setting
+		vars.Log("– Splitting after Lair fight 2! –\n");
+		return true;						       
+	} else if(current.Level == 7 					//Current Frame Shows Lair Section 3
+			&& current.XPos == -144 				//Current Frame has an X Position of -144
+			&& old.XPos == -226 					//Last Frame has an X Position of -266
+			&& settings[vars.LairSplits]){			//Using the Lair Splits Setting
+		vars.Log("– Splitting after Lair fight 3! –\n");
+		return true;						       
+	} else if(current.Level == 8 					//Current Frame Shows Lair Section 4
+			&& current.XPos < -3 					//Current Frame has an X Position between -3 and -7 
+			&& current.XPos > -7 					//I Guess that's variable?
+			&& old.XPos == -226 					//Last Frame has an X Position of -266
+			&& settings[vars.LairSplits]){			//Using the Lair Splits Setting
+		vars.Log("– Splitting after Lair fight 4! –\n");
+		return true;						        
+	} else if(current.Level == 10 					//Current Frame shows Overworld
+			&& old.Level == 8 						//Lasst Frame shows Lair Section 4
+			&& current.Restart == 1 				//Setting of Restart is on (Needed?)
+			&& current.Health > 0 					//Current frame Health is greater than 0 (Needed?)
+			&& settings[vars.LairSplits]){			//Using Lair Splits setting
+		vars.Log("– Splitting on final endgame! –\n"); // Prevents splitting from manually exiting and dying.
+		return true;						        
+	} else if((current.beeTotal - old.beeTotal) == 1 //Current Frame has one additional bee from previous frame
+			&& settings[vars.BeeSplits]){			 //Using the Bee Split Setting
+		vars.Log("- Splitting due to Bee Collection -\n");
+		return true;						        
+	} else if (settings[vars.SpecificBees] && (current.beeTotal - old.beeTotal) == 1) {
+		if (settings[current.beeTotal + " Bees"]) {
+			vars.Log("- Splitting due to Bee Collection -\n");
+			return true; 
+		}
+	} else if((current.owTonics - old.owTonics) == 1 	//Current Frame has one additional tonic from previous frame
+			&& settings[vars.TonicSplits]){				//Using the Tonic Split Setting
+		vars.Log("- Splitting due to Tonic Collection -\n");
+		return true;						       
+	} else if (settings[vars.SpecificTonics] && (current.owTonics - old.owTonics) == 1) {
+		if (settings[current.owTonics + " Tonics"]) {
+			vars.Log("- Splitting due to Tonic Collection -\n");
+			return true; 
+		}
 	}
 }
 
 update{
+	vars.timerMinute = timer.CurrentTime.RealTime.Value.Minutes;
+	vars.timerSecond = timer.CurrentTime.RealTime.Value.Seconds;
 	
+	if (vars.timerMinute != vars.timerMinuteOLD) {
+		vars.timerMinuteOLD = vars.timerMinute;
+		vars.Log("\n" +
+			"TimeOfDay: "                + DateTime.Now.ToString() + "\n" +
+			"Version: "                  + version.ToString() + "\n" +
+			"MD5Hash: "                  + vars.MD5Hash.ToString() + "\n" +
+			"ILRunsMode:"                + settings[vars.ILRunsMode].ToString() + "\n" +
+			"TutStart:"                  + settings[vars.TutStart].ToString() + "\n" +
+			"LairSplits: "               + settings[vars.LairSplits].ToString() + "\n" +
+			"LairSplitFromTut: "         + settings["LairSplitFromTut"].ToString() + "\n" +
+			"LairDeathSplit: "           + settings["LairDeathSplit"].ToString() + "\n" +
+			"EntrySplits: "              + settings[vars.EntrySplits].ToString() + "\n" +
+			"BeeSplits: "                + settings[vars.BeeSplits].ToString() + "\n" +
+			"TonicSplits: "              + settings[vars.TonicSplits].ToString() + "\n" +
+			"PagieSplits: "              + settings[vars.PagieSplits].ToString() + "\n" +
+			"OWCat: "                    + settings[vars.OWCat].ToString() + "\n" +
+			"TestDelaysRestart: "        + settings["TestDelaysRestart"].ToString() + "\n" +
+			"TestDelaysBeeBreakToLoad: " + settings["TestDelaysBeeBreakToLoad"].ToString() + "\n");
+	}
+
+	if (vars.timerSecond != vars.timerSecondOLD){
+		vars.timerSecondOLD = vars.timerSecond;
+		vars.Log(
+			"RealTime: "       + timer.CurrentTime.RealTime.Value.ToString(@"hh\:mm\:ss\.fff") + "\n" +
+			"GameTime: "       + timer.CurrentTime.GameTime.Value.ToString(@"hh\:mm\:ss\.fff") + "\n" +
+			"XPos: "           + current.XPos + "\n" +
+			"YPos: "           + current.YPos + "\n" +
+			"ZPos: "           + current.ZPos + "\n" +
+			"isRunningTasks: " + current.isRunningTasks + "\n" +
+			"isLoading: "      + current.isLoading + "\n" +
+			"isInteractable: " + current.isInteractable + "\n" +
+			"Restart: "        + current.Restart + "\n" +
+			"beeBreak: "       + current.beeBreak + "\n" +
+			"playerControl: "  + current.playerControl + "\n" +
+			"owTonics: "       + current.owTonics + "\n" +
+			"beeTotal: "       + current.beeTotal + "\n" +
+			"Level: "          + current.Level + "\n" +
+			"LevelLoad: "      + current.LevelLoad + "\n" +
+			"Health: "         + current.Health + "\n");
+	}
+	
+	// Hard Mode
+	if (settings[vars.HardMode]){
+		if (current.Level == 10 && current.Health != 2){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp); // Health pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)2) ); // Return Laylee only in the overworld
+		}
+		if (current.Level != 10 && current.Health != 1){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp); // Health pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)1) ); // Remove Laylee when not in Overworld
+		}
+		if (current.MaxHealth != 1){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x34).DerefOffsets(game, out temp); // MaxHealth pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)1) ); // Set Max Health to 1 to make Laylee Bells un-interactable
+		}
+		if (current.ULLessChkMts != 1 || current.ULRollEvFaster != 1 || current.ULSpotlight != 1 || current.ULGooglyEyes != 1 || current.ULDerorrim != 1 || current.ULChamColors != 1){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x38, 0x18).DerefOffsets(game, out temp); // ULLessChkMts pointer
+			game.WriteBytes((IntPtr)temp, new byte[] {1} ); // Unlocks Tonic
+			new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0xA8, 0x18).DerefOffsets(game, out temp); // ULRollEvFaster pointer
+			game.WriteBytes((IntPtr)temp, new byte[] {1} ); // Unlocks Tonic
+			new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x180, 0x18).DerefOffsets(game, out temp); // ULSpotlight pointer
+			game.WriteBytes((IntPtr)temp, new byte[] {1} ); // Unlocks Tonic
+			new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x80, 0x18).DerefOffsets(game, out temp); // ULGooglyEyes pointer
+			game.WriteBytes((IntPtr)temp, new byte[] {1} ); // Unlocks Tonic
+			new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x130, 0x18).DerefOffsets(game, out temp); // ULDerorrim pointer
+			game.WriteBytes((IntPtr)temp, new byte[] {1} ); // Unlocks Tonic
+			new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x1C8, 0x18).DerefOffsets(game, out temp); // ULChamColors pointer
+			game.WriteBytes((IntPtr)temp, new byte[] {1} ); // Unlocks Tonic
+		}
+		if (current.ChkMtDeaths > 0){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x264A28, 0x1C0, 0xE10, 0x3C8, 0x300, 0x58, 0x198, 0x18, 0x10, 0x30, 0x30, 0x68, 0x28, 0x3C).DerefOffsets(game, out temp); // ChkMtDeaths pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)0) ); // Keep current CheckMate's death count to 0 to prevent warping
+		}
+		if (current.EquippedTonic1 != current.IDLessChkMts){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x2675E0, 0x90, 0x10, 0xF88, 0x40, 0x0, 0x30, 0x8, 0x18, 0x18, 0x20, 0x20).DerefOffsets(game, out temp); // EquippedTonic1 pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((long)current.IDLessChkMts) ); // Equips Tonic if it isn't equipped
+		}
+		if (current.EquippedTonic2 != current.IDRollEvFaster){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x2675E0, 0x90, 0x10, 0xF88, 0x40, 0x0, 0x30, 0x8, 0x18, 0x18, 0x20, 0x28).DerefOffsets(game, out temp); // EquippedTonic2 pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((long)current.IDRollEvFaster) ); // Equips Tonic if it isn't equipped
+		}
+		if (current.EquippedTonic3 != current.IDSpotlight && !settings["NoSpotlight"]){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x2675E0, 0x90, 0x10, 0xF88, 0x40, 0x0, 0x30, 0x8, 0x18, 0x18, 0x20, 0x30).DerefOffsets(game, out temp); // EquippedTonic3 pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((long)current.IDSpotlight) ); // Equips Tonic if it isn't equipped
+		}
+		if (current.EquippedTonic3 != current.IDChamColors && settings["NoSpotlight"]){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x2675E0, 0x90, 0x10, 0xF88, 0x40, 0x0, 0x30, 0x8, 0x18, 0x18, 0x20, 0x30).DerefOffsets(game, out temp); // EquippedTonic3 pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((long)current.IDChamColors) ); // Equips Tonic if it isn't equipped
+		}
+		if (current.EquippedTonic4 != current.IDGooglyEyes){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x2675E0, 0x90, 0x10, 0xF88, 0x40, 0x0, 0x30, 0x8, 0x18, 0x18, 0x20, 0x38).DerefOffsets(game, out temp); // EquippedTonic4 pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((long)current.IDGooglyEyes) ); // Equips Tonic if it isn't equipped
+		}
+	}
 }
 
 
