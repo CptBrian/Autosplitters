@@ -90,9 +90,9 @@ state("YLILWin64", "Demo 1.03") {
 state("YLILWin64", "Steam 1.04") {
 	int owTonics        : "UnityPlayer.dll", 0x144DBD8, 0x8, 0x8, 0x8, 0x2D8, 0x28, 0x18, 0x28;
 	byte Restart        : "UnityPlayer.dll", 0x146ECE8, 0x128, 0x8, 0x8, 0x80, 0x60;
-	float XPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x10;
-	float YPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x14; // Coordinates not perfect, but decent. Needs replacement.
-	float ZPos          : "UnityPlayer.dll", 0x147A5B0, 0x70, 0x0, 0x60, 0x70, 0x18;
+	float XPos          : "mono.dll", 0x267758, 0x10, 0x1D0, 0x8, 0x3F0, 0x1758, 0x108, 0x108, 0x30, 0x100, 0x8, 0x18, 0x0, 0x18, 0x10, 0x20, 0x128, 0x10, 0x60, 0xA0; // Thanks to Ero — Coordinates are good.
+	float YPos          : "mono.dll", 0x267758, 0x10, 0x1D0, 0x8, 0x3F0, 0x1758, 0x108, 0x108, 0x30, 0x100, 0x8, 0x18, 0x0, 0x18, 0x10, 0x20, 0x128, 0x10, 0x60, 0xA4;
+	float ZPos          : "mono.dll", 0x267758, 0x10, 0x1D0, 0x8, 0x3F0, 0x1758, 0x108, 0x108, 0x30, 0x100, 0x8, 0x18, 0x0, 0x18, 0x10, 0x20, 0x128, 0x10, 0x60, 0xA8;
 	byte beeBreak       : "mono.dll", 0x2675E0, 0x40, 0xE30, 0x90;
 	byte isRunningTasks : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x97;
 	byte isLoading      : "mono.dll", 0x2675E0, 0x48, 0xE68, 0x98, 0x98;
@@ -230,6 +230,8 @@ init{
 			if (File.Exists(vars.logFileName))
 				File.Delete(vars.logFileName);
 	});
+	
+	vars.HardCoin = false;
 }
 
 start{
@@ -545,12 +547,12 @@ update{
 		if (current.Level == 10 && current.Health != 2){
 			IntPtr temp;
 			new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp); // Health pointer
-			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)2) ); // Return Laylee only in the overworld
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)2) ); // Return Laylee in 3D overworld
 		}
-		if (current.Level != 10 && current.Health != 1){
+		if (current.Level != 10 && current.Health != 1 && vars.HardCoin == false){
 			IntPtr temp;
 			new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp); // Health pointer
-			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)1) ); // Remove Laylee when not in Overworld
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)1) ); // Remove Laylee in 2D stages, excluding Laylee slam coin doors
 		}
 		if (current.MaxHealth != 1){
 			IntPtr temp;
@@ -601,6 +603,157 @@ update{
 			IntPtr temp;
 			new DeepPointer("mono.dll", 0x2675E0, 0x90, 0x10, 0xF88, 0x40, 0x0, 0x30, 0x8, 0x18, 0x18, 0x20, 0x38).DerefOffsets(game, out temp); // EquippedTonic4 pointer
 			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((long)current.IDGooglyEyes) ); // Equips Tonic if it isn't equipped
+		}
+
+		// Coordinate boxes to give Laylee back in 2D stages to slam heavy doors
+		if (old.Level == 10 && current.Level != 10){ // Entering any 2D level from OW
+			vars.HardCoin = false; // Fail-safe when players exit to OW within a HardCoin coordinate box
+		}
+		if (current.Level == 27){ // 1-2
+			if (current.XPos > 53.0 && current.XPos < 56.5 && current.YPos > -2){ // Coin 3
+				vars.HardCoin = true; // Prevent global 1 HP override so Laylee can be given back temporarily
+				IntPtr temp;
+				new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp); // Health pointer
+				game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)2) ); // Return Laylee
+			}
+			else {
+				vars.HardCoin = false; // Reapplies global 1 HP override upon exiting coordinate box
+			}
+		}
+		if (current.Level == 20){ // 2-1
+			if ( (current.XPos > 178.4 && current.XPos < 183.5 && current.YPos > 315 && current.YPos < 330) // Coin 2
+			|| (current.XPos > 153.5 && current.XPos < 156.5 && current.YPos > 290 && current.YPos < 300) ){ // Coin 3 Key
+				vars.HardCoin = true;
+				IntPtr temp;
+				new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp);
+				game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)2) );
+			}
+			else {
+				vars.HardCoin = false;
+			}
+		}
+		if (current.Level == 14){ // 3-1
+			if (current.XPos > 157.5 && current.XPos < 162.4 && current.YPos > 30 && current.YPos < 37.7){ // Coin 2
+				vars.HardCoin = true;
+				IntPtr temp;
+				new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp);
+				game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)2) );
+			}
+			else {
+				vars.HardCoin = false;
+			}
+		}
+		if (current.Level == 25){ // 4-1 & 4-2
+			if ( (current.XPos > 88.5 && current.XPos < 92.5 && current.YPos > -23) // Coin 2 (4-1)
+			||	(current.XPos > -37.5 && current.XPos < -31.5 && current.YPos > -14) ){ // Coin 1 (4-2)
+				vars.HardCoin = true;
+				IntPtr temp;
+				new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp);
+				game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)2) );
+			}
+			else {
+				vars.HardCoin = false;
+			}
+		}
+		if (current.Level == 17){ // 5-1
+			if (current.XPos > 524.5 && current.XPos < 529.5 && current.YPos > -190 && current.YPos < -167){ // Coin 5
+				vars.HardCoin = true;
+				IntPtr temp;
+				new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp);
+				game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)2) );
+			}
+			else {
+				vars.HardCoin = false;
+			}
+		}
+		if (current.Level == 19){ // 7-2
+			if (current.XPos > 285.4 && current.XPos < 290.4 && current.YPos > 3 && current.YPos < 15){ // Secret Exit
+				vars.HardCoin = true;
+				IntPtr temp;
+				new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp);
+				game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)2) );
+			}
+			else {
+				vars.HardCoin = false;
+			}
+		}
+		if (current.Level == 18){ // 10-1
+			if (current.XPos > 32.5 && current.XPos < 37.5 && current.YPos > 88 && current.YPos < 98){ // Coin 2 Bomb
+				vars.HardCoin = true;
+				IntPtr temp;
+				new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp);
+				game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)2) );
+			}
+			else {
+				vars.HardCoin = false;
+			}
+		}
+		if (current.Level == 22){ // 11-2
+			if (current.XPos > 913.5 && current.XPos < 920 && current.YPos > 119){ // Coin 5 (technically possible with a bomb from far back)
+				vars.HardCoin = true;
+				IntPtr temp;
+				new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp);
+				game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)2) );
+			}
+			else {
+				vars.HardCoin = false;
+			}
+		}
+		if (current.Level == 15){ // 12-1
+			if (current.XPos > 551.5 && current.XPos < 556.5 && current.YPos > 35){ // Coin 4 Bomb (technically possible with Coin 2 Bomb)
+				vars.HardCoin = true;
+				IntPtr temp;
+				new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp);
+				game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)2) );
+			}
+			else {
+				vars.HardCoin = false;
+			}
+		}
+		if (current.Level == 16){ // 13-1
+			if (current.XPos > 350.5 && current.XPos < 355.5 && current.YPos > -24 && current.YPos < -15){ // Coin 2
+				vars.HardCoin = true;
+				IntPtr temp;
+				new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp);
+				game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)2) );
+			}
+			else {
+				vars.HardCoin = false;
+			}
+		}
+		if (current.Level == 24){ // 14-2
+			if (current.XPos > 215.5 && current.XPos < 219.5 && current.YPos > -4 && current.YPos < 6){ // Coin 3
+				vars.HardCoin = true;
+				IntPtr temp;
+				new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp);
+				game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)2) );
+			}
+			else {
+				vars.HardCoin = false;
+			}
+		}
+		if (current.Level == 26){ // 16-1
+			if ( (current.XPos > 22.4 && current.XPos < 27.6 && current.YPos > 14 && current.YPos < 25) // Coin 1 Flower Box
+			||	(current.XPos > 303.5 && current.XPos < 306.5 && current.YPos > 26 && current.YPos < 38) ){ // Coin 2
+				vars.HardCoin = true;
+				IntPtr temp;
+				new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp);
+				game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)2) );
+			}
+			else {
+				vars.HardCoin = false;
+			}
+		}
+		if (current.Level == 12){ // 17-1
+			if (current.XPos > 92.5 && current.XPos < 97.5 && current.YPos > -4 && current.YPos < 20){ // Coin 1
+				vars.HardCoin = true;
+				IntPtr temp;
+				new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0xC40, 0x38, 0x20, 0x30, 0x20, 0x18, 0x158, 0x38).DerefOffsets(game, out temp);
+				game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)2) );
+			}
+			else {
+				vars.HardCoin = false;
+			}
 		}
 	}
 }
