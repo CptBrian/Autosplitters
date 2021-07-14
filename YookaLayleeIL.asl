@@ -121,7 +121,14 @@ state("YLILWin64", "Steam 1.04") {
 	byte ULGooglyEyes   : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x80, 0x18;
 	byte ULDerorrim     : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x130, 0x18;
 	byte ULChamColors   : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x1C8, 0x18;
-	int DLCTonics       : "mono.dll", 0x2675E0, 0x40, 0x148, 0x18, 0x500, 0x3E8, 0x0, 0x48; // Unlocks DLC tonics when set to 1 (for current file session only)
+	int DLCTonics       : "mono.dll", 0x2675E0, 0x40, 0x168, 0x68, 0x0, 0x3E8, 0x0, 0x48; // Unlocks DLC tonics when set to 1 (for current file session only)
+	int Paywall1Cost	: "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x38, 0x28; // Change cost of paywalls
+	int Paywall2Cost	: "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x30, 0x28; // I want to make sure they're ALL functioning before attempting to overwrite
+	int Paywall3Cost	: "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x28, 0x28;
+	int Paywall4Cost	: "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x48, 0x28;
+	int Paywall5Cost	: "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x40, 0x28;
+	int Paywall6Cost	: "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x20, 0x28;
+	long PaywallText	: "mono.dll", 0x4F8AF8, 0xEC14; // Check if text has been overwritten yet
 }
 
 state("YLILWin64", "EGS 1.04") {
@@ -755,6 +762,73 @@ update{
 				vars.HardCoin = false;
 			}
 		}
+
+		// Change Paywall Costs & their text strings
+		if (current.PaywallText == 34058609628217412){ // Default text not overwritten yet
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x4F8AF8, 0xEC14).DerefOffsets(game, out temp); // Paywall 1 Text pointer
+			game.WriteBytes((IntPtr)temp, Encoding.Unicode.GetBytes((string)"Hard Mode dissssscount! Merely 10 [TrowzerCoin]{Character:T.W.I.T. Coins}!\0\0\0\0\0\0") );
+			new DeepPointer("mono.dll", 0x4F8AF8, 0xFAB4).DerefOffsets(game, out temp); // Paywall 1 Choice Text pointer
+			game.WriteBytes((IntPtr)temp, Encoding.Unicode.GetBytes((string)"[Yes] I won't pass up that {Character:steal!}[Trowzer]\0\0\0\0\0\0\0\0\0\0") );
+			new DeepPointer("mono.dll", 0x4F8AF8, 0x494).DerefOffsets(game, out temp); // Paywall 2 Text pointer
+			game.WriteBytes((IntPtr)temp, Encoding.Unicode.GetBytes((string)"Hard Mode dissssscount! Merely 35 [TrowzerCoin]{Character:T.W.I.T. Coins}!\0\0\0\0\0\0") );
+			new DeepPointer("mono.dll", 0x4F8AF8, -0xEAEC).DerefOffsets(game, out temp); // Paywall 2 Choice Text pointer
+			game.WriteBytes((IntPtr)temp, Encoding.Unicode.GetBytes((string)"[Yes] I won't pass up that {Character:steal!}[Trowzer]\0\0\0\0\0\0\0\0\0\0") );
+			new DeepPointer("mono.dll", 0x4F8AF8, 0x130D4).DerefOffsets(game, out temp); // Paywall 3 Text pointer
+			game.WriteBytes((IntPtr)temp, Encoding.Unicode.GetBytes((string)"Hard Mode dissssscount! Merely 30 [TrowzerCoin]{Character:T.W.I.T. Coins}!\0\0\0\0\0\0") );
+			new DeepPointer("mono.dll", 0x4F8AF8, 0x14834).DerefOffsets(game, out temp); // Paywall 3 Choice Text pointer
+			game.WriteBytes((IntPtr)temp, Encoding.Unicode.GetBytes((string)"[Yes] I won't pass up that {Character:steal!}[Trowzer]\0\0\0\0\0\0\0\0\0\0") );
+			new DeepPointer("mono.dll", 0x4F8AF8, 0x133D4).DerefOffsets(game, out temp); // Paywall 4 Text pointer
+			game.WriteBytes((IntPtr)temp, Encoding.Unicode.GetBytes((string)"Hard Mode dissssscount! Merely 30 [TrowzerCoin]{Character:T.W.I.T. Coins}!\0\0\0\0\0\0") );
+			new DeepPointer("mono.dll", 0x4F8AF8, 0x14AB4).DerefOffsets(game, out temp); // Paywall 4 Choice Text pointer
+			game.WriteBytes((IntPtr)temp, Encoding.Unicode.GetBytes((string)"[Yes] I won't pass up that {Character:steal!}[Trowzer]\0\0\0\0\0\0\0\0\0\0") );
+			new DeepPointer("mono.dll", 0x4F8AF8, 0x1CA94).DerefOffsets(game, out temp); // Paywall 5 Text pointer
+			game.WriteBytes((IntPtr)temp, Encoding.Unicode.GetBytes((string)"Hard Mode dissssscount! Merely 30 [TrowzerCoin]{Character:T.W.I.T. Coins}!\0\0\0\0\0\0") );
+			new DeepPointer("mono.dll", 0x4F8AF8, 0x1EDD4).DerefOffsets(game, out temp); // Paywall 5 Choice Text pointer
+			game.WriteBytes((IntPtr)temp, Encoding.Unicode.GetBytes((string)"[Yes] I won't pass up that {Character:steal!}[Trowzer]\0\0\0\0\0\0\0\0\0\0") );
+			new DeepPointer("mono.dll", 0x4F8AF8, 0x15814).DerefOffsets(game, out temp); // Paywall 6 Text pointer (Trowzer's House)
+			game.WriteBytes((IntPtr)temp, Encoding.Unicode.GetBytes((string)"Hard Mode dissssscount! Merely 35 [TrowzerCoin]{Character:T.W.I.T. Coins}!\0\0\0\0\0\0") );
+			new DeepPointer("mono.dll", 0x4F8AF8, 0x29AB4).DerefOffsets(game, out temp); // Paywall 6 Choice Text pointer (Trowzer's House)
+			game.WriteBytes((IntPtr)temp, Encoding.Unicode.GetBytes((string)"[Yes] I won't pass up that {Character:steal!}[Trowzer]\0\0\0\0\0\0\0\0\0\0") );
+			new DeepPointer("mono.dll", 0x4F8AF8, 0x1B5B4).DerefOffsets(game, out temp); // Trowzer Final Purchase Text pointer
+			game.WriteBytes((IntPtr)temp, Encoding.Unicode.GetBytes((string)"I'll need about 30 [TrowzerCoin]{Character:T.W.I.T. Coin}...") );
+			new DeepPointer("mono.dll", 0x4F8AF8, 0x29154).DerefOffsets(game, out temp); // Trowzer Final Purchase Choice Text pointer
+			game.WriteBytes((IntPtr)temp, Encoding.Unicode.GetBytes((string)"[Yes] Sure... (Give 30 [TrowzerCoin]{Character:T.W.I.T. Coin})") );
+		}
+		if (current.Paywall1Cost == 1){ // Default Unlock Cost
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x38, 0x28).DerefOffsets(game, out temp); // Paywall1Cost pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)10) ); // Changed Unlock Cost
+		}
+		if (current.Paywall2Cost == 10){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x30, 0x28).DerefOffsets(game, out temp); // Paywall2Cost pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)35) );
+		}
+		if (current.Paywall3Cost == 15){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x28, 0x28).DerefOffsets(game, out temp); // Paywall3Cost pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)30) );
+		}
+		if (current.Paywall4Cost == 20){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x48, 0x28).DerefOffsets(game, out temp); // Paywall4Cost pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)30) );
+		}
+		if (current.Paywall5Cost == 25){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x40, 0x28).DerefOffsets(game, out temp); // Paywall5Cost pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)30) );
+		}
+		if (current.Paywall6Cost == 30){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x20, 0x28).DerefOffsets(game, out temp); // Paywall6Cost pointer (Trowzer's House)
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((int)35) );
+		}
+		// No way to change the final purchase cost yet (99→30)
+
+		// Teleport to Vendi's Tonic Tutorial on a fresh Hard Mode file
+		// Trigger coords: 23 -3.6 -311
 	}
 }
 
