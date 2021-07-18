@@ -116,7 +116,7 @@ state("YLILWin64", "Steam 1.04") {
 	long IDGooglyEyes   : "mono.dll", 0x2675E0, 0x40, 0x138, 0x20, 0x20, 0x20, 0x50, 0xB8, 0x80;
 	long IDDerorrim     : "mono.dll", 0x2675E0, 0x40, 0x138, 0x20, 0x20, 0x20, 0x50, 0xB8, 0x130;
 	long IDChamColors   : "mono.dll", 0x2675E0, 0x40, 0x138, 0x20, 0x20, 0x20, 0x50, 0xB8, 0x1C8;
-	byte ULCatchee		: "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x20, 0x19; // If Catchee is not bought, tonic selection menu hard locks the game
+	byte ULCatchee      : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x20, 0x19; // If Catchee is not bought, tonic selection menu hard locks the game
 	byte ULLessChkMts   : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x38, 0x18; // Tonic Unlock Flags (forced tonics must also be "found" to prevent a hard-lock)
 	byte ULRollEvFaster : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0xA8, 0x18;
 	byte ULSpotlight    : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x180, 0x18;
@@ -124,13 +124,13 @@ state("YLILWin64", "Steam 1.04") {
 	byte ULDerorrim     : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x130, 0x18;
 	byte ULChamColors   : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x1C8, 0x18;
 	int DLCTonics       : "mono.dll", 0x2675E0, 0x40, 0x168, 0x68, 0x0, 0x3E8, 0x0, 0x48; // Unlocks DLC tonics when set to 1 (for current file session only)
-	int Paywall1Cost	: "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x38, 0x28; // Change cost of paywalls
-	int Paywall2Cost	: "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x30, 0x28; // I want to make sure they're ALL functioning before attempting to overwrite
-	int Paywall3Cost	: "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x28, 0x28;
-	int Paywall4Cost	: "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x48, 0x28;
-	int Paywall5Cost	: "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x40, 0x28;
-	int Paywall6Cost	: "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x20, 0x28;
-	long PaywallText	: "mono.dll", 0x4F8AF8, 0xEC14; // Check if text has been overwritten yet
+	int Paywall1Cost    : "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x38, 0x28; // Change cost of paywalls
+	int Paywall2Cost    : "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x30, 0x28; // I want to make sure they're ALL functioning before attempting to overwrite
+	int Paywall3Cost    : "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x28, 0x28;
+	int Paywall4Cost    : "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x48, 0x28;
+	int Paywall5Cost    : "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x40, 0x28;
+	int Paywall6Cost    : "mono.dll", 0x2675E0, 0x40, 0x1C8, 0x20, 0x20, 0x20, 0x170, 0x28, 0x70, 0x10, 0x20, 0x28;
+	long PaywallText    : "mono.dll", 0x4F8AF8, 0xEC14; // Check if text has been overwritten yet
 	byte TonicsUnlocked : "mono.dll", 0x2675E0, 0x90, 0x10, 0x260, 0x18, 0x30, 0x8, 0x108, 0x30, 0x18, 0x28, 0x54; // Unlocks tonic menus & the ability to use them
 }
 
@@ -167,7 +167,8 @@ startup{
 	
 	
 	settings.Add(vars.HardMode, false, vars.HardMode);
-		settings.Add("NoSpotlight", false, "Replace Spotlight with Chameleon Colors (B swaps!)", vars.HardMode);
+		settings.Add("Spotlight", false, "Harder: Replace Chameleon Colors with Spotlight", vars.HardMode);
+		settings.Add("Mirrored", false, "Harder: Replace Chameleon Colors with Mirrored Mode", vars.HardMode);
 	settings.Add(vars.ILRunsMode, false);
 	settings.Add(vars.TutStart, false);
 	settings.Add(vars.LairSplits, false);
@@ -609,20 +610,30 @@ update{
 			new DeepPointer("mono.dll", 0x268180, 0x50, 0x308, 0x40, 0x38, 0x30, 0x30, 0x20, 0x18, 0x0, 0x20, 0x28).DerefOffsets(game, out temp); // EquippedTonic2 pointer
 			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((long)current.IDRollEvFaster) ); // Equips Tonic if it isn't equipped
 		}
-		if (current.EquippedTonic3 != current.IDSpotlight && !settings["NoSpotlight"]){
-			IntPtr temp;
-			new DeepPointer("mono.dll", 0x268180, 0x50, 0x308, 0x40, 0x38, 0x30, 0x30, 0x20, 0x18, 0x0, 0x20, 0x30).DerefOffsets(game, out temp); // EquippedTonic3 pointer
-			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((long)current.IDSpotlight) ); // Equips Tonic if it isn't equipped
-		}
-		if (current.EquippedTonic3 != current.IDChamColors && settings["NoSpotlight"]){
+		if (current.EquippedTonic3 != current.IDChamColors && !settings["Spotlight"] && !settings["Mirrored"]){
 			IntPtr temp;
 			new DeepPointer("mono.dll", 0x268180, 0x50, 0x308, 0x40, 0x38, 0x30, 0x30, 0x20, 0x18, 0x0, 0x20, 0x30).DerefOffsets(game, out temp); // EquippedTonic3 pointer
 			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((long)current.IDChamColors) ); // Equips Tonic if it isn't equipped
 		}
-		if (current.EquippedTonic4 != current.IDGooglyEyes){
+		if (current.EquippedTonic3 != current.IDSpotlight && settings["Spotlight"] && !settings["Mirrored"]){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x268180, 0x50, 0x308, 0x40, 0x38, 0x30, 0x30, 0x20, 0x18, 0x0, 0x20, 0x30).DerefOffsets(game, out temp); // EquippedTonic3 pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((long)current.IDSpotlight) ); // Equips Tonic if it isn't equipped
+		}
+		if (current.EquippedTonic3 != current.IDChamColors && settings["Mirrored"] && !settings["Spotlight"]){
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x268180, 0x50, 0x308, 0x40, 0x38, 0x30, 0x30, 0x20, 0x18, 0x0, 0x20, 0x30).DerefOffsets(game, out temp); // EquippedTonic3 pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((long)current.IDDerorrim) ); // Equips Tonic if it isn't equipped
+		}
+		if (current.EquippedTonic4 != current.IDGooglyEyes && current.Level != 12){ // Googly Eyes bug makes 17-1 impossible
 			IntPtr temp;
 			new DeepPointer("mono.dll", 0x268180, 0x50, 0x308, 0x40, 0x38, 0x30, 0x30, 0x20, 0x18, 0x0, 0x20, 0x38).DerefOffsets(game, out temp); // EquippedTonic4 pointer
 			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((long)current.IDGooglyEyes) ); // Equips Tonic if it isn't equipped
+		}
+		if (current.Level == 12 && current.EquippedTonic4 != 0){ // Googly Eyes bug makes 17-1 impossible
+			IntPtr temp;
+			new DeepPointer("mono.dll", 0x268180, 0x50, 0x308, 0x40, 0x38, 0x30, 0x30, 0x20, 0x18, 0x0, 0x20, 0x38).DerefOffsets(game, out temp); // EquippedTonic4 pointer
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((long)0) ); // Removes Googly Eyes
 		}
 
 		// Coordinate boxes to give Laylee back in 2D stages to slam heavy doors
