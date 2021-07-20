@@ -852,7 +852,7 @@ update{
 		// No way to change the final purchase cost yet (99→30)
 
 		// Teleport to the end of the tutorial on new files
-		if (current.Level == 4 && current.XPos < 649){
+		if (current.Level == 4 && current.XPos < 650){
 			IntPtr temp;
 			new DeepPointer("mono.dll", 0x267758, 0x10, 0x1D0, 0x8, 0x3F0, 0x1758, 0x108, 0x108, 0x30, 0x100, 0x8, 0x18, 0x0, 0x18, 0x10, 0x20, 0x128, 0x10, 0x60, 0xA0).DerefOffsets(game, out temp); // XPos pointer
 			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((float)650) );
