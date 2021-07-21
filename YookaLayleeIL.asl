@@ -368,7 +368,7 @@ split{
 	} else if(current.Level == 7 && current.XPos == -144 && old.XPos == -226 && settings[vars.LairSplits]){
 		vars.Log("– Splitting after Lair fight 3! –\n");
 		return true;						       
-	} else if(current.Level == 8 && current.XPos < -3 && current.XPos > -7 && old.XPos == -226 && settings[vars.LairSplits]){ // Edit to 1 XPos check
+	} else if(current.Level == 8 && current.XPos < 0 && old.XPos == -226 && settings[vars.LairSplits]){
 		vars.Log("– Splitting after Lair fight 4! –\n");
 		return true;						        
 	} else if(current.Level == 10 && old.Level == 8 && current.Restart == 1 && current.Health > 0 && settings[vars.LairSplits]){
