@@ -472,7 +472,7 @@ update{
 		}
 		if(current.ULCatchee != 257 && current.Level != 10){ // Don't apply in overworld to prevent tonic tutorial hard lock (it re-locks itself when needed in the tutorial, but won't progress if we overwrite it here)
 			IntPtr temp; // This will never need to be applied in the overworld anyway
-			new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x20, 0x19).DerefOffsets(game, out temp); // ULCatchee pointer
+			new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x20, 0x18).DerefOffsets(game, out temp); // ULCatchee pointer
 			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((short)257) ); // Buys Tonic - If Catchee is not found & bought, tonic selection menu hard locks the game
 		}
 		if(current.ULLessChkMts != 1 || current.ULRollEvFaster != 1 || current.ULSpotlight != 1 || current.ULGooglyEyes != 1 || current.ULDerorrim != 1 || current.ULChamColors != 1){
