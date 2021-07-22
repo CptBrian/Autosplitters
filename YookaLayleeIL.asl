@@ -116,7 +116,7 @@ state("YLILWin64", "Steam 1.04"){
 	long IDGooglyEyes   : "mono.dll", 0x2675E0, 0x40, 0x138, 0x20, 0x20, 0x20, 0x50, 0xB8, 0x80;
 	long IDDerorrim     : "mono.dll", 0x2675E0, 0x40, 0x138, 0x20, 0x20, 0x20, 0x50, 0xB8, 0x130;
 	long IDChamColors   : "mono.dll", 0x2675E0, 0x40, 0x138, 0x20, 0x20, 0x20, 0x50, 0xB8, 0x1C8;
-	byte ULCatchee      : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x20, 0x19; // If Catchee is not bought, tonic selection menu hard locks the game
+	short ULCatchee     : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x20, 0x18; // If Catchee is not found & bought, tonic selection menu hard locks the game
 	byte ULLessChkMts   : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x38, 0x18; // Tonic Unlock Flags (forced tonics must also be "found" to prevent a hard-lock)
 	byte ULRollEvFaster : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0xA8, 0x18;
 	byte ULSpotlight    : "mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x180, 0x18;
@@ -278,7 +278,7 @@ reset{
 }
 
 isLoading{
-	if(settings[vars.AltLoadRemove] && vars.loadingFl == 1 && current.isLoading == 1 && current.isInteractable == 0 && current.LevelLoad != 0){
+	if(settings[vars.AltLoadRemove] && vars.loadingFl == 1 && current.isLoading == 1 && current.isInteractable == 0 && current.LevelLoad == 1){
 	// Alternative Load Removal — Variable change happens in update{} — Is this consistent & reliable load removal?
 		if(!vars.hasLoggedLoad){
 			vars.Log("- Pausing the timer. (Level Changed) -\n");
@@ -286,7 +286,7 @@ isLoading{
 		}
 		return true;
 	} else { // Everything NOT using Alternative Load Removal goes in here
-		if(current.isLoading == 1 && current.LevelLoad != 0 && current.isInteractable == 0 && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"]){
+		if(current.isLoading == 1 && current.LevelLoad == 1 && current.isInteractable == 0 && !settings["TestDelaysRestart"] && !settings["TestDelaysBeeBreakToLoad"]){
 		// Standard load removal (isInteractable checks for tonic menu, LevelLoad excludes fades & cutscene inconsistencies)
 			if(!vars.hasLoggedLoad){
 				vars.Log("- Pausing the Timer (Entered a Load) -\n");
@@ -470,10 +470,10 @@ update{
 			new DeepPointer("mono.dll", 0x2675E0, 0x90, 0x10, 0x260, 0x18, 0x30, 0x8, 0x108, 0x30, 0x18, 0x28, 0x54).DerefOffsets(game, out temp); // TonicsUnlocked pointer
 			game.WriteBytes((IntPtr)temp, new byte[] {1} ); // Unlocks tonic menus & the ability to use them
 		}
-		if(current.ULCatchee != 1 && current.Level != 10){ // Don't apply in overworld to prevent tonic tutorial hard lock (it re-locks itself when needed in the tutorial, but won't progress if we overwrite it here)
+		if(current.ULCatchee != 257 && current.Level != 10){ // Don't apply in overworld to prevent tonic tutorial hard lock (it re-locks itself when needed in the tutorial, but won't progress if we overwrite it here)
 			IntPtr temp; // This will never need to be applied in the overworld anyway
 			new DeepPointer("mono.dll", 0x2675E0, 0xA0, 0x340, 0xA8, 0x28, 0x60, 0x10, 0x20, 0x19).DerefOffsets(game, out temp); // ULCatchee pointer
-			game.WriteBytes((IntPtr)temp, new byte[] {1} ); // Buys Tonic - If Catchee is not bought, tonic selection menu hard locks the game
+			game.WriteBytes((IntPtr)temp, BitConverter.GetBytes((short)257) ); // Buys Tonic - If Catchee is not found & bought, tonic selection menu hard locks the game
 		}
 		if(current.ULLessChkMts != 1 || current.ULRollEvFaster != 1 || current.ULSpotlight != 1 || current.ULGooglyEyes != 1 || current.ULDerorrim != 1 || current.ULChamColors != 1){
 			IntPtr temp;
