@@ -9,7 +9,7 @@ This ASL is compatible with RotN versions: Steam 1.02,3,4,10,16,17,19,21 GOG 1.0
 */
 
 state("BloodstainedRotN-Win64-Shipping", "Unknown-Using Latest"){ //Copy of addresses from whatever the most common version is (Steam 1.21)
-	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0xF0;
+	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0xE8;
 	byte Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x148, 0x120, 0x285;
 	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x250;
 	uint BossHP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x288, 0xD50, 0x38;
