@@ -683,7 +683,7 @@ update{
 	//print("FileCreateLoad=="+current.FileCreateLoad+", LoadingFile=="+current.LoadingFile+", Saving=="+current.Saving);
 }
  
-isLoading{
+isLoading{ //Make sure to compare against GAME time, or this won't work!
 	//Some flags just count up/down by 1, which is why the (old)Loading flag(and potentially others) can very rarely go up to 2 or 3 during oddly stacked triggers, but they'll return to 0.
 	if(settings["Pause during general gameplay loading - Default: ON"] && current.RDLoading == 0 && current.RoomData != 0){
 		return true;
