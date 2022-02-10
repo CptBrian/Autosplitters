@@ -1,49 +1,49 @@
 /*
 Bloodstained: Ritual of the Night - ASL primarily by CptBrian with help from: DarkTechnomancer & hitachihex
-ASL Version 3.0 (PC Only)
-This ASL is compatible with RotN versions: Steam 1.02,3,4,10,16,17,19 GOG 1.03,4,5,9,10 & Cracked Steam 1.02
+ASL Version 3.1 (PC Only)
+This ASL is compatible with RotN versions: Steam 1.02,3,4,10,16,17,19,21 GOG 1.03,4,5,9,10,21 & Cracked Steam 1.02
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
 [LiveSplit] Layout Settings: Scriptable AutoSplitter -> Browse for this .asl file (^^^)
 [LiveSplit] Remember to save your Layout/Splits and compare against Game Time if necessary!
 */
 
-state("BloodstainedRotN-Win64-Shipping", "Unknown-Using Latest"){ //Copy of addresses from whatever the most common version is
-	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0xE8; //+0 hex prev
-	byte Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x140, 0x120, 0x285; //+0 hex prev, and +30 hex prev on 2nd offset
-	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x248; //+0 hex prev
-	uint BossHP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x280, 0xD50, 0x38; //+0 hex prev, and +20 hex prev on 2nd offset
-	uint Gold : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2A8; //+0 hex prev
-	uint GameClear : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2AC; //+0 hex prev
-	uint NGPlusCount : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2B8; //+0 hex prev
-	float IGT : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2BC; //+0 hex prev
-	byte Difficulty : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2C0; //+0 hex prev
-	byte GameMode : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2C1; //+0 hex prev
-	byte Character : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2C2; //+0 hex prev
-	uint IntroEvents : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x348; //+8 hex prev
-	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x790; //+8 hex prev
-	byte GalleonBannerSeen : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x7A0; //+8 hex prev
-	uint PauseMenu : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x888; //+8 hex prev
-	uint PressAnyKey : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x898; //+8 hex prev
-	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x8B0; //-18 hex prev
-	uint ShardGet : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x8B4; //+8 hex prev
-	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x8C0; //+8 hex prev
-	uint NewAreaBanner : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x8C4; //+8 hex prev
-	uint LevelUp : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x8CC; //+8 hex prev
-	uint UpgradeGet : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x8D0; //+8 hex prev
-	uint RoomData : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2F700; //+18 hex prev
-	uint PreviousRoom : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2F700, 0x180; //+18 hex prev
-	uint Room : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2F700, 0x188; //+18 hex prev
-	byte RDLoading : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2F700, 0x1B4; //+18 hex prev
-	byte IntroChest : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2E705; //+18 hex prev
-	uint DialogueShop : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2F7D8, 0x510; //+18 hex prev
-	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2F890, 0x0, 0x928, 0x238; //+18 hex prev
-	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2F890, 0x0, 0x928, 0x244; //+18 hex prev
-	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2F890, 0x0, 0x928, 0x24C; //+18 hex prev
-	float PlayerZ : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2F890, 0x0, 0x928, 0x25C; //+18 hex prev
-	uint PlayerHP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2F890, 0x0, 0xD50, 0x38; //+18 hex prev, and +20 hex prev on 3rd offset
-	uint PlayerMP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2F890, 0x0, 0xD50, 0x3C; //+18 hex prev, and +20 hex prev on 3rd offset
-	uint PlayerEXP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2F890, 0x0, 0xD50, 0x40; //+18 hex prev, and +20 hex prev on 3rd offset
+state("BloodstainedRotN-Win64-Shipping", "Unknown-Using Latest"){ //Copy of addresses from whatever the most common version is (Steam 1.21)
+	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0xF0;
+	byte Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x148, 0x120, 0x285;
+	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x250;
+	uint BossHP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x288, 0xD50, 0x38;
+	uint Gold : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2B0;
+	uint GameClear : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2B4;
+	uint NGPlusCount : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2C0;
+	float IGT : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2C4;
+	byte Difficulty : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2C8;
+	byte GameMode : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2C9;
+	byte Character : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2CA;
+	uint IntroEvents : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x358;
+	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x7A0;
+	byte GalleonBannerSeen : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x7B0;
+	uint PauseMenu : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x898;
+	uint PressAnyKey : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x8A8;
+	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x8C0;
+	uint ShardGet : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x8C4;
+	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x8D0;
+	uint NewAreaBanner : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x8D4;
+	uint LevelUp : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x8DC;
+	uint UpgradeGet : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x8E0;
+	uint RoomData : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F710;
+	uint PreviousRoom : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F710, 0x180;
+	uint Room : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F710, 0x188;
+	byte RDLoading : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F710, 0x1B4;
+	byte IntroChest : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2E715;
+	uint DialogueShop : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F7E8, 0x510;
+	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F8A0, 0x0, 0x930, 0x238;
+	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F8A0, 0x0, 0x930, 0x244;
+	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F8A0, 0x0, 0x930, 0x24C;
+	float PlayerZ : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F8A0, 0x0, 0x930, 0x25C;
+	uint PlayerHP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F8A0, 0x0, 0xD50, 0x38;
+	uint PlayerMP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F8A0, 0x0, 0xD50, 0x3C;
+	uint PlayerEXP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F8A0, 0x0, 0xD50, 0x40;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.02 Cracked"){
 	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x6C31250, 0x848; //uworld ptr is +1000 hex from official Steam 1.02/1.03
@@ -416,7 +416,7 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.17"){
 	uint PlayerEXP : "BloodstainedRotN-Win64-Shipping.exe", 0x7402820, 0x2F878, 0x0, 0xD30, 0x40;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.19"){
-	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0xE8; //+0 hex prev
+	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0xE8; //+0 hex previous version (Final offset)
 	byte Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x140, 0x120, 0x285; //+0 hex prev, and +30 hex prev on 2nd offset
 	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x248; //+0 hex prev
 	uint BossHP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x280, 0xD50, 0x38; //+0 hex prev, and +20 hex prev on 2nd offset
@@ -452,9 +452,83 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.19"){
 	uint PlayerMP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2F890, 0x0, 0xD50, 0x3C; //+18 hex prev, and +20 hex prev on 3rd offset
 	uint PlayerEXP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F2C990, 0x2F890, 0x0, 0xD50, 0x40; //+18 hex prev, and +20 hex prev on 3rd offset
 }
+state("BloodstainedRotN-Win64-Shipping", "Steam 1.21"){
+	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0xE8; //+0 hex previous version (Final offset)
+	byte Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x148, 0x120, 0x285; //+0 hex prev, +30 hex prev on 2nd offset
+	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x250; //+8 hex prev
+	uint BossHP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x288, 0xD50, 0x38; //+0 hex prev, +0 hex on 2nd offset, +8 hex prev on 1st offset
+	uint Gold : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2B0; //+8 hex prev
+	uint GameClear : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2B4; //+8 hex prev
+	uint NGPlusCount : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2C0; //+8 hex prev
+	float IGT : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2C4; //+8 hex prev
+	byte Difficulty : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2C8; //+8 hex prev
+	byte GameMode : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2C9; //+8 hex prev
+	byte Character : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2CA; //+8 hex prev
+	uint IntroEvents : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x358; //+10 hex prev
+	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x7A0; //+10 hex prev
+	byte GalleonBannerSeen : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x7B0; //+10 hex prev
+	uint PauseMenu : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x898; //+10 hex prev
+	uint PressAnyKey : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x8A8; //+10 hex prev
+	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x8C0; //+10 hex prev
+	uint ShardGet : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x8C4; //+10 hex prev
+	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x8D0; //+10 hex prev
+	uint NewAreaBanner : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x8D4; //+10 hex prev
+	uint LevelUp : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x8DC; //+10 hex prev
+	uint UpgradeGet : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x8E0; //+10 hex prev
+	uint RoomData : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F710; //+10 hex prev
+	uint PreviousRoom : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F710, 0x180; //+0 hex prev, +10 hex prev on 1st offset
+	uint Room : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F710, 0x188; //+0 hex prev, +10 hex prev on 1st offset
+	byte RDLoading : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F710, 0x1B4; //+0 hex prev, +10 hex prev on 1st offset
+	byte IntroChest : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2E715; //+10 hex prev
+	uint DialogueShop : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F7E8, 0x510; //+0 hex prev, +10 hex prev on 1st offset
+	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F8A0, 0x0, 0x930, 0x238; //+0 hex prev, +8 hex prev on 3rd offset, +10 hex prev on 1st offset
+	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F8A0, 0x0, 0x930, 0x244; //+0 hex prev, +8 hex prev on 3rd offset, +10 hex prev on 1st offset
+	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F8A0, 0x0, 0x930, 0x24C; //+0 hex prev, +8 hex prev on 3rd offset, +10 hex prev on 1st offset
+	float PlayerZ : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F8A0, 0x0, 0x930, 0x25C; //+0 hex prev, +8 hex prev on 3rd offset, +10 hex prev on 1st offset
+	uint PlayerHP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F8A0, 0x0, 0xD50, 0x38; //+0 hex prev, +0 hex prev on 3rd offset, +10 hex prev on 1st offset
+	uint PlayerMP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F8A0, 0x0, 0xD50, 0x3C; //+0 hex prev, +0 hex prev on 3rd offset, +10 hex prev on 1st offset
+	uint PlayerEXP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F891E0, 0x2F8A0, 0x0, 0xD50, 0x40; //+0 hex prev, +0 hex prev on 3rd offset, +10 hex prev on 1st offset
+}
+state("BloodstainedRotN-Win64-Shipping", "GOG 1.21"){ //Matches Steam's, except the base address
+	uint FileCreateLoad : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0xE8;
+	byte Saving : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x148, 0x120, 0x285;
+	uint Cutscene : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x250;
+	uint BossHP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x288, 0xD50, 0x38;
+	uint Gold : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2B0;
+	uint GameClear : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2B4;
+	uint NGPlusCount : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2C0;
+	float IGT : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2C4;
+	byte Difficulty : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2C8;
+	byte GameMode : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2C9;
+	byte Character : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2CA;
+	uint IntroEvents : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x358;
+	byte BossDoors : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x7A0;
+	byte GalleonBannerSeen : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x7B0;
+	uint PauseMenu : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x898;
+	uint PressAnyKey : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x8A8;
+	uint Loading : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x8C0;
+	uint ShardGet : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x8C4;
+	uint LoadingFile : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x8D0;
+	uint NewAreaBanner : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x8D4;
+	uint LevelUp : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x8DC;
+	uint UpgradeGet : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x8E0;
+	uint RoomData : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2F710;
+	uint PreviousRoom : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2F710, 0x180;
+	uint Room : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2F710, 0x188;
+	byte RDLoading : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2F710, 0x1B4;
+	byte IntroChest : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2E715;
+	uint DialogueShop : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2F7E8, 0x510;
+	float PlayerRotation : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2F8A0, 0x0, 0x930, 0x238;
+	float PlayerX : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2F8A0, 0x0, 0x930, 0x244;
+	float PlayerY : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2F8A0, 0x0, 0x930, 0x24C;
+	float PlayerZ : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2F8A0, 0x0, 0x930, 0x25C;
+	uint PlayerHP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2F8A0, 0x0, 0xD50, 0x38;
+	uint PlayerMP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2F8A0, 0x0, 0xD50, 0x3C;
+	uint PlayerEXP : "BloodstainedRotN-Win64-Shipping.exe", 0x6F881E0, 0x2F8A0, 0x0, 0xD50, 0x40;
+}
 
 startup{
-	vars.ASLVersion = "ASL Version 3.0 - Nov 18, 2020";
+	vars.ASLVersion = "ASL Version 3.1 - Feb 10, 2022";
 
 	settings.Add(vars.ASLVersion, false);
 	settings.Add("WebsiteTip", false, "Click 'Website' button for more info!", vars.ASLVersion);
@@ -540,6 +614,14 @@ init{
 		version = "Steam 1.19";
 		vars.log("Detected game version: " + version + " - MD5Hash: " + MD5Hash);
 	}
+	else if(MD5Hash == "22ED1244BE67360036FB6EE318BD5E79"){
+		version = "Steam 1.21";
+		vars.log("Detected game version: " + version + " - MD5Hash: " + MD5Hash);
+	}
+	else if(MD5Hash == "1408DADA2F05DBC603573F55DA0CAE8E"){
+		version = "GOG 1.21";
+		vars.log("Detected game version: " + version + " - MD5Hash: " + MD5Hash);
+	}
 	else{
 		version = "Unknown-Using Latest";
 		vars.log("UNDETECTED GAME VERSION - MD5Hash: " + MD5Hash);
@@ -622,43 +704,43 @@ isLoading{
 }
 
 start{
-	if(current.GameMode == 6 && (current.Room == 708 || current.Room == 715 || current.Room == 728) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 0 && current.IntroEvents == 128 && current.IntroChest == 0){
+	if(current.GameMode == 6 && (current.Room == 708 || current.Room == 715 || current.Room == 728 || current.Room == 727) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 0 && current.IntroEvents == 128 && current.IntroChest == 0){
 		if(vars.Logging){
 			vars.log("Splits started for SpeedRun mode (Miriam)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 6 && (current.Room == 715 || current.Room == 728) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 1 && current.IntroEvents == 0 && current.GalleonBannerSeen == 0){
+	else if(current.GameMode == 6 && (current.Room == 715 || current.Room == 728 || current.Room == 727) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 1 && current.IntroEvents == 0 && current.GalleonBannerSeen == 0){
 		if(vars.Logging){
 			vars.log("Splits started for SpeedRun mode (Zangetsu)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 6 && current.Room == 729 && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 6 && current.IntroEvents == 1075838976){
+	else if(current.GameMode == 6 && (current.Room == 729 || current.Room == 728) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 6 && current.IntroEvents == 1075838976){
 		if(vars.Logging){
 			vars.log("Splits started for SpeedRun mode (Bloodless)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 9 && (current.Room == 708 || current.Room == 715 || current.Room == 728) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 0 && current.IntroEvents == 192 && current.IntroChest == 0){
+	else if(current.GameMode == 9 && (current.Room == 708 || current.Room == 715 || current.Room == 728 || current.Room == 727) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 0 && current.IntroEvents == 192 && current.IntroChest == 0){
 		if(vars.Logging){
 			vars.log("Splits started for Randomizer mode");
 		}
 		return true;
 	}
-	else if(current.GameMode == 1 && (current.Room == 708 || current.Room == 715 || current.Room == 728) && old.DialogueShop == 1 && current.DialogueShop == 0 && current.Character == 0 && current.IntroEvents == 128 && current.IntroChest == 0){
+	else if(current.GameMode == 1 && (current.Room == 708 || current.Room == 715 || current.Room == 728 || current.Room == 727) && old.DialogueShop == 1 && current.DialogueShop == 0 && current.Character == 0 && current.IntroEvents == 128 && current.IntroChest == 0){
 		if(vars.Logging){
 			vars.log("Splits started for Standard mode (Miriam)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 1 && (current.Room == 715 || current.Room == 728) && old.IGT == 0.000000000 && current.IGT != 0.000000000 && current.Character == 1 && current.IntroEvents == 0 && current.GalleonBannerSeen == 0){
+	else if(current.GameMode == 1 && (current.Room == 715 || current.Room == 728 || current.Room == 727) && old.IGT == 0.000000000 && current.IGT != 0.000000000 && current.Character == 1 && current.IntroEvents == 0 && current.GalleonBannerSeen == 0){
 		if(vars.Logging){
 			vars.log("Splits started for Standard mode (Zangetsu)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 1 && current.Room == 729 && old.IGT == 0.000000000 && current.IGT != 0.000000000 && current.Character == 6 && current.IntroEvents == 1075838976){
+	else if(current.GameMode == 1 && (current.Room == 729 || current.Room == 728) && old.IGT == 0.000000000 && current.IGT != 0.000000000 && current.Character == 6 && current.IntroEvents == 1075838976){
 		if(vars.Logging){
 			vars.log("Splits started for Standard mode (Bloodless)");
 		}
@@ -676,37 +758,37 @@ start{
 }
 
 reset{
-	if((current.GameMode == 1 || current.GameMode == 6) && (current.Room == 708 || current.Room == 715 || current.Room == 728) && current.DialogueShop == 1 && current.IntroEvents == 0 && current.Character == 0){
+	if((current.GameMode == 1 || current.GameMode == 6) && (current.Room == 708 || current.Room == 715 || current.Room == 728 || current.Room == 727) && current.DialogueShop == 1 && current.IntroEvents == 0 && current.Character == 0){
 		if(vars.Logging){
 			vars.log("Splits reset for either Standard or SpeedRun mode (Miriam)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 1 && (current.Room == 715 || current.Room == 728) && current.IGT == 0.000000000 && current.IntroEvents == 0 && current.Character == 1 && current.GalleonBannerSeen == 0){
+	else if(current.GameMode == 1 && (current.Room == 715 || current.Room == 728 || current.Room == 727) && current.IGT == 0.000000000 && current.IntroEvents == 0 && current.Character == 1 && current.GalleonBannerSeen == 0){
 		if(vars.Logging){
 			vars.log("Splits reset for Standard mode (Zangetsu)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 6 && (current.Room == 715 || current.Room == 728) && current.PressAnyKey == 1 && current.IntroEvents == 0 && current.Character == 1 && current.GalleonBannerSeen == 0){
+	else if(current.GameMode == 6 && (current.Room == 715 || current.Room == 728 || current.Room == 727) && current.PressAnyKey == 1 && current.IntroEvents == 0 && current.Character == 1 && current.GalleonBannerSeen == 0){
 		if(vars.Logging){
 			vars.log("Splits reset for SpeedRun mode (Zangetsu)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 1 && current.Room == 729 && current.PreviousRoom == 0 && current.IGT == 0.000000000 && current.IntroEvents == 1075838976 && current.Character == 6 && current.RDLoading == 1 && old.RDLoading == 0){
+	else if(current.GameMode == 1 && (current.Room == 729 || current.Room == 728) && current.PreviousRoom == 0 && current.IGT == 0.000000000 && current.IntroEvents == 1075838976 && current.Character == 6 && current.RDLoading == 1 && old.RDLoading == 0){
 		if(vars.Logging){
 			vars.log("Splits reset for Standard mode (Bloodless)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 6 && current.Room == 729 && current.PreviousRoom == 0 && current.IntroEvents == 1075838976 && current.Character == 6 && current.RDLoading == 1 && old.RDLoading == 0){
+	else if(current.GameMode == 6 && (current.Room == 729 || current.Room == 728) && current.PreviousRoom == 0 && current.IntroEvents == 1075838976 && current.Character == 6 && current.RDLoading == 1 && old.RDLoading == 0){
 		if(vars.Logging){
 			vars.log("Splits reset for SpeedRun mode (Bloodless)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 9 && (current.Room == 715 || current.Room == 728) && current.PressAnyKey == 1 && current.IntroEvents == 192 && current.Character == 0){
+	else if(current.GameMode == 9 && (current.Room == 715 || current.Room == 728 || current.Room == 727) && current.PressAnyKey == 1 && current.IntroEvents == 192 && current.Character == 0){
 		if(vars.Logging){
 			vars.log("Splits reset for Randomizer mode");
 		}
