@@ -679,6 +679,8 @@ update{
 			vars.log("IntroChest was opened");
 		}
 	}
+	/*Quick DebugView Test: Also, if load removal isn't working, make damn sure you're comparing against GAME time...*/
+	//print("FileCreateLoad=="+current.FileCreateLoad+", LoadingFile=="+current.LoadingFile+", Saving=="+current.Saving);
 }
  
 isLoading{
