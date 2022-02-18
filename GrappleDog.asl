@@ -19,7 +19,7 @@ state("Grapple Dog", "Steam 1.0.1"){ //Process Name
 }
 
 startup{
-	vars.ASLVersion = "ASL Version 1.3 - Feb 17, 2022";
+	vars.ASLVersion = "ASL Version 1.4 - Feb 17, 2022";
 	vars.StartOptions = "Auto-Start Options";
 	vars.SplitOptions = "Auto-Split Options";
 	vars.LoadRemoval = "Pause during white transitions / Loads (rule undecided)";
@@ -72,7 +72,7 @@ split{
 	if(settings["ContinueSplit"] && old.Continue != 0x3FF00000 && current.Continue == 0x3FF00000){
 		return true; //Split every time Continue appears
 	}
-	else if(settings["BellSplit"] && old.Bell != 0 && current.Bell > 0 && current.Bell < 5){
+	else if(settings["BellSplit"] && old.Bell == 0 && current.Bell > 0 && current.Bell < 5){
 		return true;
 	}
 	else{
