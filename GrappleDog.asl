@@ -19,7 +19,7 @@ state("Grapple Dog", "Steam 1.0.1"){ //Process Name
 }
 
 startup{
-	vars.ASLVersion = "ASL Version 1.4 - Feb 17, 2022";
+	vars.ASLVersion = "ASL Version 1.5 - Feb 17, 2022";
 	vars.StartOptions = "Auto-Start Options";
 	vars.SplitOptions = "Auto-Split Options";
 	vars.LoadRemoval = "Pause during white transitions / Loads (rule undecided)";
@@ -30,6 +30,7 @@ startup{
 	settings.Add(vars.SplitOptions, true, vars.SplitOptions);
 		settings.Add("ContinueSplit", true, "Split when Continue appears in results", vars.SplitOptions);
 		settings.Add("BellSplit", false, "Split upon hitting bells", vars.SplitOptions);
+		settings.Add("NewStageSplit", false, "Split upon entering a different stage (not 1-1)", vars.SplitOptions);
 	settings.Add(vars.LoadRemoval, false);
 }
 
@@ -62,7 +63,6 @@ start{
 	if(settings["TransitionStart"] && old.Transition == 0 && current.Transition == 1){
 		return true;
 	}
-	//else if{more here}
 	else{
 		return false;
 	}
@@ -73,7 +73,10 @@ split{
 		return true; //Split every time Continue appears
 	}
 	else if(settings["BellSplit"] && old.Bell == 0 && current.Bell > 0 && current.Bell < 5){
-		return true;
+		return true; //Split upon hitting a bell (fail-safe included for multiple hits at the same time)
+	}
+	else if(settings["NewStageSplit"] && old.Stage != current.Stage && current.Stage > 1){
+		return true; //Split upon entering a different stage (excluding 1-1)
 	}
 	else{
 		return false;
