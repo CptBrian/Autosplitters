@@ -8,16 +8,18 @@ state("Grapple Dog", "Unknown, Trying Latest"){ //Copy of addresses from whichev
 	double Health : "Grapple Dog.exe", 0x6FCF38, 0x30, 0x84, 0xD0;
 	double Stage : "Grapple Dog.exe", 0x6FCF38, 0x30, 0x150, 0x1A0;
 	byte Transition : "Grapple Dog.exe", 0x4DCCEC, 0x0, 0xAF0, 0xC, 0x40;
+	byte Bell : "Grapple Dog.exe", 0x4DCCEC, 0x0, 0x990, 0xC, 0x40;
 }
 state("Grapple Dog", "Steam 1.0.1"){ //Process Name
 	int Continue : 0x43DE48, 0xC98, 0xC, 0x144, 0x24, 0x10, 0x204, 0x4; //The continue button appearing
 	double Health : "Grapple Dog.exe", 0x6FCF38, 0x30, 0x84, 0xD0; //Potentially useful in some circumstances
 	double Stage : "Grapple Dog.exe", 0x6FCF38, 0x30, 0x150, 0x1A0; //ID doesn't change when exiting a level to the overworld
 	byte Transition : "Grapple Dog.exe", 0x4DCCEC, 0x0, 0xAF0, 0xC, 0x40; //White screen transitions/loads
+	byte Bell : "Grapple Dog.exe", 0x4DCCEC, 0x0, 0x990, 0xC, 0x40; //Bell Rings (counts up with each hit, resets at results)
 }
 
 startup{
-	vars.ASLVersion = "ASL Version 1.2 - Feb 17, 2022";
+	vars.ASLVersion = "ASL Version 1.3 - Feb 17, 2022";
 	vars.StartOptions = "Auto-Start Options";
 	vars.SplitOptions = "Auto-Split Options";
 	vars.LoadRemoval = "Pause during white transitions / Loads (rule undecided)";
@@ -28,7 +30,7 @@ startup{
 		settings.Add("StartOption2", false, "Placeholder Auto-Start option #2", vars.StartOptions);
 	settings.Add(vars.SplitOptions, true, vars.SplitOptions);
 		settings.Add("ContinueSplit", true, "Split when Continue appears in results", vars.SplitOptions);
-		settings.Add("SplitOption2", false, "Placeholder Auto-Split option #2", vars.SplitOptions);
+		settings.Add("BellSplit", false, "Split upon hitting bells", vars.SplitOptions);
 	settings.Add(vars.LoadRemoval, false);
 }
 
@@ -61,9 +63,7 @@ start{
 	if(settings["TransitionStart"] && old.Transition == 0 && current.Transition == 1){
 		return true;
 	}
-	//else if(2nd auto-start condition here){
-	//	return true;
-	//}
+	//else if{more here}
 	else{
 		return false;
 	}
@@ -73,9 +73,9 @@ split{
 	if(settings["ContinueSplit"] && old.Continue != 0x3FF00000 && current.Continue == 0x3FF00000){
 		return true; //Split every time Continue appears
 	}
-	//else if(2nd auto-split condition here){
-	//	return true;
-	//}
+	else if(settings["BellSplit"] && old.Bell != 0 && current.Bell > 0 && current.Bell < 5){
+		return true;
+	}
 	else{
 		return false;
 	}
