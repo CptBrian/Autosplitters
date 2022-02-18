@@ -27,7 +27,6 @@ startup{
 	settings.Add(vars.ASLVersion, false);
 	settings.Add(vars.StartOptions, true, vars.StartOptions);
 		settings.Add("TransitionStart", true, "Start upon any initiated transitions (Play Stage)", vars.StartOptions);
-		settings.Add("StartOption2", false, "Placeholder Auto-Start option #2", vars.StartOptions);
 	settings.Add(vars.SplitOptions, true, vars.SplitOptions);
 		settings.Add("ContinueSplit", true, "Split when Continue appears in results", vars.SplitOptions);
 		settings.Add("BellSplit", false, "Split upon hitting bells", vars.SplitOptions);
