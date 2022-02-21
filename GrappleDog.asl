@@ -5,6 +5,7 @@ ASL originally by Slask with overhauals by CptBrian
 
 state("Grapple Dog", "Unknown, Trying Latest"){ //Copy of addresses from whichever the most common or latest version is (Steam 1.0)
 	int Continue : 0x43DE48, 0xC98, 0xC, 0x144, 0x24, 0x10, 0x204, 0x4;
+	int RexCannon : 0x43DE48, 0xAD0, 0xC, 0x24, 0x10, 0x594, 0x4;
 	double Health : "Grapple Dog.exe", 0x6FCF38, 0x30, 0x84, 0xD0;
 	double Stage : "Grapple Dog.exe", 0x6FCF38, 0x30, 0x150, 0x1A0;
 	byte Transition : "Grapple Dog.exe", 0x4DCCEC, 0x0, 0xAF0, 0xC, 0x40;
@@ -12,6 +13,7 @@ state("Grapple Dog", "Unknown, Trying Latest"){ //Copy of addresses from whichev
 }
 state("Grapple Dog", "Steam 1.0.1"){ //Process Name
 	int Continue : 0x43DE48, 0xC98, 0xC, 0x144, 0x24, 0x10, 0x204, 0x4; //The continue button appearing
+	int RexCannon : 0x43DE48, 0xAD0, 0xC, 0x24, 0x10, 0x594, 0x4; //if this one isn't stable, change it to 0x6EF220, 0x128, 0xEC4, 0x20, 0x24, 0x10, 0x594, 0x4;
 	double Health : "Grapple Dog.exe", 0x6FCF38, 0x30, 0x84, 0xD0; //Potentially useful in some circumstances
 	double Stage : "Grapple Dog.exe", 0x6FCF38, 0x30, 0x150, 0x1A0; //ID doesn't change when exiting a level to the overworld
 	byte Transition : "Grapple Dog.exe", 0x4DCCEC, 0x0, 0xAF0, 0xC, 0x40; //White screen transitions/loads
@@ -19,10 +21,11 @@ state("Grapple Dog", "Steam 1.0.1"){ //Process Name
 }
 
 startup{
-	vars.ASLVersion = "ASL Version 1.5 - Feb 17, 2022";
+	vars.ASLVersion = "ASL Version 1.7 - Feb 21, 2022";
 	vars.StartOptions = "Auto-Start Options";
 	vars.SplitOptions = "Auto-Split Options";
 	vars.LoadRemoval = "Pause during white transitions / Loads (rule undecided)";
+	vars.LoadTester = "Test Loading durations (disable other starts/load removal)";
 	
 	settings.Add(vars.ASLVersion, false);
 	settings.Add(vars.StartOptions, true, vars.StartOptions);
@@ -31,7 +34,9 @@ startup{
 		settings.Add("ContinueSplit", true, "Split when Continue appears in results", vars.SplitOptions);
 		settings.Add("BellSplit", false, "Split upon hitting bells", vars.SplitOptions);
 		settings.Add("NewStageSplit", false, "Split upon entering a different stage (not 1-1)", vars.SplitOptions);
+		settings.Add("RexCannonSplit", false, "Split upon landing in the red cannon before REX boss", vars.SplitOptions);
 	settings.Add(vars.LoadRemoval, false);
+	settings.Add(vars.LoadTester, false);
 }
 
 init{
@@ -56,12 +61,23 @@ update{
 }
 
 isLoading{ //Make sure to compare against GAME time in LiveSplit, or this won't work!
-	return settings[vars.LoadRemoval] && current.Transition == 1;
+	if(settings[vars.LoadRemoval] && current.Transition == 1){
+		return true; //Pause timer when loading
+	}
+	else if(settings[vars.LoadTester] && current.Transition == 0){
+		return true; //Pause timer when NOT loading, to test the duration of loads
+	}
+	else{
+		return false;
+	}
 }
 
 start{
 	if(settings["TransitionStart"] && old.Transition == 0 && current.Transition == 1){
-		return true;
+		return true; //Start timer upon any initiated transitions (Play Stage)
+	}
+	else if(settings[vars.LoadTester] && old.Transition == 0 && current.Transition == 1){
+		return true; //Start timer upon an initiated load to test load duration (I know these are *currently* the same, but keep them separate)
 	}
 	else{
 		return false;
@@ -69,7 +85,11 @@ start{
 }
 
 split{
-	if(settings["ContinueSplit"] && old.Continue != 0x3FF00000 && current.Continue == 0x3FF00000){
+
+	if (settings["RexCannonSplit"] && old.RexCannon == 0x0 && current.RexCannon == 0x3FF00000){
+		return true;
+	}
+	else if(settings["ContinueSplit"] && old.Continue != 0x3FF00000 && current.Continue == 0x3FF00000){
 		return true; //Split every time Continue appears
 	}
 	else if(settings["BellSplit"] && old.Bell == 0 && current.Bell > 0 && current.Bell < 5){
