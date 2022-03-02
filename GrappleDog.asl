@@ -1,6 +1,6 @@
 /*
 Grapple Dog (Released February 10, 2022)
-ASL originally by Slask with overhauals by CptBrian, load fix by Snuggles
+ASL originally by Slask with overhauals by CptBrian, v3 method of Load Removal by Snuggles
 */
 
 state("Grapple Dog", "Unknown, Trying Latest"){ //Copy of addresses from whichever the most common or latest version is (Steam 1.0.1)
@@ -25,7 +25,7 @@ state("Grapple Dog", "Steam 1.0.1"){ //Process Name
 }
 
 startup{
-	vars.ASLVersion = "ASL Version 2.0 - Mar 1, 2022";
+	vars.ASLVersion = "ASL Version 2.2 - Mar 2, 2022";
 	vars.StartOptions = "Auto-Start Options";
 	vars.SplitOptions = "Auto-Split Options";
 	vars.LoadRemoval = "Load Removal v3 (compare against GAME time to see)";
@@ -67,10 +67,10 @@ update{
 }
 
 isLoading{ //Make sure to compare against GAME time in LiveSplit, or this won't work!
-	if(settings[vars.LoadRemoval] && current.LoadFreeze == 1 && !settings[vars.LoadTester] && current.Transition == 1){
-		return true; //Pause timer when loading
+	if(settings[vars.LoadRemoval] && current.LoadFreeze == 1 && current.Transition == 1 && !settings[vars.LoadTester]){
+		return true; //Pause timer when loading freezes, only during transitions (LoadFreeze sometimes triggers mid-level otherwise)
 	}
-	else if(settings[vars.LoadTester] && current.Transition == 0){
+	else if(settings[vars.LoadTester] && current.LoadFreeze == 0){
 		return true; //Pause timer when NOT loading, to test the duration of loads
 	}
 	else{
@@ -85,8 +85,8 @@ start{
 	else if(settings["ILMode"] && old.Control == 0 && current.Control == 1 && !settings[vars.LoadTester]){
 		return true; //Start timer upon gaining control (currently global control instead of specifically player control, which doesn't appear to exist...)
 	}
-	else if(settings[vars.LoadTester] && old.Transition == 0 && current.Transition == 1){
-		return true; //Start timer upon an initiated load to test load duration (I know these are *currently* the same, but keep them separate)
+	else if(settings[vars.LoadTester] && old.LoadFreeze == 0 && current.LoadFreeze == 1 && current.Transition == 1){
+		return true; //Start timer upon load freezes during transitions to test load durations
 	}
 	else{
 		return false;
@@ -96,13 +96,13 @@ start{
 split{
 
 	if ((settings["RexCannonSplit"] || settings["ILMode"]) && old.RexCannon == 0x0 && current.RexCannon == 0x3FF00000 && !settings[vars.LoadTester]){
-		return true;
+		return true; //Split upon entering the red cannon before REX boss (the exact frame the cannon becomes bigger, immediately upon entering)
 	}
 	else if(settings["ContinueSplit"] && old.Continue != 0x3FF00000 && current.Continue == 0x3FF00000 && !settings[vars.LoadTester] && !settings["ILMode"]){
-		return true; //Split every time Continue appears
+		return true; //Split every time Continue appears (the exact frame)
 	}
 	else if((settings["BellSplit"] || settings["ILMode"]) && old.Bell == 0 && current.Bell > 0 && current.Bell < 5 && !settings[vars.LoadTester]){
-		return true; //Split upon hitting a bell (fail-safe included for multiple hits at the same time)
+		return true; //Split upon hitting a bell (fail-safe included for multiple hits potentially at the same time)
 	}
 	else if(settings["NewStageSplit"] && old.Stage != current.Stage && current.Stage > 1 && !settings[vars.LoadTester] && !settings["ILMode"]){
 		return true; //Split upon entering a different stage (excluding 1-1)
