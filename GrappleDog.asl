@@ -41,8 +41,7 @@ startup{
 		settings.Add("BellSplit", false, "Split upon hitting bells", vars.SplitOptions);
 		settings.Add("NewStageSplit", false, "Split upon entering a different stage (not 1-1)", vars.SplitOptions);
 		settings.Add("RexCannonSplit", false, "Split upon landing in the red cannon before REX boss", vars.SplitOptions);
-	settings.Add(vars.LoadRemoval, false);
-		settings.Add("CompInfo", false, "NOTE: W1 Competition uses REAL time!", vars.LoadRemoval);
+	settings.Add(vars.LoadRemoval, true);
 	settings.Add(vars.LoadTester, false);
 }
 
