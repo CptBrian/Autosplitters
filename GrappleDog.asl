@@ -1,6 +1,6 @@
 /*
 Grapple Dog (Released February 10, 2022)
-ASL originally by Slask with overhauals by CptBrian, v3 method of Load Removal by Snuggles
+ASL originally by Slask with overhauals by CptBrian, v3 tweak of Load Removal by Snuggles
 */
 
 state("Grapple Dog", "Unknown, Trying Latest"){ //Copy of addresses from whichever the most common or latest version is (Steam 1.0.1)
