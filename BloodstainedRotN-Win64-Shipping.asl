@@ -1,49 +1,49 @@
 /*
 Bloodstained: Ritual of the Night - ASL primarily by CptBrian with help from: DarkTechnomancer & hitachihex
-ASL Version 3.2 (PC Only)
-This ASL is compatible with RotN versions: Steam 1.02,3,4,10,16,17,19,21 GOG 1.03,4,5,9,10,21 & Cracked Steam 1.02
+ASL Version 3.3 (PC Only)
+This ASL is compatible with RotN versions: Steam 1.02,3,4,10,16,17,19,21,30,40 GOG 1.03,4,5,9,10,21 & Cracked Steam 1.02
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
 [LiveSplit] Layout Settings: Scriptable AutoSplitter -> Browse for this .asl file (^^^)
 [LiveSplit] Remember to save your Layout/Splits and compare against Game Time if necessary!
 */
 
-state("BloodstainedRotN-Win64-Shipping", "Unknown-Using Latest"){ //Copy of addresses from whichever the most common version is (Steam 1.30)
-	uint FileCreateLoad : 0xA84D8E0, 0x188;
-	byte Saving : 0xA84D8E0, 0x280, 0x150, 0x2B5;
-	uint Cutscene : 0xA84D8E0, 0x3D0;
-	uint BossHP : 0xA84D8E0, 0x408, 0xD18, 0x240;
-	uint Gold : 0xA84D8E0, 0x430;
-	uint GameClear : 0xA84D8E0, 0x434;
-	uint NGPlusCount : 0xA84D8E0, 0x440;
-	float IGT : 0xA84D8E0, 0x444;
-	byte Difficulty : 0xA84D8E0, 0x448;
-	byte GameMode : 0xA84D8E0, 0x449;
-	byte Character : 0xA84D8E0, 0x44A;
-	uint IntroEvents : 0xA84D8E0, 0x4E8;
-	byte BossDoors : 0xA84D8E0, 0x930;
-	byte GalleonBannerSeen : 0xA84D8E0, 0x940;
-	uint PauseMenu : 0xA84D8E0, 0xA28;
-	uint PressAnyKey : 0xA84D8E0, 0xA38;
-	uint Loading : 0xA84D8E0, 0xA50;
-	uint ShardGet : 0xA84D8E0, 0xA54;
-	uint LoadingFile : 0xA84D8E0, 0xA60;
-	uint NewAreaBanner : 0xA84D8E0, 0xA64;
-	uint LevelUp : 0xA84D8E0, 0xA6C;
-	uint UpgradeGet : 0xA84D8E0, 0xA70;
-	uint RoomData : 0xA84D8E0, 0x2F8A0;
-	uint PreviousRoom : 0xA84D8E0, 0x2F8A0, 0x180;
-	uint Room : 0xA84D8E0, 0x2F8A0, 0x188;
-	byte RDLoading : 0xA84D8E0, 0x2F8A0, 0x1B0;
-	byte IntroChest : 0xA84D8E0, 0x2E8A5;
-	uint DialogueShop : 0xA84D8E0, 0x2F978, 0x4E8;
-	float PlayerRotation : 0xA84D8E0, 0x2FA30, 0x0, 0x8F8, 0x23C;
-	float PlayerX : 0xA84D8E0, 0x2FA30, 0x0, 0x8F8, 0x260;
-	float PlayerY : 0xA84D8E0, 0x2FA30, 0x0, 0x8F8, 0x268;
-	float PlayerZ : 0xA84D8E0, 0x2FA30, 0x0, 0x8F8, 0x264;
-	uint PlayerHP : 0xA84D8E0, 0x2FA30, 0x0, 0xD18, 0x240;
-	uint PlayerMP : 0xA84D8E0, 0x2FA30, 0x0, 0xD18, 0x244;
-	uint PlayerEXP : 0xA84D8E0, 0x2FA30, 0x0, 0xD18, 0x248;
+state("BloodstainedRotN-Win64-Shipping", "Unknown-Using Latest"){ //Copy of addresses from whichever the most common version is (Steam 1.40)
+	uint FileCreateLoad : 0xA81CEE0, 0x188;
+	byte Saving : 0xA81CEE0, 0x280, 0x150, 0x2B5;
+	uint Cutscene : 0xA81CEE0, 0x3D0;
+	uint BossHP : 0xA81CEE0, 0x408, 0xD18, 0x240;
+	uint Gold : 0xA81CEE0, 0x430;
+	uint GameClear : 0xA81CEE0, 0x434;
+	uint NGPlusCount : 0xA81CEE0, 0x440;
+	float IGT : 0xA81CEE0, 0x444;
+	byte Difficulty : 0xA81CEE0, 0x448;
+	byte GameMode : 0xA81CEE0, 0x449;
+	byte Character : 0xA81CEE0, 0x44A;
+	uint IntroEvents : 0xA81CEE0, 0x4E8;
+	byte BossDoors : 0xA81CEE0, 0x930;
+	byte GalleonBannerSeen : 0xA81CEE0, 0x940;
+	uint PauseMenu : 0xA81CEE0, 0xA28;
+	uint PressAnyKey : 0xA81CEE0, 0xA38;
+	uint Loading : 0xA81CEE0, 0xA50;
+	uint ShardGet : 0xA81CEE0, 0xA54;
+	uint LoadingFile : 0xA81CEE0, 0xA60;
+	uint NewAreaBanner : 0xA81CEE0, 0xA64;
+	uint LevelUp : 0xA81CEE0, 0xA6C;
+	uint UpgradeGet : 0xA81CEE0, 0xA70;
+	uint RoomData : 0xA81CEE0, 0x2F8A0;
+	uint PreviousRoom : 0xA81CEE0, 0x2F8A0, 0x180;
+	uint Room : 0xA81CEE0, 0x2F8A0, 0x188;
+	byte RDLoading : 0xA81CEE0, 0x2F8A0, 0x1B0;
+	byte IntroChest : 0xA81CEE0, 0x2E8A5;
+	uint DialogueShop : 0xA81CEE0, 0x2F978, 0x4E8;
+	float PlayerRotation : 0xA81CEE0, 0x2FA30, 0x0, 0x8F8, 0x23C;
+	float PlayerX : 0xA81CEE0, 0x2FA30, 0x0, 0x8F8, 0x260;
+	float PlayerY : 0xA81CEE0, 0x2FA30, 0x0, 0x8F8, 0x268;
+	float PlayerZ : 0xA81CEE0, 0x2FA30, 0x0, 0x8F8, 0x264;
+	uint PlayerHP : 0xA81CEE0, 0x2FA30, 0x0, 0xD18, 0x240;
+	uint PlayerMP : 0xA81CEE0, 0x2FA30, 0x0, 0xD18, 0x244;
+	uint PlayerEXP : 0xA81CEE0, 0x2FA30, 0x0, 0xD18, 0x248;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.02 Cracked"){
 	uint Loading : 0x6C31250, 0x848; //uworld ptr is +1000 hex from official Steam 1.02/1.03
@@ -563,9 +563,46 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.30"){
 	uint PlayerMP : 0xA84D8E0, 0x2FA30, 0x0, 0xD18, 0x244; //+208 hex prev, -38 hex prev on 3rd offset, +190 hex prev on 1st offset
 	uint PlayerEXP : 0xA84D8E0, 0x2FA30, 0x0, 0xD18, 0x248; //+208 hex prev, -38 hex prev on 3rd offset, +190 hex prev on 1st offset
 }
+state("BloodstainedRotN-Win64-Shipping", "Steam 1.40"){
+	uint FileCreateLoad : 0xA81CEE0, 0x188; //+0 hex previous version (Final offset)
+	byte Saving : 0xA81CEE0, 0x280, 0x150, 0x2B5; //+0 hex prev
+	uint Cutscene : 0xA81CEE0, 0x3D0; //+0 hex prev
+	uint BossHP : 0xA81CEE0, 0x408, 0xD18, 0x240; //+0 hex prev
+	uint Gold : 0xA81CEE0, 0x430; //+0 hex prev —— Always start with Gold when updating pointers for a new game version to easily find accurate base addresses (1 result) & this memory region
+	uint GameClear : 0xA81CEE0, 0x434; //+0 hex prev
+	uint NGPlusCount : 0xA81CEE0, 0x440; //+0 hex prev
+	float IGT : 0xA81CEE0, 0x444; //+0 hex prev
+	byte Difficulty : 0xA81CEE0, 0x448; //+0 hex prev
+	byte GameMode : 0xA81CEE0, 0x449; //+0 hex prev
+	byte Character : 0xA81CEE0, 0x44A; //+0 hex prev
+	uint IntroEvents : 0xA81CEE0, 0x4E8; //+0 hex prev
+	byte BossDoors : 0xA81CEE0, 0x930; //+0 hex prev
+	byte GalleonBannerSeen : 0xA81CEE0, 0x940; //+0 hex prev
+	uint PauseMenu : 0xA81CEE0, 0xA28; //+0 hex prev
+	uint PressAnyKey : 0xA81CEE0, 0xA38; //+0 hex prev
+	uint Loading : 0xA81CEE0, 0xA50; //+0 hex prev
+	uint ShardGet : 0xA81CEE0, 0xA54; //+0 hex prev
+	uint LoadingFile : 0xA81CEE0, 0xA60; //+0 hex prev
+	uint NewAreaBanner : 0xA81CEE0, 0xA64; //+0 hex prev
+	uint LevelUp : 0xA81CEE0, 0xA6C; //+0 hex prev
+	uint UpgradeGet : 0xA81CEE0, 0xA70; //+0 hex prev
+	uint RoomData : 0xA81CEE0, 0x2F8A0; //+0 hex prev
+	uint PreviousRoom : 0xA81CEE0, 0x2F8A0, 0x180; //+0 hex prev
+	uint Room : 0xA81CEE0, 0x2F8A0, 0x188; //+0 hex prev
+	byte RDLoading : 0xA81CEE0, 0x2F8A0, 0x1B0; //+0 hex prev
+	byte IntroChest : 0xA81CEE0, 0x2E8A5; //+0 hex prev
+	uint DialogueShop : 0xA81CEE0, 0x2F978, 0x4E8; //+0 hex prev
+	float PlayerRotation : 0xA81CEE0, 0x2FA30, 0x0, 0x8F8, 0x23C; //+0 hex prev
+	float PlayerX : 0xA81CEE0, 0x2FA30, 0x0, 0x8F8, 0x260; //+0 hex prev
+	float PlayerY : 0xA81CEE0, 0x2FA30, 0x0, 0x8F8, 0x268; //+0 hex prev
+	float PlayerZ : 0xA81CEE0, 0x2FA30, 0x0, 0x8F8, 0x264; //+0 hex prev
+	uint PlayerHP : 0xA81CEE0, 0x2FA30, 0x0, 0xD18, 0x240; //+0 hex prev
+	uint PlayerMP : 0xA81CEE0, 0x2FA30, 0x0, 0xD18, 0x244; //+0 hex prev
+	uint PlayerEXP : 0xA81CEE0, 0x2FA30, 0x0, 0xD18, 0x248; //+0 hex prev
+}
 
 startup{
-	vars.ASLVersion = "ASL Version 3.2 - April 1, 2022";
+	vars.ASLVersion = "ASL Version 3.3 - September 9, 2022";
 
 	settings.Add(vars.ASLVersion, false);
 	settings.Add("WebsiteTip", false, "Click 'Website' button for more info!", vars.ASLVersion);
@@ -663,6 +700,10 @@ init{
 		version = "Steam 1.30";
 		vars.log("Detected game version: " + version + " - MD5Hash: " + MD5Hash);
 	}
+	else if(MD5Hash == "6FAF2CF582CCD64A627F9C6D61FD68F9"){
+		version = "Steam 1.40";
+		vars.log("Detected game version: " + version + " - MD5Hash: " + MD5Hash);
+	}
 	else{
 		version = "Unknown-Using Latest";
 		vars.log("UNDETECTED GAME VERSION - MD5Hash: " + MD5Hash);
@@ -747,57 +788,57 @@ isLoading{ //Make sure to compare against GAME time, or this won't work!
 }
 
 start{
-	if(current.GameMode == 6 && (current.Room == 708 || current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 0 && current.IntroEvents == 128 && current.IntroChest == 0){
+	if(current.GameMode == 6 && (current.Room == 708 || current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924 || current.Room == 936) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 0 && current.IntroEvents == 128 && current.IntroChest == 0){
 		if(vars.Logging){
 			vars.log("Splits started for SpeedRun mode (Miriam)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 6 && (current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 1 && current.IntroEvents == 0 && current.GalleonBannerSeen == 0){
-		if(vars.Logging){
-			vars.log("Splits started for SpeedRun mode (Zangetsu)");
-		}
-		return true;
-	}
-	else if(current.GameMode == 9 && (current.Room == 708 || current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 0 && current.IntroEvents == 192 && current.IntroChest == 0){
-		if(vars.Logging){
-			vars.log("Splits started for Randomizer mode");
-		}
-		return true;
-	}
-	else if(current.GameMode == 1 && (current.Room == 708 || current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924) && old.DialogueShop == 1 && current.DialogueShop == 0 && current.Character == 0 && current.IntroEvents == 128 && current.IntroChest == 0){
+	else if(current.GameMode == 1 && (current.Room == 708 || current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924 || current.Room == 936) && old.DialogueShop == 1 && current.DialogueShop == 0 && current.Character == 0 && current.IntroEvents == 128 && current.IntroChest == 0){
 		if(vars.Logging){
 			vars.log("Splits started for Standard mode (Miriam)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 1 && (current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924) && old.IGT == 0.000000000 && current.IGT != 0.000000000 && current.Character == 1 && current.IntroEvents == 0 && current.GalleonBannerSeen == 0){
+	else if(current.GameMode == 6 && (current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924 || current.Room == 936) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 1 && current.IntroEvents == 0 && current.GalleonBannerSeen == 0){
+		if(vars.Logging){
+			vars.log("Splits started for SpeedRun mode (Zangetsu)");
+		}
+		return true;
+	}
+	else if(current.GameMode == 1 && (current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924 || current.Room == 936) && old.IGT == 0.000000000 && current.IGT != 0.000000000 && current.Character == 1 && current.IntroEvents == 0 && current.GalleonBannerSeen == 0){
 		if(vars.Logging){
 			vars.log("Splits started for Standard mode (Zangetsu)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 6 && (current.Room == 924) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 3 && current.IntroEvents == 0 && current.GalleonBannerSeen == 0){
+	else if(current.GameMode == 6 && (current.Room == 924 || current.Room == 936) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 3 && current.IntroEvents == 0 && current.GalleonBannerSeen == 0){
 		if(vars.Logging){
 			vars.log("Splits started for SpeedRun mode (Aurora)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 1 && (current.Room == 924) && old.IGT == 0.000000000 && current.IGT != 0.000000000 && current.Character == 3 && current.IntroEvents == 0 && current.GalleonBannerSeen == 0){
+	else if(current.GameMode == 1 && (current.Room == 924 || current.Room == 936) && old.IGT == 0.000000000 && current.IGT != 0.000000000 && current.Character == 3 && current.IntroEvents == 0 && current.GalleonBannerSeen == 0){
 		if(vars.Logging){
 			vars.log("Splits started for Standard mode (Aurora)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 6 && (current.Room == 729 || current.Room == 728 || current.Room == 925) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 6 && current.IntroEvents == 1075838976){
+	else if(current.GameMode == 6 && (current.Room == 729 || current.Room == 728 || current.Room == 925 || current.Room == 937) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 6 && current.IntroEvents == 1075838976){
 		if(vars.Logging){
 			vars.log("Splits started for SpeedRun mode (Bloodless)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 1 && (current.Room == 729 || current.Room == 728 || current.Room == 925) && old.IGT == 0.000000000 && current.IGT != 0.000000000 && current.Character == 6 && current.IntroEvents == 1075838976){
+	else if(current.GameMode == 1 && (current.Room == 729 || current.Room == 728 || current.Room == 925 || current.Room == 937) && old.IGT == 0.000000000 && current.IGT != 0.000000000 && current.Character == 6 && current.IntroEvents == 1075838976){
 		if(vars.Logging){
 			vars.log("Splits started for Standard mode (Bloodless)");
+		}
+		return true;
+	}
+	else if(current.GameMode == 9 && (current.Room == 708 || current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924 || current.Room == 936) && old.PressAnyKey == 1 && current.PressAnyKey == 0 && current.Character == 0 && current.IntroEvents == 192 && current.IntroChest == 0){
+		if(vars.Logging){
+			vars.log("Splits started for Randomizer mode");
 		}
 		return true;
 	}
@@ -813,49 +854,49 @@ start{
 }
 
 reset{
-	if((current.GameMode == 1 || current.GameMode == 6) && (current.Room == 708 || current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924) && current.DialogueShop == 1 && current.IntroEvents == 0 && current.Character == 0){
+	if((current.GameMode == 1 || current.GameMode == 6) && (current.Room == 708 || current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924 || current.Room == 936) && current.DialogueShop == 1 && current.IntroEvents == 0 && current.Character == 0){
 		if(vars.Logging){
 			vars.log("Splits reset for either Standard or SpeedRun mode (Miriam)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 1 && (current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924) && current.IGT == 0.000000000 && current.IntroEvents == 0 && current.Character == 1 && current.GalleonBannerSeen == 0){
-		if(vars.Logging){
-			vars.log("Splits reset for Standard mode (Zangetsu)");
-		}
-		return true;
-	}
-	else if(current.GameMode == 6 && (current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924) && current.PressAnyKey == 1 && current.IntroEvents == 0 && current.Character == 1 && current.GalleonBannerSeen == 0){
+	else if(current.GameMode == 6 && (current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924 || current.Room == 936) && current.PressAnyKey == 1 && current.IntroEvents == 0 && current.Character == 1 && current.GalleonBannerSeen == 0){
 		if(vars.Logging){
 			vars.log("Splits reset for SpeedRun mode (Zangetsu)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 1 && (current.Room == 924) && current.IGT == 0.000000000 && current.IntroEvents == 0 && current.Character == 3 && current.GalleonBannerSeen == 0){
+	else if(current.GameMode == 1 && (current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924 || current.Room == 936) && current.IGT == 0.000000000 && current.IntroEvents == 0 && current.Character == 1 && current.GalleonBannerSeen == 0){
 		if(vars.Logging){
-			vars.log("Splits reset for Standard mode (Aurora)");
+			vars.log("Splits reset for Standard mode (Zangetsu)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 6 && (current.Room == 924) && current.PressAnyKey == 1 && current.IntroEvents == 0 && current.Character == 3 && current.GalleonBannerSeen == 0){
+	else if(current.GameMode == 6 && (current.Room == 924 || current.Room == 936) && current.PressAnyKey == 1 && current.IntroEvents == 0 && current.Character == 3 && current.GalleonBannerSeen == 0){
 		if(vars.Logging){
 			vars.log("Splits reset for SpeedRun mode (Aurora)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 1 && (current.Room == 729 || current.Room == 728 || current.Room == 925) && current.PreviousRoom == 0 && current.IGT == 0.000000000 && current.IntroEvents == 1075838976 && current.Character == 6 && current.RDLoading == 1 && old.RDLoading == 0){
+	else if(current.GameMode == 1 && (current.Room == 924 || current.Room == 936) && current.IGT == 0.000000000 && current.IntroEvents == 0 && current.Character == 3 && current.GalleonBannerSeen == 0){
 		if(vars.Logging){
-			vars.log("Splits reset for Standard mode (Bloodless)");
+			vars.log("Splits reset for Standard mode (Aurora)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 6 && (current.Room == 729 || current.Room == 728 || current.Room == 925) && current.PreviousRoom == 0 && current.IntroEvents == 1075838976 && current.Character == 6 && current.RDLoading == 1 && old.RDLoading == 0){
+	else if(current.GameMode == 6 && (current.Room == 729 || current.Room == 728 || current.Room == 925 || current.Room == 937) && current.PreviousRoom == 0 && current.IntroEvents == 1075838976 && current.Character == 6 && current.RDLoading == 1 && old.RDLoading == 0){
 		if(vars.Logging){
 			vars.log("Splits reset for SpeedRun mode (Bloodless)");
 		}
 		return true;
 	}
-	else if(current.GameMode == 9 && (current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924) && current.PressAnyKey == 1 && current.IntroEvents == 192 && current.Character == 0){
+	else if(current.GameMode == 1 && (current.Room == 729 || current.Room == 728 || current.Room == 925 || current.Room == 937) && current.PreviousRoom == 0 && current.IGT == 0.000000000 && current.IntroEvents == 1075838976 && current.Character == 6 && current.RDLoading == 1 && old.RDLoading == 0){
+		if(vars.Logging){
+			vars.log("Splits reset for Standard mode (Bloodless)");
+		}
+		return true;
+	}
+	else if(current.GameMode == 9 && (current.Room == 715 || current.Room == 728 || current.Room == 727 || current.Room == 924 || current.Room == 936) && current.PressAnyKey == 1 && current.IntroEvents == 192 && current.Character == 0){
 		if(vars.Logging){
 			vars.log("Splits reset for Randomizer mode");
 		}
