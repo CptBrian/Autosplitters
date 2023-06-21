@@ -1,30 +1,32 @@
 /*
-	Oblivion Override ASL (for $10K comp) Might update later, but it's a ton of work, and I'm very busy, also Unity pointers are literally Satan.
-	Throw money at my PayPal if you want me to update it: CptBrian@outlook.com
+	Oblivion Override (Released in Early Access on June 13, 2023) https://store.steampowered.com/app/1952370
+	ASL originally by CptBrian; made primarily for the $10K competition.
+	Might update later, but it's a ton of work, and I'm very busy, also Unity pointers are literally Satan, so please help with them if you're capable.
+	Throw money at my PayPal if you want me to update it: CptBrian@Outlook.com
 */
 
 state("Oblivion Override", "Unknown→Default"){ // Fail-safe copy of whichever version is most popular
-	int Chapter				: "UnityPlayer.dll", 0x15B2D28, 0x128, 0x80, 0x18, 0xAC;
-	int Level				: "UnityPlayer.dll", 0x15B2D28, 0x128, 0x80, 0x18, 0xB0;
-	byte isBuildingScene	: "UnityPlayer.dll", 0x15B2D28, 0x128, 0x80, 0x18, 0xD3;
-	byte isLoadingDone		: "UnityPlayer.dll", 0x15B2D28, 0x128, 0x80, 0x18, 0xD4;
-	int PlayerHP			: "UnityPlayer.dll", 0x1548DF0, 0x0, 0x10, 0x28, 0x70, 0xF8, 0x20;
-	int NephHP				: "UnityPlayer.dll", 0x1548DF0, 0x0, 0x10, 0x28, 0xD8, 0x10, 0x20, 0x60, 0x228, 0xF8, 0xF8, 0x20;
+	int Chapter          : "UnityPlayer.dll", 0x15B2D28, 0x128, 0x80, 0x18, 0xAC;
+	int Level            : "UnityPlayer.dll", 0x15B2D28, 0x128, 0x80, 0x18, 0xB0;
+	byte isBuildingScene : "UnityPlayer.dll", 0x15B2D28, 0x128, 0x80, 0x18, 0xD3;
+	byte isLoadingDone   : "UnityPlayer.dll", 0x15B2D28, 0x128, 0x80, 0x18, 0xD4;
+	int PlayerHP         : "UnityPlayer.dll", 0x1548DF0, 0x0, 0x10, 0x28, 0x70, 0xF8, 0x20;
+	int NephHP           : "UnityPlayer.dll", 0x1548DF0, 0x0, 0x10, 0x28, 0xD8, 0x10, 0x20, 0x60, 0x228, 0xF8, 0xF8, 0x20;
 }
 state("Oblivion Override", "EA 0.6.2.1260+"){
-	int Chapter				: "UnityPlayer.dll", 0x15B2D28, 0x128, 0x80, 0x18, 0xAC; // Found within hex.SceneManager (Mono Dissector)
-	int Level				: "UnityPlayer.dll", 0x15B2D28, 0x128, 0x80, 0x18, 0xB0;
-	byte isBuildingScene	: "UnityPlayer.dll", 0x15B2D28, 0x128, 0x80, 0x18, 0xD3;
-	byte isLoadingDone		: "UnityPlayer.dll", 0x15B2D28, 0x128, 0x80, 0x18, 0xD4;
-	int PlayerHP			: "UnityPlayer.dll", 0x1548DF0, 0x0, 0x10, 0x28, 0x70, 0xF8, 0x20; // Notice similarities to NephHP
-	int NephHP				: "UnityPlayer.dll", 0x1548DF0, 0x0, 0x10, 0x28, 0xD8, 0x10, 0x20, 0x60, 0x228, 0xF8, 0xF8, 0x20; // May always end in 20,F8,F8
+	int Chapter          : "UnityPlayer.dll", 0x15B2D28, 0x128, 0x80, 0x18, 0xAC; // Found within hex.SceneManager (Mono Dissector)
+	int Level            : "UnityPlayer.dll", 0x15B2D28, 0x128, 0x80, 0x18, 0xB0;
+	byte isBuildingScene : "UnityPlayer.dll", 0x15B2D28, 0x128, 0x80, 0x18, 0xD3;
+	byte isLoadingDone   : "UnityPlayer.dll", 0x15B2D28, 0x128, 0x80, 0x18, 0xD4;
+	int PlayerHP         : "UnityPlayer.dll", 0x1548DF0, 0x0, 0x10, 0x28, 0x70, 0xF8, 0x20; // Notice similarities to NephHP
+	int NephHP           : "UnityPlayer.dll", 0x1548DF0, 0x0, 0x10, 0x28, 0xD8, 0x10, 0x20, 0x60, 0x228, 0xF8, 0xF8, 0x20; // May always end in 20,F8,F8
 }
 
 startup{ // When the script first loads, before process connection
 	vars.ASLVersion = "ASL Version 1.0 – June 20, 2023 (purely informational)";
-	vars.HubPortalExit = "Start upon exiting the hub portal";
-	vars.PortalSplit = "Split upon entering portals to new maps (bosses & stages)";
-	vars.EndBossSplit = "(Does Nothing WIP) Split when final boss reaches zero HP";
+	vars.HubPortalExit = "Start upon exiting Hub portal";
+	vars.PortalSplit = "Split upon entering portals to new maps (Bosses & Stages)";
+	vars.EndBossSplit = "(DoesNothing→WIP) Split when final boss reaches zero HP";
 
 	settings.Add(vars.ASLVersion, true);
 	settings.Add(vars.HubPortalExit, true);
@@ -32,7 +34,7 @@ startup{ // When the script first loads, before process connection
 	settings.Add(vars.EndBossSplit, true);
 }
 
-init{ //When the process connects
+init{ // When the process connects
 	// Identifies different game versions using MD5 checksums of the game's primary executable
 	byte[] exeMD5HashBytes = new byte[0];
 	using (var md5 = System.Security.Cryptography.MD5.Create()){
