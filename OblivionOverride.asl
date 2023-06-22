@@ -102,10 +102,10 @@ split{
 	if (settings[vars.PortalSplit] && current.Level > 0 && old.Level > 0 && current.Level < 9999 && current.Level > old.Level){
 		return true;
 	}
-	if (settings[vars.EndBossSplit] && current.Chapter == 3 && current.Level > 3001 && current.NephHP == 0 && old.NephHP > 0 && current.PlayerHP > 0){
+	if (settings[vars.EndBossSplit] && current.Chapter == 3 && current.Level > 3001 && current.NephHP == 0 && old.NephHP > 0){
 		return false; // Disabled until a stable NephHP pointer exists
 	}
-	if (settings[vars.EndBossSplit] && current.Chapter == 3 && current.Level > 3001 && old.FirstMobHP > 0 && current.FirstMobHP == 0 && current.PlayerHP > 0){
+	if (settings[vars.EndBossSplit] && current.Chapter == 3 && current.Level > 3001 && old.FirstMobHP > 0 && current.FirstMobHP == 0){
 		return true; // Implementation utilizing the ASL Helper
 	}
 
