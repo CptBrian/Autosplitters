@@ -39,7 +39,7 @@ init{ // When the process connects
 
 		vars.Helper["Chapter"] = mono.Make<int>(SM, "ms_instance", "chapterId");
 		vars.Helper["Level"] = mono.Make<int>(SM, "ms_instance", "levelId");
-		vars.Helper["LoadingDone"] = mono.Make<bool>(SM, "ms_instance", "_LoadingDone");
+		vars.Helper["LoadingDone"] = mono.Make<bool>(SM, "ms_instance", "_isLoadingDone");
 		vars.Helper["PlayerHP"] = mono.Make<int>(SM, "ms_instance", "gameScene", "player", "_m_attr", "nowHp");
 		vars.Helper["FirstMobHP"] = mono.Make<int>(SM, "ms_instance", "gameScene", "mobs", 0x10, 0x20, GO["_m_attr"], CA["nowHp"]);
 		vars.Helper["Room"] = mono.Make<int>(SM, "ms_instance", "gameScene", "player", "_physics", "_curRoom", "uuid");
@@ -49,7 +49,7 @@ init{ // When the process connects
 }
 
 isLoading{
-    return !current.LoadingDone;
+	return !current.LoadingDone;
 }
 
 start{
