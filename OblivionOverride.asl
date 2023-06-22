@@ -11,7 +11,7 @@ startup{ // When the script first loads, before process connection
 	Assembly.Load(File.ReadAllBytes("Components/asl-help")).CreateInstance("Unity");
 	vars.Helper.GameName = "Oblivion Override";
 
-	settings.Add("ASLVersion", true, "ASL Version 1.4 – June 22, 2023 (purely informational)");
+	settings.Add("ASLVersion", true, "ASL Version 1.5 – June 22, 2023 (purely informational)");
 	settings.Add("HubPortalExit", true, "Start upon exiting Hub portal");
 	settings.Add("PortalSplit", true, "Split during portals to new maps (Bosses & Stages)");
 	settings.Add("EndBossSplit", true, "Split when final boss reaches zero HP");
@@ -53,16 +53,16 @@ isLoading{
 }
 
 start{
-	return settings[vars.HubPortalExit] && current.Chapter == 1 && current.Level == 1001 && !old.LoadingDone && current.LoadingDone;
+	return settings["HubPortalExit"] && current.Chapter == 1 && current.Level == 1001 && !old.LoadingDone && current.LoadingDone;
 }
 
 split{
-	return settings[vars.PortalSplit] && current.Level > 0 && old.Level > 0 && current.Level < 9999 && current.Level > old.Level
-		|| settings[vars.EndBossSplit] && current.Chapter == 3 && current.Level > 3001 && old.FirstMobHP > 0 && current.FirstMobHP == 0;
+	return settings["PortalSplit"] && current.Level > 0 && old.Level > 0 && current.Level < 9999 && current.Level > old.Level
+		|| settings["EndBossSplit"] && current.Chapter == 3 && current.Level > 3001 && old.FirstMobHP > 0 && current.FirstMobHP == 0;
 }
 
 reset{
-	return settings[vars.HubPortalExit] && current.Chapter == 10 && current.Level == 1; // Inside Hub on a category that doesn't time it
+	return settings["HubPortalExit"] && current.Chapter == 10 && current.Level == 1; // Inside Hub on a category that doesn't time it
 }
 
 update{
