@@ -11,15 +11,10 @@ startup{ // When the script first loads, before process connection
 	Assembly.Load(File.ReadAllBytes("Components/asl-help")).CreateInstance("Unity");
 	vars.Helper.GameName = "Oblivion Override";
 
-	vars.ASLVersion = "ASL Version 1.2 – June 21, 2023 (purely informational)";
-	vars.HubPortalExit = "Start upon exiting Hub portal";
-	vars.PortalSplit = "Split upon entering portals to new maps (Bosses & Stages)";
-	vars.EndBossSplit = "Split when final boss reaches zero HP";
-
-	settings.Add(vars.ASLVersion, true);
-	settings.Add(vars.HubPortalExit, true);
-	settings.Add(vars.PortalSplit, true);
-	settings.Add(vars.EndBossSplit, true);
+	settings.Add("ASLVersion", true, "ASL Version 1.3 – June 22, 2023 (purely informational)");
+	settings.Add("HubPortalExit", true, "Start upon exiting Hub portal");
+	settings.Add("PortalSplit", true, "Split during portals to new maps (Bosses & Stages)");
+	settings.Add("EndBossSplit", true, "Split when final boss reaches zero HP");
 
 	if(timer.CurrentTimingMethod == TimingMethod.RealTime){
 		var timingMessage = MessageBox.Show(
@@ -44,7 +39,7 @@ init{ // When the process connects
 
 		vars.Helper["Chapter"] = mono.Make<int>(SM, "ms_instance", "chapterId");
 		vars.Helper["Level"] = mono.Make<int>(SM, "ms_instance", "levelId");
-		vars.Helper["isLoadingDone"] = mono.Make<byte>(SM, "ms_instance", "_isLoadingDone");
+		vars.Helper["LoadingDone"] = mono.Make<bool>(SM, "ms_instance", "_LoadingDone");
 		vars.Helper["PlayerHP"] = mono.Make<int>(SM, "ms_instance", "gameScene", "player", "_m_attr", "nowHp");
 		vars.Helper["FirstMobHP"] = mono.Make<int>(SM, "ms_instance", "gameScene", "mobs", 0x10, 0x20, GO["_m_attr"], CA["nowHp"]);
 		vars.Helper["Room"] = mono.Make<int>(SM, "ms_instance", "gameScene", "player", "_physics", "_curRoom", "uuid");
@@ -54,34 +49,20 @@ init{ // When the process connects
 }
 
 isLoading{
-    return current.isLoadingDone == 0;
+    return !current.LoadingDone;
 }
 
 start{
-    if(settings[vars.HubPortalExit]){
-		return current.Chapter == 1 && current.Level == 1001 && current.isLoadingDone == 1 && old.isLoadingDone == 0;
-	}
-
-	return false;
+	return settings[vars.HubPortalExit] && current.Chapter == 1 && current.Level == 1001 && !old.LoadingDone && current.LoadingDone;
 }
 
 split{
-	if (settings[vars.PortalSplit] && current.Level > 0 && old.Level > 0 && current.Level < 9999 && current.Level > old.Level){
-		return true;
-	}
-	if (settings[vars.EndBossSplit] && current.Chapter == 3 && current.Level > 3001 && old.FirstMobHP > 0 && current.FirstMobHP == 0 && current.PlayerHP > 0){
-		return true;
-	}
-
-	return false;
+	return settings[vars.PortalSplit] && current.Level > 0 && old.Level > 0 && current.Level < 9999 && current.Level > old.Level
+		|| settings[vars.EndBossSplit] && current.Chapter == 3 && current.Level > 3001 && old.FirstMobHP > 0 && current.FirstMobHP == 0;
 }
 
 reset{
-	if(settings[vars.HubPortalExit]){ // For when other categories count hub time
-		return current.Chapter == 10 && current.Level == 1; // In the Hub
-	}
-
-	return false;
+	return settings[vars.HubPortalExit] && current.Chapter == 10 && current.Level == 1; // Inside Hub on a category that doesn't time it
 }
 
 update{
