@@ -11,7 +11,7 @@ startup{ // When the script first loads, before process connection
 	Assembly.Load(File.ReadAllBytes("Components/asl-help")).CreateInstance("Unity");
 	vars.Helper.GameName = "Oblivion Override";
 
-	settings.Add("ASLVersion", true, "ASL Version 1.3 – June 22, 2023 (purely informational)");
+	settings.Add("ASLVersion", true, "ASL Version 1.4 – June 22, 2023 (purely informational)");
 	settings.Add("HubPortalExit", true, "Start upon exiting Hub portal");
 	settings.Add("PortalSplit", true, "Split during portals to new maps (Bosses & Stages)");
 	settings.Add("EndBossSplit", true, "Split when final boss reaches zero HP");
