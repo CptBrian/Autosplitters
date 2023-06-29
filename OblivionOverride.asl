@@ -11,7 +11,7 @@ startup{ // When the script first loads, before process connection
 	Assembly.Load(File.ReadAllBytes("Components/asl-help")).CreateInstance("Unity");
 	vars.Helper.GameName = "Oblivion Override";
 
-	settings.Add("ASLVersion", true, "ASL Version 1.6 – June 28, 2023 (purely informational)");
+	settings.Add("ASLVersion", true, "ASL Version 1.7 – June 29, 2023 (purely informational)");
 	settings.Add("StartAfterHubPortal", true, "Start after exiting Hub portal");
 	settings.Add("StartFreshFile", true, "Start upon playing Fresh File (Tutorial Entry)");
 	settings.Add("SplitPortals", true, "Split on portals to new maps (Bosses & Stages)");
@@ -35,6 +35,7 @@ startup{ // When the script first loads, before process connection
 	}
 
 	vars.timerModel = new TimerModel { CurrentState = timer }; // Required for resetting in the exit{} block
+	vars.SplitAvoidLevels = new List<int> { 1011, 1014, 3011 };
 }
 
 init{ // When the process connects
@@ -66,7 +67,7 @@ start{
 }
 
 split{
-	return settings["SplitPortals"] && current.Level > 0 && old.Level > 0 && current.Level < 9999 && current.Level > old.Level && current.Level != 1014 && current.Level != 3011
+	return settings["SplitPortals"] && current.Level > 0 && old.Level > 0 && current.Level < 9999 && current.Level > old.Level && !vars.SplitAvoidLevels.Contains(current.Level)
 		|| settings["SplitFinalBoss"] && current.Chapter == 3 && current.Level > 3001 && old.FirstMobHP > 0 && current.FirstMobHP == 0
 		|| settings["SplitHubEntry"] && old.Level > 1 && old.Level < 9999 && old.Level != 102 && current.Level == 1;
 }
@@ -95,6 +96,7 @@ update{
 		Level 1002 == (BOSS) Tiyen Smasher
 		Level 1003 == (BOSS) Electric Erich (including the instance with Mr. Bond spawned)
 		Level 1004 == (BOSS) Mechanist Leon
+		Level 1011 == Wade (Repairman Head) & Tiyen's Reprogramming Recording Room
 		Level 1014 == Control Room with Yadi (wants Tesla Battery from Erich, unlocks Hub Recycling Bins, may be exclusive to Alert 2+)
 	Chapter 2 == Stage 2 (Greenhouse)
 		Level 2001 == Standard Stage 2
