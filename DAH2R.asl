@@ -5,12 +5,15 @@
 */
 
 state("DH-Win64-Shipping"){
-	bool Loading : 0x7112918, 0xA8;
+	bool Loading  : 0x7112918, 0xA8; // Only 1 when the *smaller* loading icon is visible during true definitive loading scenarios
+	byte BLoading : 0x7137A28, 0xDA0, 0x390, 0xA0; // 0=Playable, 1=BigLoadIconShown+More, 2=MostCutscenes+1stTimeDialogs(some exceptions)
 }
 
 startup{ // When the script first loads, before process connection
-	settings.Add("ASLVersion", true, "ASL Version 0.9 – July 4, 2023 (purely informational)");
+	settings.Add("ASLVersion", true, "ASL Version 1.0 – July 6, 2023 (purely informational)");
 	settings.Add("ResetGameClose", false, "Reset timer upon game process closing");
+	settings.Add("LoadTest", false, "TEST TIMES→ Start upon True Load, Pause outside loads");
+	settings.Add("BLoadTest", false, "TEST TIMES→ Start upon Bonus Load, Pause outside loads");
 
 	if(timer.CurrentTimingMethod == TimingMethod.RealTime){
 		var timingMessage = MessageBox.Show(
@@ -34,11 +37,14 @@ init{ // When the process connects
 }
 
 isLoading{
-	return current.Loading;
+	return (current.Loading || current.BLoading == 1) && !settings["LoadTest"] && !settings["BLoadTest"]
+		|| settings["LoadTest"] && !current.Loading
+		|| settings["BLoadTest"] && current.BLoading != 1;
 }
 
 start{
-	// Not yet
+	return settings["LoadTest"] && current.Loading && !old.Loading
+		|| settings["BLoadTest"] && current.BLoading == 1 && old.BLoading != 1;
 }
 
 split{
