@@ -9,14 +9,10 @@ state("HellPie-Win64-Shipping", "v1.1.4.202207012023"){
 
 state("HellPie-Win64-Shipping", "v1.1.4.unknown"){
 //Patch 6, 12/21/2022, Christmas outfits https://store.steampowered.com/news/app/889910/view/3639502419957041794
-	bool loadScreen: 0x4FDFC28, 0xA8;
-	int isPaused: 0x4EC7E88, 0x3C0, 0x8;
 }
 
 state("HellPie-Win64-Shipping", "v1.1.4.unknown"){
 //Patch 5, 9/16/2022, Oktoberfest, various minor fixes https://store.steampowered.com/news/app/889910/view/5129059852696370287
-	bool loadScreen: 0x4FDFC28, 0xA8;
-	int isPaused: 0x4EC7E88, 0x3C0, 0x8;
 }
 
 state("HellPie-Win64-Shipping", "v1.1.3.202209011619"){
