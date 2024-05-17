@@ -1,6 +1,6 @@
 /*
 Bloodstained: Ritual of the Night - ASL primarily by CptBrian with help from: DarkTechnomancer & hitachihex
-ASL Version 3.5 (PC Only)
+ASL Version 3.7 (PC Only)
 This ASL is compatible with RotN versions: Steam 1.02,3,4,10,16,17,19,21,30,40,50 GOG 1.03,4,5,9,10,21 & Cracked Steam 1.02
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
@@ -8,14 +8,12 @@ This ASL is compatible with RotN versions: Steam 1.02,3,4,10,16,17,19,21,30,40,5
 [LiveSplit] Remember to save your Layout/Splits and compare against Game Time if necessary!
 */
 
-state("BloodstainedRotN-Win64-Shipping", "Unknown-Using Latest"){ //Copy of addresses from whichever the most common version is (Steam 1.40)
+state("BloodstainedRotN-Win64-Shipping", "Unknown-Using Latest"){ //Copy of addresses from whichever the most common version is (Steam 1.50)
 	uint FileCreateLoad : 0xAE3BFD0, 0x188;
 	byte Saving : 0xAE3BFD0, 0x280, 0x150, 0x2B5;
 	uint Cutscene : 0xAE3BFD0, 0x3D0;
 	uint BossHP : 0xAE3BFD0, 0x408, 0xD30, 0x240;
 	uint Gold : 0xAE3BFD0, 0x430;
-	uint GameClear : 0xAE3BFD0, 0x434;
-	uint NGPlusCount : 0xAE3BFD0, 0x440;
 	float IGT : 0xAE3BFD0, 0x444;
 	byte Difficulty : 0xAE3BFD0, 0x448;
 	byte GameMode : 0xAE3BFD0, 0x449;
@@ -26,11 +24,7 @@ state("BloodstainedRotN-Win64-Shipping", "Unknown-Using Latest"){ //Copy of addr
 	uint PauseMenu : 0xAE3BFD0, 0xA28;
 	uint PressAnyKey : 0xAE3BFD0, 0xA38;
 	uint Loading : 0xAE3BFD0, 0xA50;
-	uint ShardGet : 0xAE3BFD0, 0xA54;
 	uint LoadingFile : 0xAE3BFD0, 0xA60;
-	uint NewAreaBanner : 0xAE3BFD0, 0xA64;
-	uint LevelUp : 0xAE3BFD0, 0xA6C;
-	uint UpgradeGet : 0xAE3BFD0, 0xA70;
 	uint RoomData : 0xAE3BFD0, 0x2F8B0;
 	uint PreviousRoom : 0xAE3BFD0, 0x2F8B0, 0x188;
 	uint Room : 0xAE3BFD0, 0x2F8B0, 0x190;
@@ -44,6 +38,14 @@ state("BloodstainedRotN-Win64-Shipping", "Unknown-Using Latest"){ //Copy of addr
 	uint PlayerHP : 0xAE3BFD0, 0x2FA38, 0x0, 0xD30, 0x240;
 	uint PlayerMP : 0xAE3BFD0, 0x2FA38, 0x0, 0xD30, 0x244;
 	uint PlayerEXP : 0xAE3BFD0, 0x2FA38, 0x0, 0xD30, 0x248;
+	uint Classic1Score : 0xAE2E2E8, 0xC4;
+	float Classic1HP : 0xAE2E2E8, 0xB8;
+	float Classic1Time : 0xAE2E2E8, 0xD0, 0x548;
+	bool Classic1TimeRunning : 0xAE2E2E8, 0xD0, 0x540;
+	float Classic1PlayerX : 0xAE2E2E8, 0xD0, 0x7E8, 0x4A0, 0x548, 0x2D0;
+	float Classic1PlayerY : 0xAE2E2E8, 0xD0, 0x7E8, 0x4A0, 0x548, 0x2D8;
+	float Classic1PlayerZ : 0xAE2E2E8, 0xD0, 0x7E8, 0x4A0, 0x548, 0x2D4;
+	float Classic1Stage5Time : 0xAE3BFD0, 0x468, 0x58;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.02 Cracked"){
 	uint Loading : 0x6C31250, 0x848; //uworld ptr is +1000 hex from official Steam 1.02/1.03
@@ -606,8 +608,6 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.50"){
 	uint Cutscene : 0xAE3BFD0, 0x3D0; //+0 hex prev
 	uint BossHP : 0xAE3BFD0, 0x408, 0xD30, 0x240; //+18 hex prev 2nd offset
 	uint Gold : 0xAE3BFD0, 0x430; //+0 hex prev —— Always start with Gold when updating pointers to easily find accurate base addresses (1 result) & this memory region
-	uint GameClear : 0xAE3BFD0, 0x434; //+0 hex prev
-	uint NGPlusCount : 0xAE3BFD0, 0x440; //+0 hex prev
 	float IGT : 0xAE3BFD0, 0x444; //+0 hex prev
 	byte Difficulty : 0xAE3BFD0, 0x448; //+0 hex prev
 	byte GameMode : 0xAE3BFD0, 0x449; //+0 hex prev
@@ -618,11 +618,7 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.50"){
 	uint PauseMenu : 0xAE3BFD0, 0xA28; //+0 hex prev
 	uint PressAnyKey : 0xAE3BFD0, 0xA38; //+0 hex prev
 	uint Loading : 0xAE3BFD0, 0xA50; //+0 hex prev
-	uint ShardGet : 0xAE3BFD0, 0xA54; //+0 hex prev
 	uint LoadingFile : 0xAE3BFD0, 0xA60; //+0 hex prev
-	uint NewAreaBanner : 0xAE3BFD0, 0xA64; //+0 hex prev
-	uint LevelUp : 0xAE3BFD0, 0xA6C; //+0 hex prev
-	uint UpgradeGet : 0xAE3BFD0, 0xA70; //+0 hex prev
 	uint RoomData : 0xAE3BFD0, 0x2F8B0; //+10 hex prev
 	uint PreviousRoom : 0xAE3BFD0, 0x2F8B0, 0x188; //+8 hex prev 2nd offset, +10 hex 1st offset
 	uint Room : 0xAE3BFD0, 0x2F8B0, 0x190; //+8 hex prev 2nd offset, +10 hex 1st offset
@@ -636,10 +632,19 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.50"){
 	uint PlayerHP : 0xAE3BFD0, 0x2FA38, 0x0, 0xD30, 0x240; //+0 hex prev, +18 hex 3rd offset, +8 hex 1st offset
 	uint PlayerMP : 0xAE3BFD0, 0x2FA38, 0x0, 0xD30, 0x244; //+0 hex prev, +18 hex 3rd offset, +8 hex 1st offset
 	uint PlayerEXP : 0xAE3BFD0, 0x2FA38, 0x0, 0xD30, 0x248; //+0 hex prev, +18 hex 3rd offset, +8 hex 1st offset
+	uint Classic1Score : 0xAE2E2E8, 0xC4; //Always start with Score when updating pointers to easily find the base address unique to Classic Mode
+	float Classic1HP : 0xAE2E2E8, 0xB8;
+	float Classic1Time : 0xAE2E2E8, 0xD0, 0x548;
+	bool Classic1TimeRunning : 0xAE2E2E8, 0xD0, 0x540;
+	float Classic1PlayerX : 0xAE2E2E8, 0xD0, 0x7E8, 0x4A0, 0x548, 0x2D0; //An alternative exists at 4 offsets, but different base, also 548 2D0
+	float Classic1PlayerY : 0xAE2E2E8, 0xD0, 0x7E8, 0x4A0, 0x548, 0x2D8;
+	float Classic1PlayerZ : 0xAE2E2E8, 0xD0, 0x7E8, 0x4A0, 0x548, 0x2D4;
+	float Classic1Stage5Time : 0xAE3BFD0, 0x468, 0x58; //Same region as Classic Difficulty [+28] (easy find 0,1,2 & never moves)
+	//bool Classic1Load : 0x, 0x, 0x; //This isn't real. It doesn't exist. Fuck this shit game.
 }
 
 startup{
-	vars.ASLVersion = "ASL Version 3.5 — May 9, 2024";
+	vars.ASLVersion = "ASL Version 3.7 — May 17, 2024";
 
 	settings.Add(vars.ASLVersion, false);
 	settings.Add("WebsiteTip", false, "Click 'Website' button for more info!", vars.ASLVersion);
@@ -808,7 +813,7 @@ update{
  
 isLoading{ //Make sure to compare against GAME time, or this won't work!
 	//Some flags just count up/down by 1, which is why the (old)Loading flag(and potentially others) can very rarely go up to 2 or 3 during oddly stacked triggers, but they'll return to 0.
-	if(settings["Pause during general gameplay loading - Default: ON"] && current.RDLoading == 0 && current.RoomData != 0){
+	if(settings["Pause during general gameplay loading - Default: ON"] && current.RDLoading == 0 && current.RoomData != 0 && current.GameMode != 8){
 		return true;
 	}
 	else if(settings["Pause during Save File Loading - Default: ON"] && (current.LoadingFile == 1 || current.FileCreateLoad == 1)){
@@ -822,6 +827,9 @@ isLoading{ //Make sure to compare against GAME time, or this won't work!
 	}
 	else if(settings["Pause on Press-Any-Key events (BANNED in runs)"] && current.PressAnyKey == 1){
 		return true;
+	}
+	else if(current.GameMode == 69 && !current.Classic1TimeRunning){
+		return true; //This isn't reliable. Need real load address(es).
 	}
 	else{
 		return false;
@@ -889,6 +897,12 @@ start{
 		}
 		return true;
 	}
+	else if(current.GameMode == 8 && current.Classic1TimeRunning && !old.Classic1TimeRunning && current.Classic1Score == 0 && current.Classic1PlayerX > -100 && current.Classic1PlayerX < 500 && current.Classic1PlayerY > 50 && current.Classic1PlayerY < 700 && current.Classic1PlayerZ == 0){
+		if(vars.Logging){
+			vars.log("Splits started for Classic 1");
+		}
+		return true;
+	}
 	else{
 		return false;
 	}
@@ -949,6 +963,12 @@ reset{
 		}
 		return true;
 	}
+	else if(current.GameMode == 8 && !current.Classic1TimeRunning && current.Classic1Score == 0 && current.Classic1PlayerX > -100 && current.Classic1PlayerX < 500 && current.Classic1PlayerY > 50 && current.Classic1PlayerY < 700 && current.Classic1PlayerZ == 0){
+		if(vars.Logging){
+			vars.log("Splits reset for Classic 1");
+		}
+		return true;
+	}
 	else{
 		return false;
 	}
@@ -965,6 +985,42 @@ split{
 	else if((current.PlayerX > 79350 && current.PlayerX < 80650 && current.PlayerY > 19400 && current.PlayerY < 20150 && current.PlayerZ == 0) && (current.GameMode == 1 || current.GameMode == 6 || current.GameMode == 9) && current.RoomData != 0 && current.FileCreateLoad == 0 && current.LoadingFile == 0 && current.PressAnyKey == 0 && current.PlayerHP > 0 && current.BossHP == 0 && old.BossHP > 0){
 		if(vars.Logging){
 			vars.log("Auto-split on the final hit for fights in the Gebel/Miriam ending room");
+		}
+		return true;
+	}
+	else if(current.GameMode == 8 && !current.Classic1TimeRunning && old.Classic1TimeRunning && current.Classic1PlayerX > 15600 && current.Classic1PlayerX < 17400 && current.Classic1PlayerY > 3000 && current.Classic1PlayerY < 4000 && current.Classic1PlayerZ == 0){
+		if(vars.Logging){
+			vars.log("Auto-split for Classic 1 - Stage 1 Bat");
+		}
+		return true;
+	}
+	else if(current.GameMode == 8 && !current.Classic1TimeRunning && old.Classic1TimeRunning && current.Classic1PlayerX > -7700 && current.Classic1PlayerX < -6000 && current.Classic1PlayerY > 9200 && current.Classic1PlayerY < 9700 && current.Classic1PlayerZ == 0){
+		if(vars.Logging){
+			vars.log("Auto-split for Classic 1 - Stage 2 Dullahammer");
+		}
+		return true;
+	}
+	else if(current.GameMode == 8 && !current.Classic1TimeRunning && old.Classic1TimeRunning && current.Classic1PlayerX > 20300 && current.Classic1PlayerX < 22200 && current.Classic1PlayerY > 4900 && current.Classic1PlayerY < 6000 && current.Classic1PlayerZ == 0){
+		if(vars.Logging){
+			vars.log("Auto-split for Classic 1 - Stage 3 Doppelgangers");
+		}
+		return true;
+	}
+	else if(current.GameMode == 8 && !current.Classic1TimeRunning && old.Classic1TimeRunning && current.Classic1PlayerX > 15200 && current.Classic1PlayerX < 17000 && current.Classic1PlayerY > 3900 && current.Classic1PlayerY < 4700 && current.Classic1PlayerZ == 0){
+		if(vars.Logging){
+			vars.log("Auto-split for Classic 1 - Stage 4 Werewolf");
+		}
+		return true;
+	}
+	else if(current.GameMode == 8 && !current.Classic1TimeRunning && old.Classic1TimeRunning && current.Classic1PlayerX > -5500 && current.Classic1PlayerX < -3300 && current.Classic1PlayerY > 10300 && current.Classic1PlayerY < 11000 && current.Classic1PlayerZ == 0){
+		if(vars.Logging){
+			vars.log("Auto-split for Classic 1 - Stage 5 Gremory");
+		}
+		return true;
+	}
+	else if(current.GameMode == 8 && current.Classic1Stage5Time > old.Classic1Stage5Time && current.Classic1HP > 0 && current.Classic1Time > 0 && current.Classic1PlayerX > -24300 && current.Classic1PlayerX < -22500 && current.Classic1PlayerY > 11700 && current.Classic1PlayerY < 13000 && current.Classic1PlayerZ == 0){
+		if(vars.Logging){
+			vars.log("Auto-split for Classic 1 - Stage 6(5-2) Gebel & Dominique (1 split, same room, only get Gebel on Easy)");
 		}
 		return true;
 	}
