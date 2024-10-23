@@ -1,51 +1,51 @@
 /*
 Bloodstained: Ritual of the Night - ASL primarily by CptBrian with help from: DarkTechnomancer & hitachihex
-ASL Version 3.7 (PC Only)
-This ASL is compatible with RotN versions: Steam 1.02,3,4,10,16,17,19,21,30,40,50 GOG 1.03,4,5,9,10,21 & Cracked Steam 1.02
+ASL Version 3.8 (PC Only)
+This ASL is compatible with RotN versions: Steam 1.02,3,4,10,16,17,19,21,30,40,50,60 GOG 1.03,4,5,9,10,21 & Cracked Steam 1.02
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
 [LiveSplit] Layout Settings: Scriptable AutoSplitter -> Browse for this .asl file (^^^)
 [LiveSplit] Remember to save your Layout/Splits and compare against Game Time if necessary!
 */
 
-state("BloodstainedRotN-Win64-Shipping", "Unknown-Using Latest"){ //Copy of addresses from whichever the most common version is (Steam 1.50)
-	uint FileCreateLoad : 0xAE3BFD0, 0x188;
-	byte Saving : 0xAE3BFD0, 0x280, 0x150, 0x2B5;
-	uint Cutscene : 0xAE3BFD0, 0x3D0;
-	uint BossHP : 0xAE3BFD0, 0x408, 0xD30, 0x240;
-	uint Gold : 0xAE3BFD0, 0x430;
-	float IGT : 0xAE3BFD0, 0x444;
-	byte Difficulty : 0xAE3BFD0, 0x448;
-	byte GameMode : 0xAE3BFD0, 0x449;
-	byte Character : 0xAE3BFD0, 0x44A;
-	uint IntroEvents : 0xAE3BFD0, 0x4E8;
-	byte BossDoors : 0xAE3BFD0, 0x930;
-	byte GalleonBannerSeen : 0xAE3BFD0, 0x940;
-	uint PauseMenu : 0xAE3BFD0, 0xA28;
-	uint PressAnyKey : 0xAE3BFD0, 0xA38;
-	uint Loading : 0xAE3BFD0, 0xA50;
-	uint LoadingFile : 0xAE3BFD0, 0xA60;
-	uint RoomData : 0xAE3BFD0, 0x2F8B0;
-	uint PreviousRoom : 0xAE3BFD0, 0x2F8B0, 0x188;
-	uint Room : 0xAE3BFD0, 0x2F8B0, 0x190;
-	byte RDLoading : 0xAE3BFD0, 0x2F8B0, 0x1B8;
-	byte IntroChest : 0xAE3BFD0, 0x2E8B5;
-	uint DialogueShop : 0xAE3BFD0, 0x2F988, 0x4E8;
-	float PlayerRotation : 0xAE3BFD0, 0x2FA38, 0x0, 0x900, 0x23C;
-	float PlayerX : 0xAE3BFD0, 0x2FA38, 0x0, 0x900, 0x260;
-	float PlayerY : 0xAE3BFD0, 0x2FA38, 0x0, 0x900, 0x268;
-	float PlayerZ : 0xAE3BFD0, 0x2FA38, 0x0, 0x900, 0x264;
-	uint PlayerHP : 0xAE3BFD0, 0x2FA38, 0x0, 0xD30, 0x240;
-	uint PlayerMP : 0xAE3BFD0, 0x2FA38, 0x0, 0xD30, 0x244;
-	uint PlayerEXP : 0xAE3BFD0, 0x2FA38, 0x0, 0xD30, 0x248;
-	uint Classic1Score : 0xAE2E2E8, 0xC4;
-	float Classic1HP : 0xAE2E2E8, 0xB8;
-	float Classic1Time : 0xAE2E2E8, 0xD0, 0x548;
-	bool Classic1TimeRunning : 0xAE2E2E8, 0xD0, 0x540;
-	float Classic1PlayerX : 0xAE2E2E8, 0xD0, 0x7E8, 0x4A0, 0x548, 0x2D0;
-	float Classic1PlayerY : 0xAE2E2E8, 0xD0, 0x7E8, 0x4A0, 0x548, 0x2D8;
-	float Classic1PlayerZ : 0xAE2E2E8, 0xD0, 0x7E8, 0x4A0, 0x548, 0x2D4;
-	float Classic1Stage5Time : 0xAE3BFD0, 0x468, 0x58;
+state("BloodstainedRotN-Win64-Shipping", "Unknown-Using Latest"){ //Copy of addresses from whichever the most common version is (Steam 1.60)
+	uint FileCreateLoad : 0xAE54FF0, 0x188;
+	byte Saving : 0xAE54FF0, 0x280, 0x150, 0x2B5;
+	uint Cutscene : 0xAE54FF0, 0x3D0;
+	uint BossHP : 0xAE54FF0, 0x408, 0xD30, 0x240;
+	uint Gold : 0xAE54FF0, 0x430;
+	float IGT : 0xAE54FF0, 0x444;
+	byte Difficulty : 0xAE54FF0, 0x448;
+	byte GameMode : 0xAE54FF0, 0x449;
+	byte Character : 0xAE54FF0, 0x44A;
+	uint IntroEvents : 0xAE54FF0, 0x4E8;
+	byte BossDoors : 0xAE54FF0, 0x930;
+	byte GalleonBannerSeen : 0xAE54FF0, 0x940;
+	uint PauseMenu : 0xAE54FF0, 0xA28;
+	uint PressAnyKey : 0xAE54FF0, 0xA38;
+	uint Loading : 0xAE54FF0, 0xA50;
+	uint LoadingFile : 0xAE54FF0, 0xA60;
+	uint RoomData : 0xAE54FF0, 0x2F8B0;
+	uint PreviousRoom : 0xAE54FF0, 0x2F8B0, 0x188;
+	uint Room : 0xAE54FF0, 0x2F8B0, 0x190;
+	byte RDLoading : 0xAE54FF0, 0x2F8B0, 0x1B8;
+	byte IntroChest : 0xAE54FF0, 0x2E8B5;
+	uint DialogueShop : 0xAE54FF0, 0x2F988, 0x4E8;
+	float PlayerRotation : 0xAE54FF0, 0x2FA38, 0x0, 0x900, 0x23C;
+	float PlayerX : 0xAE54FF0, 0x2FA38, 0x0, 0x900, 0x260;
+	float PlayerY : 0xAE54FF0, 0x2FA38, 0x0, 0x900, 0x268;
+	float PlayerZ : 0xAE54FF0, 0x2FA38, 0x0, 0x900, 0x264;
+	uint PlayerHP : 0xAE54FF0, 0x2FA38, 0x0, 0xD30, 0x240;
+	uint PlayerMP : 0xAE54FF0, 0x2FA38, 0x0, 0xD30, 0x244;
+	uint PlayerEXP : 0xAE54FF0, 0x2FA38, 0x0, 0xD30, 0x248;
+	uint Classic1Score : 0xAE47308, 0xC4;
+	float Classic1HP : 0xAE47308, 0xB8;
+	float Classic1Time : 0xAE47308, 0xD0, 0x548;
+	bool Classic1TimeRunning : 0xAE47308, 0xD0, 0x540;
+	float Classic1PlayerX : 0xAE47308, 0xD0, 0x7E8, 0x4A0, 0x548, 0x2D0;
+	float Classic1PlayerY : 0xAE47308, 0xD0, 0x7E8, 0x4A0, 0x548, 0x2D8;
+	float Classic1PlayerZ : 0xAE47308, 0xD0, 0x7E8, 0x4A0, 0x548, 0x2D4;
+	float Classic1Stage5Time : 0xAE54FF0, 0x468, 0x58;
 }
 state("BloodstainedRotN-Win64-Shipping", "Steam 1.02 Cracked"){
 	uint Loading : 0x6C31250, 0x848; //uworld ptr is +1000 hex from official Steam 1.02/1.03
@@ -632,8 +632,8 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.50"){
 	uint PlayerHP : 0xAE3BFD0, 0x2FA38, 0x0, 0xD30, 0x240; //+0 hex prev, +18 hex 3rd offset, +8 hex 1st offset
 	uint PlayerMP : 0xAE3BFD0, 0x2FA38, 0x0, 0xD30, 0x244; //+0 hex prev, +18 hex 3rd offset, +8 hex 1st offset
 	uint PlayerEXP : 0xAE3BFD0, 0x2FA38, 0x0, 0xD30, 0x248; //+0 hex prev, +18 hex 3rd offset, +8 hex 1st offset
-	uint Classic1Score : 0xAE2E2E8, 0xC4; //Always start with Score when updating pointers to easily find the base address unique to Classic Mode
-	float Classic1HP : 0xAE2E2E8, 0xB8;
+	uint Classic1Score : 0xAE2E2E8, 0xC4; //Always start with Score when updating Classic pointers to easily find the base address unique to Classic Mode
+	float Classic1HP : 0xAE2E2E8, 0xB8; //Read-Only version
 	float Classic1Time : 0xAE2E2E8, 0xD0, 0x548;
 	bool Classic1TimeRunning : 0xAE2E2E8, 0xD0, 0x540;
 	float Classic1PlayerX : 0xAE2E2E8, 0xD0, 0x7E8, 0x4A0, 0x548, 0x2D0; //An alternative exists at 4 offsets, but different base, also 548 2D0
@@ -642,9 +642,49 @@ state("BloodstainedRotN-Win64-Shipping", "Steam 1.50"){
 	float Classic1Stage5Time : 0xAE3BFD0, 0x468, 0x58; //Same region as Classic Difficulty [+28] (easy find 0,1,2 & never moves)
 	//bool Classic1Load : 0x, 0x, 0x; //This isn't real. It doesn't exist. Fuck this shit game.
 }
+state("BloodstainedRotN-Win64-Shipping", "Steam 1.60"){
+	uint FileCreateLoad : 0xAE54FF0, 0x188; //+0 hex previous version (Final offset)
+	byte Saving : 0xAE54FF0, 0x280, 0x150, 0x2B5; //+0 hex prev
+	uint Cutscene : 0xAE54FF0, 0x3D0; //+0 hex prev
+	uint BossHP : 0xAE54FF0, 0x408, 0xD30, 0x240; //+0 hex prev
+	uint Gold : 0xAE54FF0, 0x430; //+0 hex prev —— Always start with Gold when updating pointers to easily find accurate base addresses (1 result) & this memory region
+	float IGT : 0xAE54FF0, 0x444; //+0 hex prev
+	byte Difficulty : 0xAE54FF0, 0x448; //+0 hex prev
+	byte GameMode : 0xAE54FF0, 0x449; //+0 hex prev
+	byte Character : 0xAE54FF0, 0x44A; //+0 hex prev
+	uint IntroEvents : 0xAE54FF0, 0x4E8; //+0 hex prev
+	byte BossDoors : 0xAE54FF0, 0x930; //+0 hex prev
+	byte GalleonBannerSeen : 0xAE54FF0, 0x940; //+0 hex prev
+	uint PauseMenu : 0xAE54FF0, 0xA28; //+0 hex prev
+	uint PressAnyKey : 0xAE54FF0, 0xA38; //+0 hex prev
+	uint Loading : 0xAE54FF0, 0xA50; //+0 hex prev
+	uint LoadingFile : 0xAE54FF0, 0xA60; //+0 hex prev
+	uint RoomData : 0xAE54FF0, 0x2F8B0; //+0 hex prev
+	uint PreviousRoom : 0xAE54FF0, 0x2F8B0, 0x188; //+0 hex prev
+	uint Room : 0xAE54FF0, 0x2F8B0, 0x190; ///+0 hex prev
+	byte RDLoading : 0xAE54FF0, 0x2F8B0, 0x1B8; //+0 hex prev
+	byte IntroChest : 0xAE54FF0, 0x2E8B5; //+0 hex prev
+	uint DialogueShop : 0xAE54FF0, 0x2F988, 0x4E8; //+0 hex prev
+	float PlayerRotation : 0xAE54FF0, 0x2FA38, 0x0, 0x900, 0x23C; //+0 hex prev
+	float PlayerX : 0xAE54FF0, 0x2FA38, 0x0, 0x900, 0x260; //+0 hex prev
+	float PlayerY : 0xAE54FF0, 0x2FA38, 0x0, 0x900, 0x268; //+0 hex prev
+	float PlayerZ : 0xAE54FF0, 0x2FA38, 0x0, 0x900, 0x264; //+0 hex prev
+	uint PlayerHP : 0xAE54FF0, 0x2FA38, 0x0, 0xD30, 0x240; //+0 hex prev
+	uint PlayerMP : 0xAE54FF0, 0x2FA38, 0x0, 0xD30, 0x244; //+0 hex prev
+	uint PlayerEXP : 0xAE54FF0, 0x2FA38, 0x0, 0xD30, 0x248; //+0 hex prev
+	uint Classic1Score : 0xAE47308, 0xC4; //Always start with Score when updating Classic pointers to easily find the base address unique to Classic Mode
+	float Classic1HP : 0xAE47308, 0xB8; //Read-Only version
+	float Classic1Time : 0xAE47308, 0xD0, 0x548;
+	bool Classic1TimeRunning : 0xAE47308, 0xD0, 0x540;
+	float Classic1PlayerX : 0xAE47308, 0xD0, 0x7E8, 0x4A0, 0x548, 0x2D0; //An alternative exists at 4 offsets, but different base, also 548 2D0
+	float Classic1PlayerY : 0xAE47308, 0xD0, 0x7E8, 0x4A0, 0x548, 0x2D8;
+	float Classic1PlayerZ : 0xAE47308, 0xD0, 0x7E8, 0x4A0, 0x548, 0x2D4;
+	float Classic1Stage5Time : 0xAE54FF0, 0x468, 0x58; //Same region as Classic Difficulty [+28] (easy find 0,1,2 & never moves)
+	//bool Classic1Load : 0x, 0x, 0x; //This isn't real. It doesn't exist. Fuck this shit game.
+}
 
 startup{
-	vars.ASLVersion = "ASL Version 3.7 — May 17, 2024";
+	vars.ASLVersion = "ASL Version 3.8 — Oct 23, 2024";
 
 	settings.Add(vars.ASLVersion, false);
 	settings.Add("WebsiteTip", false, "Click 'Website' button for more info!", vars.ASLVersion);
@@ -748,6 +788,10 @@ init{
 	}
 	else if(MD5Hash == "93286E5FD6A7F1E93FDC9EDE6E06FE5D"){
 		version = "Steam 1.50";
+		vars.log("Detected game version: " + version + " - MD5Hash: " + MD5Hash);
+	}
+	else if(MD5Hash == "ABE0ADAEAC1A030254381369D6858656"){
+		version = "Steam 1.60";
 		vars.log("Detected game version: " + version + " - MD5Hash: " + MD5Hash);
 	}
 	else{
