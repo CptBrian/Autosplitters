@@ -65,16 +65,19 @@ state("ReplayleeWin64", "Steam 1.02 (2025)"){
 }
 
 startup{	//When the script first loads, before game process attaches
-	vars.ASLVersion = "(info) ASL v1.3 — Oct.27 2025";
+	vars.ASLVersion = "info only → Script v1.32 — Oct.27 2025";
 	settings.Add(vars.ASLVersion, false);
 
-	vars.PagieSplits = "Split on # of Pagies (Full Game)";
+	vars.FullGameStart = "Auto-Start after load into new run (WIP fixing title screen starts)";
+	settings.Add(vars.FullGameStart, true);
+
+	vars.PagieSplits = "Split on # of Total Pagies (Full Game)";
 	settings.Add(vars.PagieSplits, false);
 	for(int i=1; i<301; i++){	//Creates nested numbered settings for splitting on Pagies
 		settings.Add(i.ToString() + " pagies", false, i.ToString() + " pagies", vars.PagieSplits);
 	}
 
-	vars.LoadSplits = "Split on # of Loads";
+	vars.LoadSplits = "Split on # of Total Loads";
 	settings.Add(vars.LoadSplits, false);
 	for(int i=1; i<51; i++){	//Creates nested numbered settings for splitting on Loads
 		settings.Add(i.ToString() + " loads", false, i.ToString() + " loads", vars.LoadSplits);
@@ -117,8 +120,8 @@ onStart{	//When the timer starts
 }
 
 start{		//Auto-Start conditions
-	if(!settings[vars.ILMode] && current.Loading == 2 && current.Pagies == 0){
-		return true;	//Starts timer when loading (or creating a new) a file with zero pagies. Could add a sceneID check.
+	if(!settings[vars.ILMode] && settings[vars.FullGameStart] && current.Loading == 0 && old.Loading == 2 && current.Pagies == 0){
+		return true;	//Starts timer after loading (or creating new) into a file with zero pagies. Needs SceneID check to fix title screen starts.
 	}
 	else if(settings[vars.ILMode] && settings["ILModeStart"] && current.Loading == 0 && old.Loading == 2){
 		return true;	//Starts timer when loading finishes (entering world) and IL Mode is enabled
