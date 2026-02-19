@@ -1,14 +1,14 @@
 /*
 Bloodstained: Ritual of the Night - ASL primarily by CptBrian with help from: DarkTechnomancer & hitachihex
 ASL Version 3.9 (PC Only)
-This ASL is compatible with RotN versions: Steam 1.02,3,4,10,16,17,19,21,30,40,50,60 GOG 1.03,4,5,9,10,21 & Cracked Steam 1.02
+This ASL is compatible with RotN versions: Steam 1.02,3,4,10,16,17,19,21,30,40,50,60,6EOS + GOG 1.03,4,5,9,10,21 + CrackedSteam 1.02
 [LiveSplit] Run as administrator, or this can't read RotN's memory. This can be done by default through Properties -> Compatibility.
 [LiveSplit] Edit Layout: Add -> Control -> Scriptable Auto Splitter (don't need to do this if you're using this file through split editor)
 [LiveSplit] Layout Settings: Scriptable AutoSplitter -> Browse for this .asl file (^^^)
 [LiveSplit] Remember to save your Layout/Splits and compare against Game Time if necessary!
 */
 
-state("BloodstainedRotN-Win64-Shipping", "Unknown-Using Latest"){ //Copy of addresses from whichever the most common version is (Steam 1.60)
+state("BloodstainedRotN-Win64-Shipping", "Unknown-Using Latest"){ //Copy of addresses from whichever the most common version is (Steam 1.6 EOS)
 	uint FileCreateLoad : 0xB164D00, 0x188;
 	byte Saving : 0xB164D00, 0x280, 0x150, 0x2B5;
 	uint Cutscene : 0xB164D00, 0x3D0;
@@ -1132,3 +1132,4 @@ Z: 0 - 0
 2800 HP on Normal. Final offset=38
 Room ID(1.10): 191973
 */
+
