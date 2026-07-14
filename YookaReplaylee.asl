@@ -4,20 +4,20 @@
 */
 
 state("ReplayleeWin64", "Unknown - Using Latest"){
-	byte Loading     : "UnityPlayer.dll", 0x1F1FA38, 0xB4;
-	int CollPtrChk   : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x18;
-	int Pagies       : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x5C;
-	int PagiesHT     : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x13C;
-	int PagiesTT     : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x14C;
-	int PagiesGGG    : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x15C;
-	int PagiesMMM    : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x16C;
-	int PagiesCC     : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x17C;
-	int PagiesGal    : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x18C;
-	int CashinoChips : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0xB3C;
-	int RexCoins     : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x46C;
-	int Mollycools   : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x4EC;
-	int Skulls       : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x10BC;
-	int Quills       : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x6C;
+	byte Loading     : "UnityPlayer.dll", 0x1F23AC8, 0xB4;
+	int CollPtrChk   : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x18;
+	int Pagies       : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x5C;
+	int PagiesHT     : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x13C;
+	int PagiesTT     : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x14C;
+	int PagiesGGG    : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x15C;
+	int PagiesMMM    : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x16C;
+	int PagiesCC     : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x17C;
+	int PagiesGal    : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x18C;
+	int CashinoChips : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0xB3C;
+	int RexCoins     : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x46C;
+	int Mollycools   : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x4EC;
+	int Skulls       : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x10BC;
+	int Quills       : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x6C;
 }
 state("ReplayleeWin64", "PC 1.00 Launch"){
 	byte Loading     : "UnityPlayer.dll", 0x1F10318, 0xB4;
@@ -83,9 +83,25 @@ state("ReplayleeWin64", "PC 1.02 Nov.13 '25"){
 	int Skulls       : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x10BC;
 	int Quills       : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x6C;
 }
+state("ReplayleeWin64", "PC 1.07 Jun.2 '26"){
+	byte Loading     : "UnityPlayer.dll", 0x1F23AC8, 0xB4;
+	int CollPtrChk   : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x18;
+	int Pagies       : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x5C;
+	int PagiesHT     : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x13C;
+	int PagiesTT     : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x14C;
+	int PagiesGGG    : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x15C;
+	int PagiesMMM    : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x16C;
+	int PagiesCC     : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x17C;
+	int PagiesGal    : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x18C;
+	int CashinoChips : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0xB3C;
+	int RexCoins     : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x46C;
+	int Mollycools   : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x4EC;
+	int Skulls       : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x10BC;
+	int Quills       : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x6C;
+}
 
 startup{	//When the script first loads, before game process attaches
-	vars.ASLVersion = "info only → Script v1.4 — Nov.13 2025";
+	vars.ASLVersion = "info only → Script v1.5 — Jul.13 2026";
 	settings.Add(vars.ASLVersion, false);
 
 	vars.FullGameStart = "Auto-Start after load into new run (WIP fixing title screen starts)";
@@ -127,12 +143,14 @@ init{		//When the game process attaches
 	else if(vars.MD5Hash == "B2A8352260D80FD19138502D8F025882") version = "PC 1.00 Day2";
 	else if(vars.MD5Hash == "0E4D506901277DB4286C35E9E196CEC6") version = "PC 1.01 Oct.24 '25";
 	else if(vars.MD5Hash == "1D5045AA0F7DE43A9E0DF108674B434B") version = "PC 1.02 Nov.13 '25";
+	else if(vars.MD5Hash == "9128A4BE553A1D93CC429A02ED5C0BC0") version = "PC 1.07 Jun.2 '26";
 	else version = "Unknown - Using Latest";
 	/* Command lines to download each game version through the Steam console -- steam://open/console
 	1.00 (Oct.9 2025)  == download_depot 2448020 2448021 8203004014523827167
 	1.00 (Oct.10 2025) == download_depot 2448020 2448021 8506482617212419140
 	1.01 (Oct.24 2025) == download_depot 2448020 2448021 6804137408735764711
 	1.02 (Nov.13 2025) == download_depot 2448020 2448021 3728265710394064583
+	1.07 (Jun.2 2026)  == download_depot 2448020 2448021 3797698961857532734
 	*/
 	vars.accumulativeLoads = 0;
 }
