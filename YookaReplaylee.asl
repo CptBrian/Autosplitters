@@ -101,7 +101,7 @@ state("ReplayleeWin64", "PC 1.07 Jun.2 '26"){
 }
 
 startup{	//When the script first loads, before game process attaches
-	vars.ASLVersion = "info only → Script v1.5 — Jul.13 2026";
+	vars.ASLVersion = "info only → Script v1.5 — Jul.16 2026";
 	settings.Add(vars.ASLVersion, false);
 
 	vars.FullGameStart = "Auto-Start after load into new run (WIP fixing title screen starts)";
@@ -151,6 +151,7 @@ init{		//When the game process attaches
 	1.01 (Oct.24 2025) == download_depot 2448020 2448021 6804137408735764711
 	1.02 (Nov.13 2025) == download_depot 2448020 2448021 3728265710394064583
 	1.07 (Jun.2 2026)  == download_depot 2448020 2448021 3797698961857532734
+	1.07 (Jul.16 2026) == download_depot 2448020 2448021 1186440593884023242 (just a DLSS fix, same MD5 & pointers)
 	*/
 	vars.accumulativeLoads = 0;
 }
