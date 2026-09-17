@@ -1,25 +1,25 @@
 /*
-	Yooka-Replaylee (Released October 9, 2025) https://s.team/a/2448020
+	Yooka-Replaylee (Released Oct.9 2025) https://s.team/a/2448020
 	ASL originally by Ansiando & tipdaddy78
 */
 
 state("ReplayleeWin64", "Unknown - Using Latest"){
 	byte Loading     : "UnityPlayer.dll", 0x1F23AC8, 0xB4;
-	int CollPtrChk   : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x18;
-	int Pagies       : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x5C;
-	int PagiesHT     : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x13C;
-	int PagiesTT     : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x14C;
-	int PagiesGGG    : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x15C;
-	int PagiesMMM    : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x16C;
-	int PagiesCC     : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x17C;
-	int PagiesGal    : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x18C;
-	int CashinoChips : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0xB3C;
-	int RexCoins     : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x46C;
-	int Mollycools   : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x4EC;
-	int Skulls       : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x10BC;
-	int Quills       : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x6C;
+	int CollPtrChk   : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x18;
+	int Pagies       : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x5C;
+	int PagiesHT     : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x13C;
+	int PagiesTT     : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x14C;
+	int PagiesGGG    : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x15C;
+	int PagiesMMM    : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x16C;
+	int PagiesCC     : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x17C;
+	int PagiesGal    : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x18C;
+	int CashinoChips : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0xB3C;
+	int RexCoins     : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x46C;
+	int Mollycools   : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x4EC;
+	int Skulls       : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x10BC;
+	int Quills       : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x6C;
 }
-state("ReplayleeWin64", "PC 1.00 Launch"){
+state("ReplayleeWin64", "PC 1.00 — Day 1"){
 	byte Loading     : "UnityPlayer.dll", 0x1F10318, 0xB4;
 	int CollPtrChk   : "UnityPlayer.dll", 0x1F1D458, 0xB8, 0x0, 0x78, 0x30, 0x1E0, 0x3D8, 0xA8, 0x78, 0x18;
 	int Pagies       : "UnityPlayer.dll", 0x1F1D458, 0xB8, 0x0, 0x78, 0x30, 0x1E0, 0x3D8, 0xA8, 0x78, 0x5C;
@@ -35,7 +35,7 @@ state("ReplayleeWin64", "PC 1.00 Launch"){
 	int Skulls       : "UnityPlayer.dll", 0x1F1D458, 0xB8, 0x0, 0x78, 0x30, 0x1E0, 0x3D8, 0xA8, 0x78, 0x10BC;
 	int Quills       : "UnityPlayer.dll", 0x1F1D458, 0xB8, 0x0, 0x78, 0x30, 0x1E0, 0x3D8, 0xA8, 0x78, 0x6C;
 }
-state("ReplayleeWin64", "PC 1.00 Day2"){
+state("ReplayleeWin64", "PC 1.00 — Day 2"){
 	byte Loading     : "UnityPlayer.dll", 0x1F10318, 0xB4;
 	int CollPtrChk   : "UnityPlayer.dll", 0x1F1D458, 0xB8, 0x0, 0x78, 0x30, 0x1E0, 0x3D8, 0xA8, 0x78, 0x18;
 	int Pagies       : "UnityPlayer.dll", 0x1F1D458, 0xB8, 0x0, 0x78, 0x30, 0x1E0, 0x3D8, 0xA8, 0x78, 0x5C;
@@ -51,7 +51,7 @@ state("ReplayleeWin64", "PC 1.00 Day2"){
 	int Skulls       : "UnityPlayer.dll", 0x1F1D458, 0xB8, 0x0, 0x78, 0x30, 0x1E0, 0x3D8, 0xA8, 0x78, 0x10BC;
 	int Quills       : "UnityPlayer.dll", 0x1F1D458, 0xB8, 0x0, 0x78, 0x30, 0x1E0, 0x3D8, 0xA8, 0x78, 0x6C;
 }
-state("ReplayleeWin64", "PC 1.01 Oct.24 '25"){
+state("ReplayleeWin64", "PC 1.01 — Oct.24 '25"){
 	byte Loading     : "UnityPlayer.dll", 0x1F10318, 0xB4;
 	int CollPtrChk   : "UnityPlayer.dll", 0x1F1D458, 0xB8, 0x0, 0x78, 0x30, 0x1E0, 0x3D8, 0xA8, 0x78, 0x18;
 	int Pagies       : "UnityPlayer.dll", 0x1F1D458, 0xB8, 0x0, 0x78, 0x30, 0x1E0, 0x3D8, 0xA8, 0x78, 0x5C;
@@ -67,7 +67,7 @@ state("ReplayleeWin64", "PC 1.01 Oct.24 '25"){
 	int Skulls       : "UnityPlayer.dll", 0x1F1D458, 0xB8, 0x0, 0x78, 0x30, 0x1E0, 0x3D8, 0xA8, 0x78, 0x10BC;
 	int Quills       : "UnityPlayer.dll", 0x1F1D458, 0xB8, 0x0, 0x78, 0x30, 0x1E0, 0x3D8, 0xA8, 0x78, 0x6C;
 }
-state("ReplayleeWin64", "PC 1.02 Nov.13 '25"){
+state("ReplayleeWin64", "PC 1.02 — Nov.13 '25"){
 	byte Loading     : "UnityPlayer.dll", 0x1F1FA38, 0xB4;
 	int CollPtrChk   : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x18;
 	int Pagies       : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x5C;
@@ -83,7 +83,7 @@ state("ReplayleeWin64", "PC 1.02 Nov.13 '25"){
 	int Skulls       : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x10BC;
 	int Quills       : "GameAssembly.dll", 0x5B502A8, 0xB8, 0x0, 0x20, 0x18, 0x6C;
 }
-state("ReplayleeWin64", "PC 1.07 Jun.2 '26"){
+state("ReplayleeWin64", "PC 1.07 — Jun.2 '26"){
 	byte Loading     : "UnityPlayer.dll", 0x1F23AC8, 0xB4;
 	int CollPtrChk   : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x18;
 	int Pagies       : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x5C;
@@ -99,9 +99,25 @@ state("ReplayleeWin64", "PC 1.07 Jun.2 '26"){
 	int Skulls       : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x10BC;
 	int Quills       : "GameAssembly.dll", 0x5BED4B8, 0xB8, 0x0, 0x20, 0x18, 0x6C;
 }
+state("ReplayleeWin64", "PC 1.08 — Sep.8 '26"){
+	byte Loading     : "UnityPlayer.dll", 0x1F23AC8, 0xB4;
+	int CollPtrChk   : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x18;
+	int Pagies       : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x5C;
+	int PagiesHT     : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x13C;
+	int PagiesTT     : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x14C;
+	int PagiesGGG    : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x15C;
+	int PagiesMMM    : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x16C;
+	int PagiesCC     : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x17C;
+	int PagiesGal    : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x18C;
+	int CashinoChips : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0xB3C;
+	int RexCoins     : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x46C;
+	int Mollycools   : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x4EC;
+	int Skulls       : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x10BC;
+	int Quills       : "GameAssembly.dll", 0x5CA22E8, 0xB8, 0x0, 0x20, 0x18, 0x6C;
+}
 
 startup{	//When the script first loads, before game process attaches
-	vars.ASLVersion = "info only → Script v1.5 — Jul.16 2026";
+	vars.ASLVersion = "info only → Script v1.6 — Sep.16 2026";
 	settings.Add(vars.ASLVersion, false);
 
 	vars.FullGameStart = "Auto-Start after load into new run (WIP fixing title screen starts)";
@@ -139,11 +155,12 @@ init{		//When the game process attaches
 	vars.MD5Hash = exeMD5HashBytes.Select(x => x.ToString("X2")).Aggregate((a, b) => a + b);
 	print("MD5Hash: " + vars.MD5Hash.ToString()); //Prints detected MD5 once, seen via DebugView
 	
-	if(vars.MD5Hash == "86439CB7F8851AE8D077F5F7CC520EAD") version = "PC 1.00 Launch";
-	else if(vars.MD5Hash == "B2A8352260D80FD19138502D8F025882") version = "PC 1.00 Day2";
-	else if(vars.MD5Hash == "0E4D506901277DB4286C35E9E196CEC6") version = "PC 1.01 Oct.24 '25";
-	else if(vars.MD5Hash == "1D5045AA0F7DE43A9E0DF108674B434B") version = "PC 1.02 Nov.13 '25";
-	else if(vars.MD5Hash == "9128A4BE553A1D93CC429A02ED5C0BC0") version = "PC 1.07 Jun.2 '26";
+	if(vars.MD5Hash == "86439CB7F8851AE8D077F5F7CC520EAD") version = "PC 1.00 — Day 1";
+	else if(vars.MD5Hash == "B2A8352260D80FD19138502D8F025882") version = "PC 1.00 — Day 2";
+	else if(vars.MD5Hash == "0E4D506901277DB4286C35E9E196CEC6") version = "PC 1.01 — Oct.24 '25";
+	else if(vars.MD5Hash == "1D5045AA0F7DE43A9E0DF108674B434B") version = "PC 1.02 — Nov.13 '25";
+	else if(vars.MD5Hash == "9128A4BE553A1D93CC429A02ED5C0BC0") version = "PC 1.07 — Jun.2 '26";
+	else if(vars.MD5Hash == "6878EAF1636D7B3BA3310F5612F7DA67") version = "PC 1.08 — Sep.8 '26";
 	else version = "Unknown - Using Latest";
 	/* Command lines to download each game version through the Steam console -- steam://open/console
 	1.00 (Oct.9 2025)  == download_depot 2448020 2448021 8203004014523827167
@@ -152,6 +169,7 @@ init{		//When the game process attaches
 	1.02 (Nov.13 2025) == download_depot 2448020 2448021 3728265710394064583
 	1.07 (Jun.2 2026)  == download_depot 2448020 2448021 3797698961857532734
 	1.07 (Jul.16 2026) == download_depot 2448020 2448021 1186440593884023242 (just a DLSS fix, same MD5 & pointers)
+	1.08 (Sep.8 2026)  == download_depot 2448020 2448021 5574956169313530981
 	*/
 	vars.accumulativeLoads = 0;
 }
